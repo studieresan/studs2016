@@ -1,0 +1,28 @@
+{
+  "name": "studs2016",
+  "description": "Website for studs2016",
+  "version": "1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "angular": "^1.4.7",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.10"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/studieresan/studs2016"
+  },
+  "keywords": [
+    "studs"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/studieresan/studs2016/issues"
+  },
+  "homepage": "https://github.com/studieresan/studs2016"
+}
