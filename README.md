@@ -15,6 +15,5 @@ npm install
 node server
 ```
 
-[//]:
-   [node.js]: <https://nodejs.org/en/>
-   [mongoDB]: <https://www.mongodb.org/>
+[node.js]: <https://nodejs.org/en/>
+[mongoDB]: <https://www.mongodb.org/>
