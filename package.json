@@ -2,6 +2,7 @@
   "name": "studs2016",
   "description": "Website for studs2016",
   "version": "1.0.0",
+  "author": "https://github.com/studieresan/studs2016/graphs/contributors",
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.14.1",
@@ -19,7 +20,6 @@
   "keywords": [
     "studs"
   ],
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/studieresan/studs2016/issues"
