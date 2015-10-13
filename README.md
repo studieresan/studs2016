@@ -5,6 +5,7 @@ Requirements
 ------------
 * [node.js]
 * [Bower]
+* [Grunt]
 * [mongoDB]
 
 Installation
@@ -29,4 +30,5 @@ git push
 
 [node.js]: <https://nodejs.org/en/>
 [Bower]:   <http://bower.io/>
+[Grunt]:   <http://gruntjs.com/>
 [mongoDB]: <https://www.mongodb.org/>
