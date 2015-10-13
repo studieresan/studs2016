@@ -28,6 +28,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // set location of static files
 app.use(express.static(__dirname + '/client'));
 
+// Configure view templating
+app.set('views', __dirname + '/server/views/');
+app.set('view engine', 'jade');
+
 // routes
 require('./server/routes') (app);
 
