@@ -10,6 +10,7 @@ module.exports = function(app) {
         });
     });
 
+    // Get
     app.get('/', function(req, res) {
         res.sendfile('./public/index.html'); // load our public/index.html file
     });
