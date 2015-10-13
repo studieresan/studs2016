@@ -1,17 +1,8 @@
 {
   "name": "studs2016",
-  "version": "0.0.0",
-  "homepage": "https://github.com/studieresan/studs2016",
-  "authors": [],
   "description": "Website for studs2016",
+  "homepage": "https://github.com/studieresan/studs2016",
   "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
   "dependencies": {
     "angular": "~1.4.7"
   }
