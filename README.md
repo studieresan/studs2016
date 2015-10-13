@@ -17,6 +17,16 @@ bower install
 node server
 ```
 
+Workflow
+--------
+```
+git checkout develop
+git pull
+git add [files]
+git commit [message]
+git push
+```
+
 [node.js]: <https://nodejs.org/en/>
 [Bower]:   <http://bower.io/>
 [mongoDB]: <https://www.mongodb.org/>
