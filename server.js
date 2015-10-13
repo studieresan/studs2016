@@ -10,14 +10,22 @@ var app         = express();
 // confiuration
 dotenv.load();
 
+// database configuration file
 var db = require('./app/config/db');
 
+// connect to mongoDB
 mongoose.connect(db.url);
 
+// port number
 var port = process.env.PORT || 3000;
 
+// parse application/json
 app.use(bodyParser.json());
+
+// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// set location of static files
 app.use(express.static(__dirname + '/public'));
 
 // routes
