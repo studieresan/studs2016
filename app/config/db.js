@@ -1,3 +1,3 @@
 module.exports = {
-    url : 'mongodb://localhost/studs2016'
+    url : 'mongodb://localhost/' + process.env.DB_NAME
 }
