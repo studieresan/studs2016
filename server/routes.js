@@ -1,3 +1,4 @@
+var users = require('./controllers/userController');
 var Post = require('./models/post');
 
 module.exports = function(app) {
@@ -14,4 +15,12 @@ module.exports = function(app) {
     app.get('/', function(req, res) {
         res.render('index', { title: "Studs!" });
     });
+
+
+
+    app.get('/users', users.findAll);
+    app.post('/users', users.add);
 };
+
+
+
