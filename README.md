@@ -17,6 +17,7 @@ npm install
 bower install
 node server
 ```
+*Tip: [nodemon] speeds up development workflow!*
 
 Workflow
 --------
@@ -32,3 +33,4 @@ git push
 [Bower]:   <http://bower.io/>
 [Grunt]:   <http://gruntjs.com/>
 [mongoDB]: <https://www.mongodb.org/>
+[nodemon]: <https://github.com/remy/nodemon>
