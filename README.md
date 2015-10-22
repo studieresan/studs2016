@@ -25,7 +25,7 @@ Workflow
 git checkout develop
 git pull
 git add [files]
-git commit [message]
+git commit -m 'Commit message'
 git push
 ```
 
