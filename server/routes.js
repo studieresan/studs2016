@@ -17,12 +17,16 @@ module.exports = function(app) {
         res.render('index', { title: "Studs!" });
     });
 
+    app.get('/events', function(req, res) {
+        res.sendFile(__dirname + '/views/index.html');
+    });
+
 
     // User-api
-    app.get('/users', users.findAll);
-    app.post('/users', users.add);
+    app.get('/api/users', users.findAll);
+    app.post('/api/users', users.add);
 
     // Event-api
-    app.get('/events', events.findAll);
-    app.post('/events', events.add);
+    app.get('/api/events', events.findAll);
+    app.post('/api/events', events.add);
 };

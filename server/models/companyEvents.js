@@ -10,6 +10,4 @@ var companyEventSchema = new Schema({
     description : { type : String},
 });
 
-var CompanyEvent = mongoose.model('companyEvents', companyEventSchema);
-
-module.exports = mongoose.model('companyEvents', companyEventSchema);
+module.exports = mongoose.model('company_event', companyEventSchema);

@@ -1,13 +1,12 @@
 var mongoose = require('mongoose');
 
-require('../models/companyEvents');
-
-CompanyEvents = mongoose.model('companyEvents');
+CompanyEvents = require('../models/companyEvents');
 
 
 //Get all users.
 exports.findAll = function(req, res) {
 	CompanyEvents.find({}, function(err, results) {
+		console.log(results);
 		return res.send(results);
 	});
 };
