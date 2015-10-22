@@ -4,8 +4,9 @@ var mongoose = require('mongoose'),
 var options = { discriminatorKey : 'role' };
 
 var userSchema = new Schema({
-    email : { type: String, required: true },
-    password : { type: String, required: true },
+    email : { type : String, required : true },
+    passwordhashed : { type : String, required : true },
+    //passwordsalt : { type : String, required :true }
 }, options );
 
 var User = mongoose.model('user', userSchema);
@@ -17,7 +18,7 @@ var CorporationSchema = User.discriminator( 'Corporation',
 		contact : { type : String}
 	}, options ));
 
-//
+//Student is a special kind of user.
 var StudentSchema = User.discriminator( 'Student',
 	new mongoose.Schema({
 		group : { type : String},
