@@ -10,13 +10,14 @@ Requirements
 
 Installation
 ------------
-`mv .env.example .env` and replace values.
+`cp .env.example .env` and replace values.
 
 ```
 npm install
 bower install
 node server
 ```
+*Tip: [nodemon] speeds up development workflow!*
 
 Workflow
 --------
@@ -24,7 +25,7 @@ Workflow
 git checkout develop
 git pull
 git add [files]
-git commit [message]
+git commit -m 'Commit message'
 git push
 ```
 
@@ -32,3 +33,4 @@ git push
 [Bower]:   <http://bower.io/>
 [Grunt]:   <http://gruntjs.com/>
 [mongoDB]: <https://www.mongodb.org/>
+[nodemon]: <https://github.com/remy/nodemon>
