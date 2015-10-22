@@ -10,7 +10,7 @@ Requirements
 
 Installation
 ------------
-`mv .env.example .env` and replace values.
+`cp .env.example .env` and replace values.
 
 ```
 npm install
