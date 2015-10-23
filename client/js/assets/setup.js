@@ -2,18 +2,27 @@
 * Set up
 */
 $(document).ready(function() {
-    menuSetup();
+	menuSetup();
+	menuShadowSetup();
 });
 
 $(window).on("scroll", function() {
-    menuSetup();
+	menuSetup();
+});
+
+$(window).on("resize", function() {
+	menuShadowSetup();
 });
 
 function menuSetup() {
-    var scrollOffset = $(window).scrollTop();
-    if(scrollOffset === 0) {
-        $("#menu").removeClass("sticky");
-    } else {
-        $("#menu").addClass("sticky");
-    }
+	var scrollOffset = $(window).scrollTop();
+	if(scrollOffset === 0) {
+		$("#menu").removeClass("sticky");
+	} else {
+		$("#menu").addClass("sticky");
+	}
+}
+
+function menuShadowSetup() {
+		$("#menu-shadow").height($("#menu").outerHeight());
 }

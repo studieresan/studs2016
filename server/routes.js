@@ -18,7 +18,10 @@ module.exports = function(app) {
     });
 
     app.get('/events', function(req, res) {
-        res.render('events/index', {ngApp: "events"});
+        res.render('events/index', {
+            ngApp: "events",
+            fixedMenu: true
+        });
     });
 
 
