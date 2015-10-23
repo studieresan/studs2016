@@ -9,9 +9,10 @@ module.exports = function(grunt) {
             },
             js_client: {
                 src: [
-                    './bower_components/angular/angular.min.js'
+                    './bower_components/angular/angular.min.js',
+                    './bower_components/jquery/dist/jquery.min.js'
                 ],
-                dest: './client/libs.min.js'
+                dest: './client/dist/js/libs.min.js'
             }
         },
 
@@ -26,7 +27,7 @@ module.exports = function(grunt) {
 
             build: {
                 files: {
-                    'client/dist/main.min.js': 'client/js/**/*.js'
+                    'client/dist/js/main.min.js': 'client/js/**/*.js'
                 }
             }
         },
@@ -34,7 +35,7 @@ module.exports = function(grunt) {
         less: {
             build: {
                 files: {
-                    'client/dist/main.css': "client/less/build.less"
+                    'client/dist/css/main.min.css': "client/less/build.less"
                 }
             }
         },

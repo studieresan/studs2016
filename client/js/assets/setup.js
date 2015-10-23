@@ -11,9 +11,9 @@ $(window).on("scroll", function() {
 
 function menuSetup() {
     var scrollOffset = $(window).scrollTop();
-    if(scrollOffset == 0) {
+    if(scrollOffset === 0) {
         $("#menu").removeClass("sticky");
     } else {
         $("#menu").addClass("sticky");
     }
-};
+}
