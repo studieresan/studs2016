@@ -12,6 +12,13 @@ exports.findAll = function(req, res) {
 	});
 };
 
+exports.findById = function(req, res) {
+   var id = req.params.id;
+   User.findOne({'_id':id}, function(err, result) {
+       return res.send(result);
+   });
+};
+
 // Add a user.
 exports.add = function(req, res, next) {
 	var user = new User(req.body);

@@ -31,6 +31,6 @@ module.exports = function(app) {
 
     // Event-api
    app.get('/api/events', events.findAll);
-   app.get('/api/events/:id', events.findById);
+   app.get('/api/events/:slug', events.findBySlug);
    app.post('/api/events', events.add);
 };
