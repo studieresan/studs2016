@@ -17,6 +17,7 @@
     "grunt-contrib-uglify": "^0.9.2",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-newer": "^1.1.1",
+    "jade": "^1.11.0",
     "mongoose": "^4.1.10"
   },
   "scripts": {

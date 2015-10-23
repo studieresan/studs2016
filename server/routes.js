@@ -18,7 +18,7 @@ module.exports = function(app) {
     });
 
     app.get('/events', function(req, res) {
-        res.render('events/index.ejs');
+        res.render('events/index', {ngApp: "events"});
     });
 
 
