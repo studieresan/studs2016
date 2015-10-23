@@ -27,6 +27,7 @@ module.exports = function(app) {
     app.post('/api/users', users.add);
 
     // Event-api
-    app.get('/api/events', events.findAll);
-    app.post('/api/events', events.add);
+   app.get('/api/events', events.findAll);
+   app.get('/api/events/:id', events.findById)
+   app.post('/api/events', events.add);
 };
