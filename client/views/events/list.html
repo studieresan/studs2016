@@ -1,7 +1,6 @@
-<h1>Events</h1>
 <ul>
     <li ng-repeat="event in eventsCtrl.events">
-        {{ event.title }}
+        <a href ng-click="panels.setPanel(2); eventsCtrl.test(event)">{{ event.title }}</a>
 
         <a href="#">Edit</a>
         <a href="#">Remove</a>
