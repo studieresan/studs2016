@@ -11,6 +11,13 @@ exports.findAll = function(req, res) {
 	});
 };
 
+exports.findById = function(req, res) {
+    var id = req.params.id;
+    Item.findOne({'_id':id}, function(err, result) {
+        return res.send(result);
+    });
+};
+
 // Add a user.
 exports.add = function(req, res) {
 	var companyEvents = new CompanyEvents();

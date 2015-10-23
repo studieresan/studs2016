@@ -24,6 +24,7 @@ module.exports = function(app) {
 
     // User-api
     app.get('/api/users', users.findAll);
+    app.get('/api/users/:id', users.findById)
     app.post('/api/users', users.add);
 
     // Event-api
