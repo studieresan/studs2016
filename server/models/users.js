@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+	crypto = require('crypto'),
 	Schema = mongoose.Schema;
 
 var options = { discriminatorKey : 'role' };
@@ -6,8 +7,20 @@ var options = { discriminatorKey : 'role' };
 var userSchema = new Schema({
     email : { type : String, required : true },
     passwordhashed : { type : String, required : true },
-    //passwordsalt : { type : String, required :true }
+    passwordsalt : { type : String, required : false }
 }, options );
+
+userSchema.pre('save', function(next) {
+	if (this.passwordhashed) {
+		this.passwordsalt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
+		this.passwordhashed = this.hashPassword(this.passwordhashed);
+	}
+	next();
+});
+
+userSchema.methods.hashPassword = function(password) {
+	return crypto.pbkdf2Sync(password, this.passwordsalt, 10000, 64).toString('base64');
+};
 
 var User = mongoose.model('user', userSchema);
 

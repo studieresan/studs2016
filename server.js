@@ -14,7 +14,7 @@ dotenv.load();
 var db = require('./server/config/db');
 
 // connect to mongoDB
-console.log(mongoose.connect(db.url));
+mongoose.connect(db.url);
 
 // port number
 var port = process.env.PORT || 3000;

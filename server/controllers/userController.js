@@ -13,15 +13,13 @@ exports.findAll = function(req, res) {
 };
 
 // Add a user.
-exports.add = function(req, res) {
-	var user = new User();
-	user = req.body;
-
+exports.add = function(req, res, next) {
+	var user = new User(req.body);
+	
 	user.save(function (err) {
 		if (err) {
 			return console.log(err);
 		}
-		return res.send(user);
+		return res.json(user);
 	});
 };
-
