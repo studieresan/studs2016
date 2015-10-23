@@ -9,8 +9,8 @@ module.exports = function(grunt) {
             },
             js_client: {
                 src: [
-                    './bower_components/angular/angular.min.js',
-                    './bower_components/jquery/dist/jquery.min.js'
+                './bower_components/angular/angular.min.js',
+                './bower_components/jquery/dist/jquery.min.js'
                 ],
                 dest: './client/dist/js/libs.min.js'
             }
@@ -21,15 +21,16 @@ module.exports = function(grunt) {
         },
 
         uglify: {
-            options: {
-                banner: '/*\n <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> \n*/\n'
-            },
-
             build: {
+                options: {
+                    banner: '/*\n <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> \n*/\n',
+                    sourceMap: true
+                },
                 files: {
                     'client/dist/js/main.min.js': 'client/js/**/*.js'
                 }
             }
+
         },
 
         less: {
@@ -40,6 +41,16 @@ module.exports = function(grunt) {
             }
         },
 
+        imagemin: {
+            dynamic: {                         
+              files: 
+              [{
+                expand: true,                  
+                cwd: 'client/img',                   
+                src: ['**/*.{png,jpg,gif,svg}'],   
+                dest: 'client/dist/img'                 
+            }]}
+        },
         watch: {
             less: {
                 files: ['client/less/**/*.less'],
@@ -52,16 +63,22 @@ module.exports = function(grunt) {
             js_client: {
                 files: ['client/js/**/*.js'],
                 tasks: ['jshint', 'uglify', 'concat:js_client']
+            },
+            imagemin: {
+                files: ['client/img/**/*'],
+                tasks: ['imagemin']
             }
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+grunt.loadNpmTasks('grunt-contrib-concat');
+grunt.loadNpmTasks('grunt-contrib-jshint');
+grunt.loadNpmTasks('grunt-contrib-uglify');
+grunt.loadNpmTasks('grunt-contrib-imagemin');
+grunt.loadNpmTasks('grunt-contrib-less');
+grunt.loadNpmTasks('grunt-newer');
+grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default', ['jshint', 'uglify', 'less', 'concat']);
+grunt.registerTask('default', ['jshint', 'uglify', 'less', 'concat', 'imagemin']);
 
 };
