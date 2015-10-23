@@ -15,6 +15,7 @@ Installation
 ```
 npm install
 bower install
+grunt
 node server
 ```
 *Tip: [nodemon] speeds up development workflow!*
