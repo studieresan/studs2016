@@ -1,9 +1,83 @@
-doctype html
-html
-	head
-		meta(charset='utf-8')
-		meta(http-equiv='X-UA-Compatible', content='IE=edge')
-		title #{title}
-		link(rel='stylesheet', href='')
-	body
-		h1 #{title}
+include layout/header.jade
+
+include layout/menu.jade
+
+section#hero
+	.row.gutter-large
+		.col-lg-3.col-sm-2
+		.col-lg-6.col-sm-8
+			h1.t-center
+				| We dig 
+				span.text-green challenges
+				|  and 
+				span.text-green adventures
+		.col-lg-3.col-sm-2
+		.clearfix
+		.col-lg-3.col-sm-2
+		.col-lg-6.col-sm-8
+			| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			| tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			| quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			| cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			| proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		.col-lg-3.col-sm-2
+section.green-bg.mega-padding
+	.wrap
+		.row.gutter-large
+			.col-12.t-center
+				h1 Be part of a great experience!
+			.col-6
+				| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				| tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				| quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				| cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				| proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			.col-6
+				| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				| tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				| quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				| cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				| proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+section.black-bg.mega-padding
+	.wrap
+		.row.gutter-large
+			.col-12.t-center
+				h1 Do like our friends at these companies - join studs!
+			.col-3
+				img(src='img/google.svg', alt='')
+			.col-3
+				img(src='img/visma.svg', alt='')
+			.col-3
+				img(src='img/google.svg', alt='')
+			.col-3
+				img(src='img/visma.svg', alt='')
+section.mega-padding
+	.wrap
+		.row.gutter-large
+			.col-4
+				h2 We are interested in you
+				| 				Duis aute irure dolor in reprehenderit in voluptate velit esse
+				| 				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				| 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			.col-4
+				h2 We are motivated to work
+				| 				Duis aute irure dolor in reprehenderit in voluptate velit esse
+				| 				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				| 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			.col-4
+				h2 We are assets
+				| 				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				| 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				| 				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				| 				consequat.
+			.col-3
+			.col-6.t-center
+				h3 I like it, how do I get my company involved?
+				p
+					a.btn.btn-primary(href='#') Simple, sign up!
+			.col-3
+
+include layout/footer.jade

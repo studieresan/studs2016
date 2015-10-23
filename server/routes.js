@@ -1,3 +1,5 @@
+var users = require('./controllers/userController');
+var events = require('./controllers/eventController');
 var Post = require('./models/post');
 
 module.exports = function(app) {
@@ -14,4 +16,21 @@ module.exports = function(app) {
     app.get('/', function(req, res) {
         res.render('index', { title: "Studs!" });
     });
+
+    app.get('/events', function(req, res) {
+        res.render('events/index', {
+            ngApp: "events",
+            fixedMenu: true
+        });
+    });
+
+
+    // User-api
+    app.get('/api/users', users.findAll);
+    app.post('/api/users', users.add);
+
+    // Event-api
+   app.get('/api/events', events.findAll);
+   app.get('/api/events/:slug', events.findBySlug);
+   app.post('/api/events', events.add);
 };

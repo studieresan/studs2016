@@ -1,0 +1,40 @@
+// Table
+
+table.table {
+	border-collapse: collapse;
+	text-align: left;
+	width: 100%;
+	overflow: auto;
+
+	thead {
+		font-weight: bold;
+		color: @white-dark;
+	}
+
+	tfoot {
+		color: @white-dark;
+	}
+
+	// Ignore thead and tfoot hover effect
+	thead, tfoot {
+		& tr:hover {
+			background: inherit;
+		}
+	}
+
+	td, th {
+		.ellipsis;
+		.responsive-property(padding, @spacing-base, @spacing-base, @spacing-small, @spacing-minimum);
+		vertical-align: middle;
+	}
+
+	tr {
+		&:hover {
+			background: @gray-light;
+		}
+
+		& + tr {
+			border-top: solid 1px @gray-light;
+		}
+	}
+}
