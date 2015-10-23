@@ -31,6 +31,8 @@ app.use("/views", express.static(__dirname + '/client/views'));
 
 // Configure view templating
 app.set('views', __dirname + '/server/views/');
+// Add jade as view engine
+app.set('view engine', 'ejs');
 
 // routes
 require('./server/routes') (app);

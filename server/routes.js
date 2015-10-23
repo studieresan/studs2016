@@ -18,7 +18,7 @@ module.exports = function(app) {
     });
 
     app.get('/events', function(req, res) {
-        res.sendFile(__dirname + '/views/index.html');
+        res.render('events/index.ejs');
     });
 
 
