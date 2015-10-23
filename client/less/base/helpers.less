@@ -1,0 +1,165 @@
+/*
+*	Generates responsive style for given property
+*	@params:
+*		@property				the css property (eg. padding)
+*		@spacing-breakpoint-n	the value of the property at breakpoint n
+*/
+.responsive-property(@property, @value-original, @value-breakpoint-large, @value-breakpoint-medium, @value-breakpoint-small) {
+	@{property}: @value-original;
+	@media (max-width: @breakpoint-large) {
+		@{property}: @value-breakpoint-large;
+	}
+	@media (max-width: @breakpoint-medium) {
+		@{property}: @value-breakpoint-medium;
+	}
+	@media (max-width: @breakpoint-small) {
+		@{property}: @value-breakpoint-small;
+	}
+}
+
+// Mixin for platform, less params than portal. TODO: Test if this works better!
+.responsive-property-platform(@property, @value-original, @value-smaller, @value-smallest) {
+	.responsive-property(@property, @value-original, @value-smaller, @value-smaller, @value-smallest);
+}
+
+// Linearize a column at the specified width
+.linearize(@width) {
+	@media (max-width: @width) {
+		float: none;
+		width: 100%;
+	}
+}
+
+/*
+* Hide and element on (kinda) the same position. Makes focus work properly for ex. checkboxes etc.
+*/
+.hide-below {
+	position: absolute;
+	.opacity(0);
+	z-index: -1;
+}
+/* Move away from screen (modals, custom dropdowns etc.) */
+.hide-away {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+
+/* Used together with grids */
+.hide {
+	display: none;
+}
+@media (max-width: @breakpoint-large) {
+	.lg-hide {
+		display: none;
+	}
+	.lg-show {
+		display: block;
+	}
+}
+
+@media (max-width: @breakpoint-medium) {
+	.md-hide {
+		display: none;
+	}
+	.md-show {
+		display: block;
+	}
+}
+@media (max-width: @breakpoint-small) {
+	.sm-hide {
+		display: none;
+	}
+	.sm-show {
+		display: block;
+	}
+}
+@media (max-width: @breakpoint-xsmall) {
+	.xs-hide {
+		display: none;
+	}
+	.xs-show {
+		display: block;
+	}
+}
+
+/* Layout helpers */
+.block {
+	display: block !important;
+}
+.inline {
+	display: inline  !important;
+}
+.inline-block {
+	display: inline-block !important;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.clear {
+	clear: both;
+}
+.centering {
+	position: absolute;
+	top:0;right:0;left:0;bottom:0;
+	margin: auto;
+}
+.flex-fixed {
+	.flex-grow(0);
+	.flex-shrink(0);
+}
+.flex-grow {
+	.flex-grow(1);
+}
+
+/* Text helpers */
+.responsive-font-size {
+}
+.t-left {
+	text-align: left;
+}
+.t-center {
+	text-align: center;
+}
+.t-right {
+	text-align: right;
+}
+.ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* Border-radiuses */
+.border-radius-bottom(@radius: @border-radius-base) {
+	.border-bottom-left-radius(@radius);
+	.border-bottom-right-radius(@radius);
+}
+.border-radius-top(@radius: @border-radius-base) {
+	.border-top-left-radius(@radius);
+	.border-top-right-radius(@radius);
+}
+.border-radius-left(@radius: @border-radius-base) {
+	.border-top-left-radius(@radius);
+	.border-bottom-left-radius(@radius);
+}
+.border-radius-right(@radius: @border-radius-base) {
+	.border-top-right-radius(@radius);
+	.border-bottom-right-radius(@radius);
+}
+
+/*
+/	Element helper makes inline-block elements the same height and size.
+*/
+.element-size-fix {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: @line-height-base;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	.box-sizing(border-box);
+}

@@ -1,0 +1,82 @@
+.btn {
+	.element-size-fix;
+	.ellipsis;
+	.border-radius(@border-radius-base);
+	.transition(all 0.2s ease);
+	padding: @spacing-minimum @spacing-base;
+	cursor: pointer;
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: bold;
+	font-size: @font-size-medium;
+
+	.icon {
+		height: 1.15em;
+		width: 1.15em;
+	}
+
+	// Variations
+	&.btn-primary, &.btn-success {
+		background: @green;
+		color: white;
+		&:hover {
+			background: @green-dark;
+		}
+	}
+	&.btn-secondary {
+		background: @blue;
+		color: white;
+		&:hover {
+			background: @blue-dark;
+		}
+	}
+	&.btn-danger {
+		background: @red;
+		color: white;
+		&:hover {
+			background: @red-dark;
+		}
+	}
+	&.btn-warning {
+		background: @red;
+		color: white;
+		&:hover {
+			background: @red-dark;
+		}
+	}
+	&.btn-disabled {
+		background: @gray-light;
+		color: @white-dark;
+		cursor: default;
+	}
+}
+
+// Sizes
+.btn-large {
+	font-size: @font-size-large;
+	padding: @spacing-base @spacing-large;
+}
+
+.btn-small {
+	font-size: @font-size-small;
+	padding: @spacing-minimum/2 @spacing-base/2;
+}
+
+// Btn block
+.btn-block {
+	width: 100%;
+	display: block;
+	text-align: center;
+
+	& + .btn-block {
+		margin-top: @spacing-small; // TODO: A class for responsive margin top
+	}
+}
+
+.btn&.block + .btn&.block {
+	margin-top: @spacing-small; // TODO: A class for responsive margin top
+}
+
+p + .btn {
+	margin-top: @spacing-base;
+}

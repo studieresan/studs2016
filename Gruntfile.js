@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 
             build: {
                 files: {
-                    'client/js/main.min.js': 'client/js/**/*.js'
+                    'client/dist/main.min.js': 'client/js/**/*.js'
                 }
             }
         },
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
         less: {
             build: {
                 files: {
-                    'client/css/main.css': "client/less/**/*.less"
+                    'client/dist/main.css': "client/less/build.less"
                 }
             }
         },

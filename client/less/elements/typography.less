@@ -1,0 +1,119 @@
+/* 
+	typography.less
+	Defines the basic typography.
+	*/
+
+// ===== Variables ===== //
+
+// Font size and line height
+@font-size-large: 18px;
+@line-height-large: 22px;
+
+@font-size-base: 16px;
+@line-height-base: 24px;
+
+@font-size-medium: 14px;
+@line-height-medium: 22px;
+
+@font-size-small: 10px;
+@line-height-small: 18px;
+
+@link-color: @green;
+@link-hover-color: @gray-light;
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic);
+@main-font: 'Lato', sans-serif;
+
+*, body {
+	font-family: @main-font;
+	font-size: @font-size-base;
+	line-height: @line-height-base;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+	.ellipsis;
+	line-height: 1.25;
+	margin-top: 1em;
+	margin-bottom: .5em;
+
+	&:first-child {
+		margin-top: 0;
+	}
+}
+h1 {
+	font-size: 2rem;
+}
+h2 {
+	font-size: 1.5rem;
+}
+h3 {
+	font-size: 1.25rem;
+}
+h4 {
+	font-size: 1rem;
+}
+h5 {
+	font-size: .85rem;
+}
+h6 {
+	font-size: .75rem;
+}
+
+a {
+	color: @link-color;
+	&:hover {
+		color: @link-hover-color;
+	}
+}
+
+// Text helpers
+.text-gray {
+	color: @gray-light;
+}
+
+// Standard elements
+strong, .strong, b, .b {
+	font-weight: bold;
+}
+i, .italic, em, .em {
+	font-style: italic;
+}
+blockquote {}
+blockquote, q {
+	&:before {
+		content: '“';
+	}
+	&:after {
+		content: '”';
+	}
+}
+dl {
+	dt {}
+	dd {}
+}
+ol {}
+ul {}
+p, ol, ul {}
+code {
+	font-family: "Courier New", Courier, monospace;
+}
+figure {
+	img + figcaption, figcaption + img {
+		// TODO: Margin
+	}
+}
+caption {}
+sup {
+	vertical-align: super;
+}
+sub {
+	vertical-align: sub;
+}
+
+ol,ul,p,figure,caption {
+	& + & {
+		margin-top: @spacing-base; // TODO: Responsive margin 
+	}
+}
