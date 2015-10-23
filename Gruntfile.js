@@ -10,6 +10,7 @@ module.exports = function(grunt) {
             js_client: {
                 src: [
                 './bower_components/angular/angular.min.js',
+                './bower_components/angular-route/angular-route.min.js',
                 './bower_components/jquery/dist/jquery.min.js'
                 ],
                 dest: './client/dist/js/libs.min.js'
@@ -17,6 +18,9 @@ module.exports = function(grunt) {
         },
 
         jshint: {
+            options: {
+                expr: true
+            },
             build: ['Grunfile.js', 'client/js/**/*.js', 'server/**/*.js']
         },
 
@@ -27,7 +31,7 @@ module.exports = function(grunt) {
                     sourceMap: true
                 },
                 files: {
-                    'client/dist/js/main.min.js': 'client/js/**/*.js'
+                    'client/dist/js/main.min.js': ['client/js/app.js', 'client/js/**/*.js']
                 }
             }
 
