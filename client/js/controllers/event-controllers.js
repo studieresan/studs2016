@@ -3,12 +3,12 @@
 	var eventControllers = angular.module('eventControllers', []);
 
 	eventControllers.controller("singleEventCtrl", ['$http', '$routeParams', function($http, $routeParams) {
-		this.event = null;
-		var eventsCtrl = this;
+		this.event_item = {};
+		var eventItem = this;
 
-		$http.get('/api/events/', {slug: $routeParams.slug }).success(function(data) {
-			console.log(data);
-			eventsCtrl.event = data;
+		$http.get('/api/events/' + $routeParams.slug).success(function(data) {
+			eventItem.event = data;
+			console.log(eventItem);
 		});
 	}]);
 
