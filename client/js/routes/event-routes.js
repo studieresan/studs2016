@@ -1,11 +1,11 @@
 (function() {
-  events.config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/', {
+  events.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+    $routeProvider.when('/events', {
       templateUrl: 'views/events/list.html',
       controller: 'listEventCtrl',
       controllerAs: 'eventList'
     })
-    .when('/:slug', {
+    .when('/events/:slug', {
       templateUrl: 'views/events/single.html',
       controller: 'singleEventCtrl',
       controllerAs: 'event'
@@ -13,6 +13,8 @@
     .otherwise({
       redirectTo: '/'
     });
+
+    $locationProvider.html5Mode(true);
   }]);
   
 })();
