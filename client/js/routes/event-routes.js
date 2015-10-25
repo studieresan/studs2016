@@ -8,7 +8,7 @@
     .when('/events/:slug', {
       templateUrl: 'views/events/single.html',
       controller: 'singleEventCtrl',
-      controllerAs: 'event'
+      controllerAs: 'eventItem'
     })
     .otherwise({
       redirectTo: '/'

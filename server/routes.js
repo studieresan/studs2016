@@ -17,9 +17,14 @@ module.exports = function(app) {
         res.render('index', { title: "Studs!" });
     });
 
-    app.get('/events', function(req, res) {
+    // Need to add wildcard in order to use HTML5 
+    // nice routes without hashbang
+    app.get('/events*', function(req, res) {
         res.render('events/index', {
+            // Angular variables
             ngApp: "events",
+            routeBase: "/events",
+            // Layout variables
             fixedMenu: true
         });
     });
