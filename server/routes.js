@@ -23,7 +23,6 @@ module.exports = function(app) {
         res.render('events/index', {
             // Angular variables
             ngApp: "events",
-            routeBase: "/events",
             // Layout variables
             fixedMenu: true
         });
