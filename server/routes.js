@@ -28,6 +28,24 @@ module.exports = function(app) {
         });
     });
 
+    // About
+    app.get('/about', function(req, res) {
+        res.render('about/index', {
+        });
+    });
+
+    // Trip
+    app.get('/trip', function(req, res) {
+        res.render('trip/index', {
+        });
+    });
+
+    // Contact
+    app.get('/contact', function(req, res) {
+        res.render('contact/index', {
+        });
+    });
+
 
     // User-api
     app.get('/api/users', users.findAll);
