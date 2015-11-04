@@ -38,6 +38,7 @@ module.exports = function(app) {
     // Trip
     app.get('/trip', function(req, res) {
         res.render('trip/index', {
+            ngApp: "trip",
         });
     });
 

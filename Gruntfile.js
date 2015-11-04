@@ -5,13 +5,16 @@ module.exports = function(grunt) {
 
         concat: {
             options: {
-                separator: ';'
+                separator: ';\n'
             },
             js_client: {
                 src: [
+                './bower_components/lodash/lodash.min.js',
                 './bower_components/angular/angular.min.js',
                 './bower_components/angular-route/angular-route.min.js',
-                './bower_components/jquery/dist/jquery.min.js'
+                './bower_components/jquery/dist/jquery.min.js',
+                './bower_components/angular-simple-logger/dist/angular-simple-logger.min.js',
+                './bower_components/angular-google-maps/dist/angular-google-maps.min.js',
                 ],
                 dest: './client/dist/js/libs.min.js'
             }
