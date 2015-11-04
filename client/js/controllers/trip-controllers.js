@@ -5,8 +5,8 @@
 	tripControllers.controller("mapCtrl", ['$scope', '$http', "uiGmapGoogleMapApi", function($scope, $http, uiGmapGoogleMapApi) {
 		$scope.map = {
 			center: {
-				latitude: 40.748417,
-				longitude: -73.985598
+				latitude: 59.348379,
+				longitude: 18.072016
 			},
 			zoom: 4,
 			options: {
@@ -42,7 +42,7 @@
 			title: "New York",
 			description: "Here to partey!",
 			mapData: {
-				idKey: 1,
+				idKey: 2,
 				coords: {
 					latitude: 40.748417,
 					longitude: -73.985598
@@ -57,7 +57,7 @@
 			title: "San Fransisco",
 			description: "Here to learn. Of course.",
 			mapData: {
-				idKey: 1,
+				idKey: 3,
 				coords: {
 					latitude: 37.793549,
 					longitude: -122.483670
