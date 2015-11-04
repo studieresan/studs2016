@@ -24,6 +24,21 @@
 
 		$scope.activities = [
 		{
+			title: "KTH",
+			description: "Here to plan!",
+			mapData: {
+				idKey: 1,
+				coords: {
+					latitude: 59.348379,
+					longitude: 18.072016
+				},
+				options: {
+					icon: "/img/map-pin.svg"
+				},
+				click: $scope.onMarkerClick
+			}
+		},
+		{
 			title: "New York",
 			description: "Here to partey!",
 			mapData: {
@@ -33,14 +48,14 @@
 					longitude: -73.985598
 				},
 				options: {
-					icon: "/img/logo.svg"
+					icon: "/img/map-pin.svg"
 				},
 				click: $scope.onMarkerClick
 			}
 		},
 		{
 			title: "San Fransisco",
-			description: "Here to f*ck shit up!",
+			description: "Here to learn. Of course.",
 			mapData: {
 				idKey: 1,
 				coords: {
@@ -48,7 +63,7 @@
 					longitude: -122.483670
 				},
 				options: {
-					icon: "/img/logo.svg"
+					icon: "/img/map-pin.svg"
 				},
 				click: $scope.onMarkerClick
 			}

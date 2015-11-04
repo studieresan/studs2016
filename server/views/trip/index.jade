@@ -4,7 +4,6 @@ include ../layout/menu.jade
 section
 	.row
 		.col-sm-12(ng-controller="mapCtrl")
-			{{ path }}
 			ui-gmap-google-map(center="map.center",zoom="map.zoom",styles="map.styles",options="map.options")
 				ui-gmap-marker(idKey="activity.mapData.idKey",click="activity.mapData.click",coords="activity.mapData.coords",options="activity.mapData.options",ng-repeat="activity in activities")
 
