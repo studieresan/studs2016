@@ -22,6 +22,10 @@ userSchema.methods.hashPassword = function(password) {
 	return crypto.pbkdf2Sync(password, this.passwordsalt, 10000, 64).toString('base64');
 };
 
+userSchema.methods.authenticate = function(password) {
+	return this.passwordhashed === this.hashPassword(password);
+};
+
 var User = mongoose.model('user', userSchema);
 
 
