@@ -49,6 +49,14 @@ module.exports = function(app) {
     });
 
 
+    // Contact
+    app.get('/login*', function(req, res) {
+        res.render('auth/index', {
+            ngApp: "auth"
+        });
+    });
+
+
     // User-api
     app.get('/api/users', users.findAll);
     app.post('/api/users', users.add);
@@ -59,7 +67,7 @@ module.exports = function(app) {
     }));
 
     // Event-api
-   app.get('/api/events', events.findAll);
-   app.get('/api/events/:slug', events.findBySlug);
-   app.post('/api/events', events.add);
+    app.get('/api/events', events.findAll);
+    app.get('/api/events/:slug', events.findBySlug);
+    app.post('/api/events', events.add);
 };

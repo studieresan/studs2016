@@ -1,0 +1,24 @@
+<form novalidate name="loginform" ng-submit="loginform.$valid && login(user)">
+	<div class="form-group">
+		<div class="form-control">
+			<label class="label">E-mail</label>
+			<div class="form-element">
+				<input type="email" name="email" ng-model="user.email" class="input" required/>
+			</div>
+		</div>
+		<div class="form-control">
+			<label class="label">Password</label>
+			<div class="form-element">
+				<input type="password" name="password" ng-model="user.password" class="input" required/>
+			</div>
+		</div>
+
+		<div class="form-control t-center">
+			<input type="submit" value="Login" class="btn btn-primary" />
+		</div>
+
+		<div class="form-control t-center">
+			<a href="/login/recover" class="element-size-fix">Forgot password?</a>
+		</div>
+	</div>
+</form>

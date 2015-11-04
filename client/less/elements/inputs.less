@@ -11,6 +11,12 @@
 @icon-holder-z-index: 10;
 @dropdown-list-z-index: 10000;
 
+.help {
+	position: absolute;
+	color: @gray;
+	font-size: 0.75em;
+}
+
 
 // ===== Common style =====
 .common-focus-style {
@@ -21,31 +27,27 @@
 	.element-size-fix;
 	.box-sizing(border-box);
 	.border-radius(@input-border-radius);
-	color: @white;
+	border: solid 1px transparent;
+	color: @black;
 	padding: (@spacing-minimum - 1) @spacing-base/1.5;
 	width: 100%;
 
 	&:focus {
 		.common-focus-style;
 	}
-}
 
-.common-input-style-dark {
-	background: @gray-dark;
-	border: solid 1px darken(@gray-dark, 2%);
-}
 
-.common-input-style-light {
-	background: @gray-dark;
-	border: solid 1px darken(@gray-dark, 2%);
+	&.ng-dirty.ng-invalid {
+		border-color: @red !important;
+	}
 }
-
 
 // ===== Description here =====
 .form-group {
 
 	.label {
-		color: @white;
+		color: @black;
+		font-weight: bold;
 		.ellipsis;
 	}
 
@@ -120,7 +122,6 @@
 
 	.input, .dropdown, .textarea {
 		.common-input-style;
-		.common-input-style-dark;
 
 		&:focus {
 			.common-focus-style;
@@ -389,133 +390,5 @@ button.dropdown {
 	}
 
 	&.placed-top {
-	}
-}
-
-
-// ===== Light form elements style =====
-.light {
-	.form-group {
-		.label {
-			color: @black;
-		}
-	}
-	.form-element {
-		.addon {
-			&.icon-holder {
-				.icon {
-					&.svg {
-						fill: @black;
-					}
-				}
-			}
-		}
-		.input, .dropdown, .textarea {
-			background: white;
-			border-color: @white-dark;
-			color: @black;
-			&:focus {
-				.common-focus-style;
-			}
-		}
-	}
-	.radio, .checkbox {
-		border: solid 1px @white-dark;
-		background: white;
-		&.checked {
-			background: @green;
-			border: none;
-
-			&:before {
-				color: white;
-			}
-		}
-		&.disabled {
-			background: @white-dark !important;
-			border: none !important;
-		}
-		&.focused {
-			.common-focus-style;
-		}
-	}
-	.radio {
-		&.checked {
-			background: @green;
-			border: none;
-			&:before {
-				background: white;
-				border: solid 6px @green;
-			}
-		}
-	}
-	.slide {
-		background: white;
-		border: solid 1px @white-dark;
-		&:before {
-			border: solid 2px white;
-			background: @green;
-		}
-		&:hover {
-			&:before {
-				background: @green-dark;
-			}
-		}
-		&.disabled {
-			background: @white-dark !important;
-			&:before {
-				border: solid 2px @white-dark !important;
-				background: @white !important;
-			}
-		}
-		&.focused {
-			.common-focus-style;
-		}
-		&.checked {
-			background: @green;
-			border: none;
-			&:before {
-				background: white;
-				border: solid 2px @green;
-			}
-		}
-	}
-	button.dropdown {
-		background: white;
-		color: @black;
-		.input-group-addon {
-			.icon {
-				&.svg {
-					fill: @black;
-				}
-			}
-		}
-		&:before {
-			border-style: solid;
-			border-width: @dropdown-arrow-size @dropdown-arrow-size/1.5 0 @dropdown-arrow-size/1.5;
-			border-color: @black transparent transparent transparent;
-		}
-
-		&.open:before {
-			border-width: 0 @dropdown-arrow-size/1.5 @dropdown-arrow-size @dropdown-arrow-size/1.5;
-			border-color: transparent transparent @black transparent;
-		}
-	}
-
-	.dropdown-list {
-		box-shadow: 0 5px 15px -5px rgba(0,0,0,.5);
-		background: white;
-		li {
-			color: @black;
-			&.selected {
-				background: @green;
-				color: white;
-			}
-			&:hover {
-				background: @white-dark;
-				color: white;
-			}
-		}
-		&.placed-top {
-		}
 	}
 }
