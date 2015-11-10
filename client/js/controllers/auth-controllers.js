@@ -2,10 +2,15 @@
 
 	var authControllers = angular.module('authControllers', []);
 
-	authControllers.controller("loginCtrl", ['$scope', function($scope) {
+	authControllers.controller("loginCtrl", ['$scope', '$http', function($scope, $http) {
 		// Do stuff like login user.
 		$scope.login = function(user) {
-			alert(user.email + " is trying to log in!");
+			alert('hej');
+			var email = user.email;
+			var password = user.password;
+			$http.post('/login', {'email':email, 'password': password}).success(function(data) {
+				$location.path(data);
+			});
 		};
 
 	}]);

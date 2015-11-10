@@ -18,10 +18,12 @@ module.exports = function(passport) {
     passport.use('local-login', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
         usernameField : 'email',
-        passwordField : 'passwordhashed',
+        passwordField : 'password',
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
     function(req, email, password, done) { // callback with email and password from our form
+        console.log(email);
+        console.log(password);
 
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
@@ -39,8 +41,9 @@ module.exports = function(passport) {
                 return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
 
             // all is well, return successful user
+            console.log('correct');
+
             return done(null, user);
         });
-
     }));
 };

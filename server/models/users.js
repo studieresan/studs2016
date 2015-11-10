@@ -6,14 +6,14 @@ var options = { discriminatorKey : 'role' };
 
 var userSchema = new Schema({
     email : { type : String, required : true },
-    passwordhashed : { type : String, required : true },
+    password : { type : String, required : true },
     passwordsalt : { type : String, required : false }
 }, options );
 
 userSchema.pre('save', function(next) {
-	if (this.passwordhashed) {
+	if (this.password) {
 		this.passwordsalt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
-		this.passwordhashed = this.hashPassword(this.passwordhashed);
+		this.password = this.hashPassword(this.password);
 	}
 	next();
 });
@@ -23,7 +23,7 @@ userSchema.methods.hashPassword = function(password) {
 };
 
 userSchema.methods.authenticate = function(password) {
-	return this.passwordhashed === this.hashPassword(password);
+	return this.password === this.hashPassword(password);
 };
 
 var User = mongoose.model('user', userSchema);
