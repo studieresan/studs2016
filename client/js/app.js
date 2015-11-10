@@ -7,3 +7,5 @@ var trip = angular.module('trip', ['tripControllers', 'uiGmapgoogle-maps']).conf
 		libraries: 'geometry,visualization'
 	});
 }]);
+
+var about = angular.module('about', ['aboutControllers']);
