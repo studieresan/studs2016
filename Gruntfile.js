@@ -16,7 +16,7 @@ module.exports = function(grunt) {
                 './bower_components/angular-simple-logger/dist/angular-simple-logger.min.js',
                 './bower_components/angular-google-maps/dist/angular-google-maps.min.js',
                 ],
-                dest: './client/dist/js/libs.min.js'
+                dest: './client/public/js/libs.min.js'
             }
         },
 
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
                         flatten: false,
                         cwd: './client/views',
                         src: ['**/*.jade'],
-                        dest: './client/dist/views',
+                        dest: './client/public/views',
                         ext: '.html'
                     }
                 ]
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
                     sourceMap: true
                 },
                 files: {
-                    'client/dist/js/main.min.js': ['client/js/app.js', 'client/js/**/*.js']
+                    'client/public/js/main.min.js': ['client/js/app.js', 'client/js/**/*.js']
                 }
             }
 
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
         less: {
             build: {
                 files: {
-                    'client/dist/css/main.min.css': "client/less/build.less"
+                    'client/public/css/main.min.css': "client/less/build.less"
                 }
             }
         },
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
                 expand: true,
                 cwd: 'client/img',
                 src: ['**/*.{png,jpg,gif,svg}'],
-                dest: 'client/dist/img'
+                dest: 'client/public/img'
             }]}
         },
 
