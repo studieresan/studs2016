@@ -1,3 +1,6 @@
-ul
-	li(ng-repeat='event in eventList.events' hide)
-		a(href='/events/{{ event.slug }}') {{ event.title }}
+div#event-list
+	.event-list-item(ng-repeat='event in eventList.events')
+		h3.slim 20 september
+		img(src="/img/google-black.svg")
+		h1 {{ event.title }}
+		a(href='/events/{{ event.slug }}') Mer information

@@ -2,11 +2,10 @@
 
 	var aboutControllers = angular.module('aboutControllers', []);
 
-	aboutControllers.controller("listStudents", ['$scope', function($scope) {
-		this.users = [];
-		var ctrl = this;
+	aboutControllers.controller("listStudents", ['$scope', '$http', function($scope, $http) {
+		$scope.studentList = [];
 		$http.get('/api/users').success(function(data) {
-			ctrl.users = data;
+			$scope.studentList = data;
 		});
 	}]);
 

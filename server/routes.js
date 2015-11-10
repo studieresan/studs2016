@@ -32,6 +32,7 @@ module.exports = function(app) {
     // About
     app.get('/about', function(req, res) {
         res.render('about/index', {
+            ngApp: "about"
         });
     });
 

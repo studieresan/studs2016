@@ -33,10 +33,10 @@ section.padding.green-bg
 				h1.t-center Studs 2016
 				p.t-center As previous years, the members of studs are from several disciplines in computer science.
 			.col-sm-2
-
-section.padding.green-bg
-	.wrap
-		.row.gutter-large
+		.row.gutter-large(ng-controller="listStudents")
+			.col-sm-4(ng-repeat='student in studentList')
+				img(src="https://placeimg.com/640/480/any")
+				{{ student.email }}
 
 include ../layout/footer.jade
 include ../layout/includes.jade
