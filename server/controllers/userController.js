@@ -30,3 +30,8 @@ exports.add = function(req, res, next) {
 		return res.json(user);
 	});
 };
+
+exports.signout = function(req, res) {
+	req.logout();
+	res.redirect('/');
+}

@@ -60,11 +60,12 @@ module.exports = function(app) {
     // User-api
     app.get('/api/users', users.findAll);
     app.post('/api/users', users.add);
-    app.post('/api/login', passport.authenticate('local-login', {
+    app.post('/login', passport.authenticate('local-login', {
         successRedirect: '/',
-        failureRedirect: '/api/users',
+        failureRedirect: '/login',
         failureFlash : true
     }));
+    app.get('/logout', users.signout);
 
     // Event-api
     app.get('/api/events', events.findAll);
