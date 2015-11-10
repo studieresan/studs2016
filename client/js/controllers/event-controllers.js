@@ -8,12 +8,7 @@
 
 		$http.get('/api/events/' + $routeParams.slug).success(function(data) {
 			eventItem.event = data;
-			//console.log(eventItem);
 		});
-
-		$scope.test = function(data) {
-			console.log(data);
-		};
 	}]);
 
 	eventControllers.controller("listEventCtrl", ['$http', '$routeParams', function($http, $routeParams) {
@@ -22,10 +17,6 @@
 		$http.get('/api/events').success(function(data) {
 			eventsCtrl.events = data;
 		});
-
-		this.test = function(data) {
-			console.log(data);
-		};
 	}]);
 
 })();
