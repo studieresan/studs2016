@@ -1,0 +1,11 @@
+form(novalidate name='recoverform' ng-submit='recoverform.$valid && recover(user)')
+	div.form-group
+		div.form-control
+			label.label Please provide your e-mail
+			div.form-element
+				input.input(type='email' name='email' ng-model='user.email' required)
+		div.row
+			div.col-6
+				a.btn.btn-secondary(href='/login') Back
+			div.col-6.t-right
+				input.btn.btn-primary(type='submit' value='Continue')

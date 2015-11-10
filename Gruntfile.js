@@ -27,6 +27,26 @@ module.exports = function(grunt) {
             build: ['Grunfile.js', 'client/js/**/*.js', 'server/**/*.js']
         },
 
+        jade: {
+            compile: {
+                options: {
+                    data: {
+                        debug: true
+                    }
+                },
+                files: [
+                    {
+                        expand: true,
+                        flatten: false,
+                        cwd: './client/views',
+                        src: ['**/*.jade'],
+                        dest: './client/dist/views',
+                        ext: '.html'
+                    }
+                ]
+            }
+        },
+
         uglify: {
             build: {
                 options: {
@@ -49,15 +69,16 @@ module.exports = function(grunt) {
         },
 
         imagemin: {
-            dynamic: {                         
-              files: 
+            dynamic: {
+              files:
               [{
-                expand: true,                  
-                cwd: 'client/img',                   
-                src: ['**/*.{png,jpg,gif,svg}'],   
-                dest: 'client/dist/img'                 
+                expand: true,
+                cwd: 'client/img',
+                src: ['**/*.{png,jpg,gif,svg}'],
+                dest: 'client/dist/img'
             }]}
         },
+
         watch: {
             less: {
                 files: ['client/less/**/*.less'],
@@ -71,21 +92,27 @@ module.exports = function(grunt) {
                 files: ['client/js/**/*.js'],
                 tasks: ['jshint', 'uglify', 'concat:js_client']
             },
+            jade: {
+                files: ['client/views/**/*.jade'],
+                tasks: ['jade']
+            },
             imagemin: {
                 files: ['client/img/**/*'],
                 tasks: ['imagemin']
             }
         }
+
     });
 
 grunt.loadNpmTasks('grunt-contrib-concat');
 grunt.loadNpmTasks('grunt-contrib-jshint');
 grunt.loadNpmTasks('grunt-contrib-uglify');
+grunt.loadNpmTasks('grunt-contrib-jade');
 grunt.loadNpmTasks('grunt-contrib-imagemin');
 grunt.loadNpmTasks('grunt-contrib-less');
 grunt.loadNpmTasks('grunt-newer');
 grunt.loadNpmTasks('grunt-contrib-watch');
 
-grunt.registerTask('default', ['jshint', 'uglify', 'less', 'concat', 'imagemin']);
+grunt.registerTask('default', ['jshint', 'uglify', 'jade', 'less', 'concat', 'imagemin']);
 
 };

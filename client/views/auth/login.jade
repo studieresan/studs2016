@@ -1,0 +1,14 @@
+form(novalidate name='loginform' action='/login' method='post' ng-submit='loginform.$valid')
+	div.form-group
+		div.form-control
+			label.label E-mail
+			div.form-element
+				input.input(type='email' name='email' ng-model='user.email' reuired)
+		div.form-control
+			label.label Password
+			div.form-element
+				input.input(type='password' name='password' ng-model='user.password' required)
+		div.form-control.t-center
+			input.btn.btn-primary(type='submit' value='Sign in')
+		div.form-control.t-center
+			a.element-size-fix(href='/login/recover') Forgot password?

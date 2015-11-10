@@ -33,7 +33,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // set location of static files
 app.use(express.static(__dirname + '/client/dist'));
-app.use("/views", express.static(__dirname + '/client/views'));
 
 app.use(session({
    collection: 'sessions',
