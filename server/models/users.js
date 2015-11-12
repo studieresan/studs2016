@@ -2,21 +2,14 @@ var mongoose = require('mongoose'),
 	crypto = require('crypto'),
 	Schema = mongoose.Schema;
 
-var options = { discriminatorKey : 'role' };
+var options = { discriminatorKey : 'type' };
 
 var userSchema = new Schema({
     email : { type : String, required : true },
     password : { type : String, required : true },
-    passwordsalt : { type : String, required : false }
+    passwordsalt : { type : String, required : false },
+    //type: { type : String, required: true, enum: ['Student', 'Corporation']},
 }, options );
-
-userSchema.pre('save', function(next) {
-	if (this.password) {
-		this.passwordsalt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
-		this.password = this.hashPassword(this.password);
-	}
-	next();
-});
 
 userSchema.methods.hashPassword = function(password) {
 	return crypto.pbkdf2Sync(password, this.passwordsalt, 10000, 64).toString('base64');
@@ -26,33 +19,55 @@ userSchema.methods.authenticate = function(password) {
 	return this.password === this.hashPassword(password);
 };
 
-var User = mongoose.model('user', userSchema);
+userSchema.pre('save', function(next) {
+	if (this.password) {
+		this.passwordsalt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
+		this.password = this.hashPassword(this.password);
+	}
+	next();
+});
+
+
+
 
 
 //Corporation is a special kind of user.
-var CorporationSchema = User.discriminator( 'Corporation', 
-	new mongoose.Schema({
-		contact : { type : String}
-	}, options ));
+var corporationUserSchema = new mongoose.Schema({
+	contact : {type : String}
+}, options);
 
 //Student is a special kind of user.
-var StudentSchema = User.discriminator( 'Student',
-	new mongoose.Schema({
-		group : { type : String},
-		name : { type : String},
-		phone : { type : String},
-		adress : { type : String},
-		postcode : { type : String},
-		city : { type : String},
-		linkedin : { type : String},
-		instagram : { type : String},
-		facebook : { type : String},
-		cvid : { type : String}
-	}, options ));
+var studentUserSchema = new mongoose.Schema({
+	group : { type : String},
+	name : { type : String},
+	phone : { type : String},
+	adress : { type : String},
+	postcode : { type : String},
+	city : { type : String},
+	linkedin : { type : String},
+	instagram : { type : String},
+	facebook : { type : String},
+	cvid : { type : String}
+}, options);
 
 
+var User = mongoose.model('user', userSchema);
+
+var Corporation = User.discriminator('Corporation', 
+	corporationUserSchema, options );
+var Student = User.discriminator('Student', 
+	studentUserSchema, options );
+
+
+
+module.exports = {
+	User : mongoose.model('user', userSchema),
+	Student : Student,
+	Corporation : Corporation
+};
 
 //mongoose.model('user', userSchema);
-//	Corporation = mongoose.model('corporation', CorporationSchema),
-//	Student = mongoose.model('student', StudentSchema);
-module.exports = mongoose.model('user', userSchema);
+
+//module.exports = mongoose.model('student', studentUserSchema);
+//module.exports = mongoose.model('corporation', corporationUserSchema);
+

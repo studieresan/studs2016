@@ -1,6 +1,5 @@
 var users = require('./controllers/userController');
 var events = require('./controllers/eventController');
-var Post = require('./models/post');
 var passport = require('passport');
 
 module.exports = function(app) {
@@ -43,13 +42,13 @@ module.exports = function(app) {
     });
 
     // Contact
-    app.get('/contact', function(req, res) {
+    app.get('/contact',passport.authenticate, function(req, res) {
         res.render('contact/index', {
         });
     });
 
 
-    // Contact
+    // Login
     app.get('/login*', function(req, res) {
         res.render('auth/index', {
             ngApp: "auth"
@@ -60,6 +59,9 @@ module.exports = function(app) {
     // User-api
     app.get('/api/users', users.findAll);
     app.post('/api/users', users.add);
+    app.post('/api/corporations', users.addCorporation);
+    app.post('/api/students', users.addStudent);
+
     app.post('/login', passport.authenticate('local-login', {
         successRedirect: '/',
         failureRedirect: '/login',
