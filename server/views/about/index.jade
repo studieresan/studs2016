@@ -25,7 +25,7 @@ section.padding
 
 			.col-sm-2
 
-section.padding.green-bg
+section.padding.white-pure-bg
 	.wrap
 		.row.gutter-large
 			.col-sm-2
@@ -35,8 +35,32 @@ section.padding.green-bg
 			.col-sm-2
 		.row.gutter-large(ng-controller="listStudents")
 			.col-sm-4(ng-repeat='student in studentList')
-				img(src="https://placeimg.com/640/480/any")
+				img(src="https://placeimg.com/640/640/any")
 				{{ student.email }}
+
+section.padding
+	.wrap
+		.row.gutter-large
+			.col-6
+				img(src="https://placeimg.com/640/480/any")
+			.col-6
+				h1 Studs for companies
+				p Lorem ipsum Dolor sint magna laborum dolor ut sed nostrud sit dolore nisi irure pariatur sint dolore eiusmod magna ex commodo mollit incididunt commodo id sunt elit aliqua nulla ut labore commodo Ut id est Ut ea sunt consequat reprehenderit in in anim eiusmod voluptate tempor cillum nisi labore laborum do ea in pariatur.
+				p Lorem ipsum Dolor sint magna laborum dolor ut sed nostrud sit dolore nisi irure pariatur sint dolore eiusmod magna ex commodo mollit incididunt commodo id sunt elit aliqua nulla ut labore commodo Ut id est Ut ea sunt consequat reprehenderit in in anim eiusmod voluptate tempor cillum nisi labore laborum do ea in pariatur.
+
+section.padding.green-bg
+	.wrap
+		.row.gutter-large
+			.col-6
+				h1 Studs for students
+				| Lorem ipsum Dolor sint magna laborum dolor ut sed nostrud sit dolore nisi irure pariatur sint dolore eiusmod magna ex commodo mollit incididunt commodo id sunt elit aliqua nulla ut labore commodo Ut id est Ut ea sunt consequat reprehenderit in in anim eiusmod voluptate tempor cillum nisi labore laborum do ea in pariatur.
+				h2 Companies to visit
+				ul
+					li We are commited
+					li We are hungry for knowledge
+					li We are ready
+			.col-6
+				img(src="https://placeimg.com/640/480/any")
 
 include ../layout/footer.jade
 include ../layout/includes.jade
