@@ -43,9 +43,11 @@ module.exports = function(app) {
     });
 
     // Contact
-    app.get('/contact',passport.authenticate, function(req, res) {
-        res.render('contact/index', {
-        });
+    app.get('/contact', function(req, res) {
+        if(req.isAuthenticated()) {
+            res.render('contact/index', {
+            });
+        }
     });
 
 
