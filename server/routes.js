@@ -2,6 +2,34 @@ var users = require('./controllers/userController');
 var events = require('./controllers/eventController');
 var passport = require('passport');
 
+function isAdmin(user) {
+    return user && user.email === "studs-it@d.kth.se"
+}
+
+function ensureEventGroup(req, res, next) {
+    if( req.isAuthenticated() && (isAdmin(req.user) || (req.user && req.user.group === "event"))) {
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
+function ensureAdmin(req, res, next) {
+    if(isAdmin(req.user) && req.isAuthenticated()) {
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
+function ensureAuthenticated(req, res, next) {
+    if(req.isAuthenticated()) {
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
 module.exports = function(app) {
     app.get('/posts', function(req, res) {
         Post.find(function(err, posts) {
@@ -44,12 +72,9 @@ module.exports = function(app) {
 
     // Contact
     app.get('/contact', function(req, res) {
-        if(req.isAuthenticated()) {
-            res.render('contact/index', {
-            });
-        }
+        res.render('contact/index', {
+        });
     });
-
 
     // Login
     app.get('/login*', function(req, res) {
@@ -58,12 +83,11 @@ module.exports = function(app) {
         });
     });
 
-
     // User-api
-    app.get('/api/users', users.findAll);
-    app.post('/api/users', users.add);
-    app.post('/api/corporations', users.addCorporation);
-    app.post('/api/students', users.addStudent);
+    app.get('/api/users', ensureAdmin, users.findAll);
+    app.post('/api/users', ensureAdmin, users.add);
+    app.post('/api/corporations', ensureEventGroup, users.addCorporation);
+    app.post('/api/students', ensureAdmin, users.addStudent);
 
     app.post('/login', passport.authenticate('local-login', {
         successRedirect: '/',
