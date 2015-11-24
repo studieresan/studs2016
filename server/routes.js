@@ -30,7 +30,8 @@ function ensureAuthenticated(req, res, next) {
     }
 }
 
-module.exports = function(app) {
+module.exports = function(app, express) {
+
     app.get('/posts', function(req, res) {
         Post.find(function(err, posts) {
             if (err)
@@ -86,12 +87,9 @@ module.exports = function(app) {
         });
     });
 
-    // User-api
-    app.get('/api/users', ensureAdmin, users.findAll);
-    app.post('/api/users', ensureAdmin, users.add);
-    app.post('/api/corporations', ensureEventGroup, users.addCorporation);
-    app.post('/api/students', ensureAdmin, users.addStudent);
-
+    /*
+    * Auth. functionality
+    */
     app.post('/login', passport.authenticate('local-login', {
         successRedirect: '/',
         failureRedirect: '/login',
@@ -99,8 +97,21 @@ module.exports = function(app) {
     }));
     app.get('/logout', users.signout);
 
+    /*
+    *   A specific router is used for the api in order to prefix the endpoints
+    */
+    var api = express.Router();
+    // User-api
+    api.get('/users', ensureAdmin, users.findAll);
+    api.post('/users', ensureAdmin, users.add);
+    api.post('/corporations', ensureEventGroup, users.addCorporation);
+    api.post('/students', ensureAdmin, users.addStudent);
+
     // Event-api
-    app.get('/api/events', events.findAll);
-    app.get('/api/events/:slug', events.findBySlug);
-    app.post('/api/events', events.add);
+    api.get('/events', events.findAll);
+    api.get('/events/:slug', events.findBySlug);
+    api.post('/events', events.add);
+
+    // Assign the api router to the app
+    app.use("/api", api);
 };

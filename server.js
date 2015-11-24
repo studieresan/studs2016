@@ -53,7 +53,7 @@ app.set('views', __dirname + '/server/views/');
 app.set('view engine', 'jade');
 
 // routes
-require('./server/routes') (app);
+require('./server/routes') (app, express);
 
 app.listen(port, function() {
     console.log('Listening on port ' + port);
