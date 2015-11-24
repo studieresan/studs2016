@@ -1,4 +1,5 @@
 var users = require('./controllers/userController');
+var cv = require('./controllers/cvController');
 var events = require('./controllers/eventController');
 var passport = require('passport');
 
@@ -119,6 +120,12 @@ module.exports = function(app, express) {
     api.post('/events', events.add);
     api.put('/events/:id', events.update);
     api.delete('/events/:id', events.remove);
+
+    // CV-API
+    api.get('/cv', cv.findAll);
+    //api.get('/cv/:userid', cv.findByUserId);
+    api.post('/cv', cv.add);
+    api.get('/cv/add', cv.add);
 
     // Assign the api router to the app
     app.use("/api", api);
