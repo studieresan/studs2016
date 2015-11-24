@@ -12,6 +12,7 @@ module.exports = function(grunt) {
                 './bower_components/lodash/lodash.min.js',
                 './bower_components/angular/angular.min.js',
                 './bower_components/angular-route/angular-route.min.js',
+                './bower_components/angular-resource/angular-resource.min.js',
                 './bower_components/jquery/dist/jquery.min.js',
                 './bower_components/angular-simple-logger/dist/angular-simple-logger.min.js',
                 './bower_components/angular-google-maps/dist/angular-google-maps.min.js',
