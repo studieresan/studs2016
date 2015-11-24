@@ -45,7 +45,7 @@ module.exports = function(app) {
         res.render('index', { title: "Studs!" });
     });
 
-    // Need to add wildcard in order to use HTML5 
+    // Need to add wildcard in order to use HTML5
     // nice routes without hashbang
     app.get('/events*', function(req, res) {
         res.render('events/index', {
@@ -59,7 +59,8 @@ module.exports = function(app) {
     // About
     app.get('/about', function(req, res) {
         res.render('about/index', {
-            ngApp: "about"
+            ngApp: "about",
+            fixedMenu: true
         });
     });
 
@@ -67,12 +68,14 @@ module.exports = function(app) {
     app.get('/trip', function(req, res) {
         res.render('trip/index', {
             ngApp: "trip",
+            fixedMenu: true
         });
     });
 
     // Contact
     app.get('/contact', function(req, res) {
         res.render('contact/index', {
+            fixedMenu: true
         });
     });
 
