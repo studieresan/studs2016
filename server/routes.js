@@ -3,7 +3,7 @@ var events = require('./controllers/eventController');
 var passport = require('passport');
 
 function isAdmin(user) {
-    return user && user.email === "studs-it@d.kth.se"
+    return user && user.email === "studs-it@d.kth.se";
 }
 
 function ensureEventGroup(req, res, next) {
