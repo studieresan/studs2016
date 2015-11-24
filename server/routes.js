@@ -111,6 +111,8 @@ module.exports = function(app, express) {
     api.get('/events', events.findAll);
     api.get('/events/:slug', events.findBySlug);
     api.post('/events', events.add);
+    api.put('/events/:id', events.update);
+    api.delete('/events/:id', events.remove);
 
     // Assign the api router to the app
     app.use("/api", api);
