@@ -5,9 +5,9 @@ var bodyParser  = require('body-parser');
 var dotenv      = require('dotenv');
 var mongoose    = require('mongoose');
 var express     = require('express');
-var flash		= require('connect-flash');
-var passport 	= require('passport');
-var session 	= require('express-session');
+var flash       = require('connect-flash');
+var passport    = require('passport');
+var session     = require('express-session');
 var MongoStore 	= require('connect-mongo') (session);
 var app         = express();
 
