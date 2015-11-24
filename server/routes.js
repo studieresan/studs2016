@@ -41,6 +41,12 @@ module.exports = function(app, express) {
         });
     });
 
+    app.use(function(req, res, next) {
+        res.locals.user = req.user ? req.user : '';
+        res.locals.authenticated = req.isAuthenticated();
+        next();
+    });
+
     // Get
     app.get('/', function(req, res) {
         res.render('index', { title: "Studs!" });

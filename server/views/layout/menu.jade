@@ -9,5 +9,8 @@
 			a(href='/trip', target='_self') The trip
 			a(href='/contact', target='_self') Contact
 			span |
-			a(href='/login', target='_self') Log in
+			if authenticated && user
+				a(href='/logout', target='_self') #{user.email}
+			else
+				a(href='/login', target='_self') Log in
 #menu-shadow
