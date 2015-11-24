@@ -10,9 +10,11 @@ module.exports = function(passport) {
     });
 
     passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
-            done(err, user);
-        });
+        User.findOne({
+         _id: id
+       }, '-password -salt', function(err, user) {
+         done(err, user);
+       });
     });
 
     passport.use('local-login', new LocalStrategy({
