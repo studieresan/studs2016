@@ -4,7 +4,7 @@
   "homepage": "https://github.com/studieresan/studs2016",
   "license": "MIT",
   "dependencies": {
-    "angular": "~1.4.7",
+    "angular": "~1.4.8",
     "jquery": "~2.1.4",
     "angular-route": "~1.4.7",
     "angular-google-maps": "~2.2.1",
