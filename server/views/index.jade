@@ -80,12 +80,12 @@ section.mega-padding
 			.col-6
 				h3 I like it, how do I get my company involved?
 				p Simple! Provide your company information here and we will contact you as fast as we can. We are sure that you won't be disappointed!
-				form(novalidate name='loginform' action='/login' method='post' ng-submit='loginform.$valid')
+				form(novalidate name='signup' ng-submit='signup.$valid')
 					div.form-group
 						div.form-control
 							label.label E-mail
 							div.form-element
-								input.input(type='email' name='email' ng-model='user.email' required)
+								input.input(type='email' name='email' ng-model='company.email' required)
 						div.form-control
 							div.form-element.t-center
 								input.btn.btn-primary(type='submit' value='Sign up')
