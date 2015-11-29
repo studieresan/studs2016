@@ -35,8 +35,8 @@ section.padding.white-pure-bg
 			.col-sm-2
 		.row.gutter-large(ng-controller="listStudents")
 			.col-sm-4(ng-repeat='student in studentList')
-				img(src="https://placeimg.com/640/640/any")
-				{{ student.email }}
+				img(src="/img/profile-pictures/{{ student.image }}")
+				{{ student.name }}
 
 section.padding
 	.wrap

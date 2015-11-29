@@ -1,6 +1,9 @@
 div#event-list
+	#timeline
 	.event-list-item(ng-repeat='event in events')
-		h3.slim 20 september
-		img(src="/img/google-black.svg")
-		h1 {{ event.title }}
-		a(href='/events/{{ event.slug }}') Mer information
+		.event-content
+			h2.date 20
+				span sep
+			h1 {{ event.title }}
+			p {{ event.location }}
+			a(href='/events/{{ event.slug }}') Mer information

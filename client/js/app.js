@@ -1,4 +1,4 @@
-var events = angular.module('events', ['ngRoute', 'eventControllers']);
+var events = angular.module('events', ['ngResource', 'ngRoute', 'eventControllers']);
 
 var auth = angular.module('auth', ['ngRoute', 'authControllers']);
 

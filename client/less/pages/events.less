@@ -2,16 +2,17 @@
 @line-width: 2px;
 
 #event-list {
+	position: relative;
 
-	&:after {
-		content: "";
+	#timeline {
 		display: block;
-		width: @dot-size;
-		height: @dot-size;
-		.border-radius(@dot-size);
+		width: @line-width;
+		height: 100%;
 		background: @green;
-		margin: auto;
-		margin-bottom: @spacing-large;
+		left: 50%;
+		margin-left: -(@line-width)/2;
+		position: absolute;
+		z-index: -1;
 	}
 
 	.event-list-item {
@@ -23,23 +24,45 @@
 			.border-radius(@dot-size);
 			background: @green;
 			margin: auto;
-			margin-bottom: @spacing-large;
+			margin-bottom: @spacing-large/2;
 		}
 
 		&:after {
 			content: "";
 			display: block;
-			width: @line-width;
+			width: @dot-size;
 			height: @dot-size;
-			background: @gray;
+			.border-radius(@dot-size);
+			background: @green;
 			margin: auto;
-			margin-top: @spacing-large;
 		}
 
 		.t-center;
 
+		.event-content {
+			padding-bottom: @spacing-large/2;
+			background: @white-dark;
+		}
+
 		img {
 			max-width: 100px;
+		}
+
+		.date {
+			vertical-align: middle;
+			.t-center;
+			display: inline-block;
+			color: green;
+			width: auto;
+			border: solid 2px @green;
+			padding: 2px 10px;
+			margin-bottom: @spacing-large/2;
+
+			span {
+				text-transform: uppercase;
+				display: block;
+				font-size: 0.5em;
+			}
 		}
 
 		h1 {
