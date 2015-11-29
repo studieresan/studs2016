@@ -58,6 +58,26 @@ exports.addCorporation = function(req, res, next) {
 	});
 };
 
+exports.changePassword = function(req, res, next) {
+	var newPw = req.body.new;
+	var oldPw = req.body.old;
+	var user = req.user;
+	User.findById(user.id, function(err, user) {
+
+		if (!user) {
+			return res.sendStatus(404);
+		}
+
+		if(!user.authenticate(oldPw))
+			return res.sendStatus(401);
+
+		user.password = newPw;
+
+		user.save(function(err) {
+			res.json(user);
+		});
+	});
+}
 
 exports.signout = function(req, res) {
 	req.logout();
