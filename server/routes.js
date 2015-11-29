@@ -110,6 +110,7 @@ module.exports = function(app, express) {
     var api = express.Router();
     // User-api
     api.get('/users', ensureAdmin, users.findAll);
+    api.put('/users/changePassword', ensureAuthenticated, users.changePassword);
     api.post('/users', ensureAdmin, users.add);
     api.post('/corporations', ensureEventGroup, users.addCorporation);
     api.post('/students', ensureAdmin, users.addStudent);

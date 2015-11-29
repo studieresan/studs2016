@@ -27,10 +27,6 @@ userSchema.pre('save', function(next) {
 	next();
 });
 
-
-
-
-
 //Corporation is a special kind of user.
 var corporationUserSchema = new mongoose.Schema({
 	contact : {type : String}
