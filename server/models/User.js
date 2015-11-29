@@ -47,6 +47,7 @@ var CompanyUserSchema = new mongoose.Schema({
 var StudentUserSchema = new mongoose.Schema({
 	group: { type: String },
 	name: { type: String },
+	lastname: { type: String },
 	phone: { type: String },
 	adress: { type: String },
 	postcode: { type: String },
