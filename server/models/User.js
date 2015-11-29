@@ -61,7 +61,7 @@ var StudentUserSchema = new mongoose.Schema({
 
 StudentUserSchema.virtual('image')
 .get(function() {
-    return slug(this.name + '-' + this.lastname) + '.jpg';
+    return slug(this.name + '-' + this.lastname, { lower: true }) + '.jpg';
 });
 
 // override default toJSON

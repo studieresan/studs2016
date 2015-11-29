@@ -13,7 +13,7 @@ var EventSchema = new Schema({
 });
 
 EventSchema.pre('save', function(next) {
-	this.slug = slug(this.title);
+	this.slug = slug(this.title, { lower: true });
 	next();
 });
 
