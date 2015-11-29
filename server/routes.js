@@ -1,5 +1,5 @@
-var users = require('./controllers/userController');
-var cv = require('./controllers/cvController');
+var users = require('./controllers/usersController');
+var resumes = require('./controllers/resumesController');
 var events = require('./controllers/eventController');
 var passport = require('passport');
 
@@ -108,6 +108,7 @@ module.exports = function(app, express) {
     *   A specific router is used for the api in order to prefix the endpoints
     */
     var api = express.Router();
+
     // User-api
     api.get('/users', ensureAdmin, users.findAll);
     api.put('/users/changePassword', ensureAuthenticated, users.changePassword);
@@ -122,11 +123,8 @@ module.exports = function(app, express) {
     api.put('/events/:id', events.update);
     api.delete('/events/:id', events.remove);
 
-    // CV-API
-    api.get('/cv', cv.findAll);
-    //api.get('/cv/:userid', cv.findByUserId);
-    api.post('/cv', cv.add);
-    api.get('/cv/add', cv.add);
+    // resumes
+    api.get('/resumes', resumes.findAll);
 
     // Assign the api router to the app
     app.use("/api", api);

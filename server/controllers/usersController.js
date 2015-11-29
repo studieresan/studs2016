@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 
-users = require('../models/users');
-Student = users.Student;
+users = require('../models/User');
+
+Student     = users.Student;
 Corporation = users.Corporation;
-User = mongoose.model('user');
-//Student = mongoose.model('student');
-//Corporation = mongoose.model('corporation');
+
+User = mongoose.model('User');
 
 //Get all users.
 exports.findAll = function(req, res) {
@@ -24,7 +24,7 @@ exports.findById = function(req, res) {
 // Add a user.
 exports.add = function(req, res, next) {
 	var user = new User(req.body);
-	
+
 	user.save(function (err) {
 		if (err) {
 			return console.log(err);
@@ -36,7 +36,7 @@ exports.add = function(req, res, next) {
 // Add a student user.
 exports.addStudent = function(req, res, next) {
 	var student = new Student(req.body);
-	
+
 	student.save(function (err) {
 		if (err) {
 			return console.log(err);
@@ -49,7 +49,7 @@ exports.addStudent = function(req, res, next) {
 // Add a corporation user.
 exports.addCorporation = function(req, res, next) {
 	var corporation = new Corporation(req.body);
-	
+
 	corporation.save(function (err) {
 		if (err) {
 			return console.log(err);
