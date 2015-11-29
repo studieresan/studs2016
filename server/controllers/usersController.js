@@ -77,7 +77,7 @@ exports.changePassword = function(req, res, next) {
 			res.json(user);
 		});
 	});
-}
+};
 
 exports.findStudents = function(req, res, next) {
 	Student.find({}, '-passwordsalt -_id -password -__v', function(err, results) {
