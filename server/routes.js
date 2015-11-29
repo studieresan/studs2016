@@ -114,7 +114,7 @@ module.exports = function(app, express) {
     api.put('/users/changePassword', ensureAuthenticated, users.changePassword);
     api.post('/users', ensureAdmin, users.add);
     api.post('/corporations', ensureEventGroup, users.addCorporation);
-    api.get('/students', ensureAuthenticated, users.findStudents);
+    api.get('/students', users.findStudents);
     api.post('/students', ensureAdmin, users.addStudent);
 
     // Event-api
