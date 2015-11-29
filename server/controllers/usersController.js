@@ -81,7 +81,7 @@ exports.changePassword = function(req, res, next) {
 
 exports.findStudents = function(req, res, next) {
 	if(req.isAuthenticated()) {
-		Student.find({}, '-passwordsalt -_id -password -__v', function(err, results) {
+		Student.find({}, '-_id -__v', function(err, results) {
 			return res.send(results);
 		});
 	} else {
