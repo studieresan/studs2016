@@ -1,6 +1,6 @@
 var users = require('./controllers/usersController');
 var resumes = require('./controllers/resumesController');
-var events = require('./controllers/eventController');
+var events = require('./controllers/eventsController');
 var passport = require('passport');
 
 function isAdmin(user) {
