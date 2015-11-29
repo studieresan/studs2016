@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var slug     = require('slug');
 
 var Schema = mongoose.Schema;
 
@@ -12,13 +13,7 @@ var EventSchema = new Schema({
 });
 
 EventSchema.pre('save', function(next) {
-	var text = this.title;
-	this.slug = text.toString().toLowerCase()
-		.replace(/\s+/g, '-')           // Replace spaces with -
-		.replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-		.replace(/\-\-+/g, '-')         // Replace multiple - with single -
-		.replace(/^-+/, '')             // Trim - from start of text
-		.replace(/-+$/, '');            // Trim - from end of text
+	this.slug = slug(this.title);
 	next();
 });
 
