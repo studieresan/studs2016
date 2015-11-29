@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var crypto   = require('crypto');
+var slug     = require('slug');
 
 var Schema = mongoose.Schema;
 
@@ -13,6 +14,7 @@ var UserSchema = new Schema({
 
 // override default toJSON
 UserSchema.set('toJSON', {
+	virtuals: true,
 	transform: function(doc, ret) {
 		delete ret.password;     // exclude password
 		delete ret.passwordsalt; // exclude password salt
@@ -56,6 +58,16 @@ var StudentUserSchema = new mongoose.Schema({
 	instagram: { type: String },
 	facebook: { type: String }
 }, options);
+
+StudentUserSchema.virtual('image')
+.get(function() {
+    return slug(this.name + '-' + this.lastname) + '.jpg';
+});
+
+// override default toJSON
+StudentUserSchema.set('toJSON', {
+	virtuals: true,
+});
 
 var User = mongoose.model('User', UserSchema);
 
