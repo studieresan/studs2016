@@ -12,7 +12,7 @@ module.exports = function(passport) {
     passport.deserializeUser(function(id, done) {
         User.findOne({
          _id: id
-       }, '-password -salt', function(err, user) {
+       }, '-password -passwordsalt', function(err, user) {
          done(err, user);
        });
     });

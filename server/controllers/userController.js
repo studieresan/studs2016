@@ -79,6 +79,12 @@ exports.changePassword = function(req, res, next) {
 	});
 }
 
+exports.findStudents = function(req, res, next) {
+	Student.find({}, '-passwordsalt -_id -password -__v', function(err, results) {
+		return res.send(results);
+	});
+};
+
 exports.signout = function(req, res) {
 	req.logout();
 	res.redirect('/');
