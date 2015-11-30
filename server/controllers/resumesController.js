@@ -14,13 +14,18 @@ exports.findMine = function(req, res) {
 	});
 };
 
-exports.add = function(req, res) {
-	resume = new Resume(req.body);
-	resume.user = "565b3e6fddecec95564ee97c";
-	resume.save(function (err) {
+exports.update = function(req, res) {
+	var resume;
+	Resume.findOne({ student: req.user._id }, function(err, result) {
+		resume = result;
+	});
+	resume.description = req.body.description;
+	resume.posts = req.body.posts;
+	resume.save(function(err) {
 		if (err) {
 			return console.log(err);
 		}
+
 		return res.json(resume);
 	});
 };

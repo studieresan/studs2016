@@ -128,7 +128,7 @@ module.exports = function(app, express) {
     // resumes
     api.get('/resumes', resumes.findAll);
     api.get('/resumes/mine', resumes.findMine);
-    api.post('/resumes', resumes.add);
+    api.put('/resumes/mine', resumes.update);
 
     // Assign the api router to the app
     app.use("/api", api);

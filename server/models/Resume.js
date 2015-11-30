@@ -12,7 +12,7 @@ var ResumePostSchema = new Schema({
 
 var ResumeSchema = new Schema({
 	student: { type: Schema.Types.ObjectId, ref: 'Student' },
-	description: { type: String, required: true },
+	description: { type: String },
 	posts: [ResumePostSchema]
 });
 
