@@ -96,6 +96,28 @@ exports.findStudents = function(req, res, next) {
 	}
 };
 
+/*
+*	Update the student's details. Will update the fields that are sent in the request body.
+*	No need to send every field.
+*/
+exports.updateStudent = function(req, res, next) {
+	Student.findById(req.user.id, function(err, user) {
+		if(!user)
+			return res.sendStatus(404);
+
+		for(var field in Student.schema.paths) {
+			if(field !== '_id' && field !== '__v' && field !== 'password' && field !== 'passwordsalt' && field !== 'email') {
+				if(req.body[field] !== undefined) {
+					user[field] = req.body[field];
+				}
+			}
+		}
+		user.save(function(err) {
+			res.json(user);
+		});
+	});
+}
+
 exports.signout = function(req, res) {
 	req.logout();
 	res.redirect('/');
