@@ -116,6 +116,7 @@ module.exports = function(app, express) {
     api.post('/corporations', ensureEventGroup, users.addCorporation);
     api.get('/students', users.findStudents);
     api.post('/students', ensureAdmin, users.addStudent);
+    api.put('/students', ensureAuthenticated, users.updateStudent);
 
     // Event-api
     api.get('/events', events.findAll);
