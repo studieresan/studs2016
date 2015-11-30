@@ -58,6 +58,7 @@ exports.addCorporation = function(req, res, next) {
 	});
 };
 
+// Change the users password
 exports.changePassword = function(req, res, next) {
 	var newPw = req.body.new;
 	var oldPw = req.body.old;
@@ -79,6 +80,10 @@ exports.changePassword = function(req, res, next) {
 	});
 };
 
+/*
+*	Find students. Will return all information about users if logged in 
+*	otherwise it will only return firstname and lastname of all students.
+*/
 exports.findStudents = function(req, res, next) {
 	if(req.isAuthenticated()) {
 		Student.find({}, '-_id -__v', function(err, results) {

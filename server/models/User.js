@@ -48,7 +48,7 @@ var CompanyUserSchema = new mongoose.Schema({
 // student is a special kind of user.
 var StudentUserSchema = new mongoose.Schema({
 	group: { type: String },
-	name: { type: String },
+	firstname: { type: String },
 	lastname: { type: String },
 	phone: { type: String },
 	adress: { type: String },
@@ -61,7 +61,7 @@ var StudentUserSchema = new mongoose.Schema({
 
 StudentUserSchema.virtual('image')
 .get(function() {
-    return slug(this.name + '-' + this.lastname, { lower: true }) + '.jpg';
+    return slug(this.firstname + '-' + this.lastname, { lower: true }) + '.jpg';
 });
 
 // override default toJSON
