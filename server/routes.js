@@ -97,8 +97,7 @@ module.exports = function(app, express) {
      // Resumes
     app.get('/resumes*', function(req, res) {
         res.render('resumes/index', {
-            ngApp: "resumes",
-            userid: req.user ? req.user._id : ''
+            ngApp: "resumes"
         });
     });
 
