@@ -90,7 +90,7 @@ exports.findStudents = function(req, res, next) {
 			return res.send(results);
 		});
 	} else {
-		Student.find({}, 'name lastname -_id', function(err, results) {
+		Student.find({}, 'firstname lastname -_id', function(err, results) {
 			return res.send(results);
 		});
 	}
