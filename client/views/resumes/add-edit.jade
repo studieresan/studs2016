@@ -1,0 +1,47 @@
+div.row.gutter-large
+	div.col-md-6
+		form(novalidate name='resumeForm' ng-submit='loginform.$valid' id="resumeForm")
+			div.form-group
+				div.form-control
+					label.label Personal description
+					div.form-element
+						textarea.input(name='description' ng-model='Resume.description' required)
+				div.form-group.row.gutter-small(ng-repeat="resumePost in Resume.posts")
+					div.col-6
+						div.form-control
+							label.label Title
+							div.form-element
+								input.input(type='text' name='title' ng-model='resumePost.title' required)
+					div.col-6
+						div.form-control.col-6
+							label.label Type
+							div.form-element
+								input.input(type='text' name='type' ng-model='resumePost.type' required)
+					div.col-12
+						div.form-control
+							label.label What did you do?
+							div.form-element
+								textarea.input(name='description' ng-model='resumePost.description' required)
+					div.col-6
+						div.form-control
+							label.label When did you start?
+							div.form-element
+								input.input(type='text' name='title' ng-model='resumePost.startdate' required)
+					div.col-6
+						div.form-control.col-6
+							label.label When did you end?
+							div.form-element
+								input.input(type='text' name='type' ng-model='resumePost.enddate' required)
+
+				div.form-control
+					input.btn.btn-primary.left(type='submit' value='Save')
+					a.btn.btn-secondary.right(href="#") Cancel
+	div.col-md-6
+		h1 Resume preview
+			span.right
+				a.btn.btn-primary Close
+		h2 Description
+		p {{ Resume.description }}
+		div(ng-repeat="resumePost in Resume.posts")
+			h3 {{ resumePost.title }} {{ resumePost.startdate }} - {{ resumePost.enddate }}
+			p {{ resumePost.description }} 
