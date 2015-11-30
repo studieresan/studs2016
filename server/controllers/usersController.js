@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
-users = require('../models/User');
+users  = require('../models/User');
+Resume = require('../models/Resume');
 
 Student     = users.Student;
 Corporation = users.Corporation;
@@ -36,15 +37,17 @@ exports.add = function(req, res, next) {
 // Add a student user.
 exports.addStudent = function(req, res, next) {
 	var student = new Student(req.body);
+	var resume = new Resume();
 
-	student.save(function (err) {
+	student.save(function(err) {
 		if (err) {
 			return console.log(err);
 		}
+		resume.student = student._id;
+		resume.save(function(err) {});
 		return res.json(student);
 	});
 };
-
 
 // Add a corporation user.
 exports.addCorporation = function(req, res, next) {
@@ -81,7 +84,7 @@ exports.changePassword = function(req, res, next) {
 };
 
 /*
-*	Find students. Will return all information about users if logged in 
+*	Find students. Will return all information about users if logged in
 *	otherwise it will only return firstname and lastname of all students.
 */
 exports.findStudents = function(req, res, next) {

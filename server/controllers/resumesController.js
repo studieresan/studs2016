@@ -9,7 +9,7 @@ exports.findAll = function(req, res) {
 };
 
 exports.findMine = function(req, res) {
-	Resume.findOne({ _id: req.user._id }, function(err, result) {
+	Resume.findOne({ student: req.user._id }, function(err, result) {
 		return res.send(result);
 	});
 };
