@@ -43,8 +43,10 @@ exports.addStudent = function(req, res, next) {
 		if (err) {
 			return console.log(err);
 		}
-		resume.student = student._id;
-		resume.save(function(err) {});
+	});
+
+	resume.student = student._id;
+	resume.save(function(err) {
 		return res.json(student);
 	});
 };
