@@ -34,6 +34,16 @@ exports.add = function(req, res, next) {
 	});
 };
 
+// Delete a user.
+exports.delete = function(req, res, next) {
+	User.remove({ _id: req.body.id }, function(err) {
+		if (err) {
+			return next(err);
+		}
+		return res.sendStatus(200);
+	});
+};
+
 // Add a student user.
 exports.addStudent = function(req, res, next) {
 	var student = new Student(req.body);
@@ -125,7 +135,7 @@ exports.updateStudent = function(req, res, next) {
 			res.json(user);
 		});
 	});
-}
+};
 
 exports.signout = function(req, res) {
 	req.logout();
