@@ -7,3 +7,22 @@ exports.findAll = function(req, res) {
 		return res.send(resumes);
 	});
 };
+
+exports.findMine = function(req, res) {
+	Resume.findOne({ _id: req.user._id }, function(err, result) {
+		return res.send(result);
+	});
+};
+
+/*
+exports.add = function(req, res) {
+	resume = new Resume(req.body);
+	resume.user = "565b3e6fddecec95564ee97c";
+	resume.save(function (err) {
+		if (err) {
+			return console.log(err);
+		}
+		return res.json(resume);
+	});
+};
+*/
