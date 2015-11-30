@@ -14,7 +14,6 @@ exports.findMine = function(req, res) {
 	});
 };
 
-/*
 exports.add = function(req, res) {
 	resume = new Resume(req.body);
 	resume.user = "565b3e6fddecec95564ee97c";
@@ -25,4 +24,3 @@ exports.add = function(req, res) {
 		return res.json(resume);
 	});
 };
-*/
