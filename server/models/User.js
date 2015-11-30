@@ -42,7 +42,7 @@ UserSchema.pre('save', function(next) {
 
 // company is a special kind of user.
 var CompanyUserSchema = new mongoose.Schema({
-	contact: {type: String }
+	contact: { type: String }
 }, options);
 
 // student is a special kind of user.
@@ -59,14 +59,9 @@ var StudentUserSchema = new mongoose.Schema({
 	facebook: { type: String }
 }, options);
 
-StudentUserSchema.virtual('image')
-.get(function() {
-    return slug(this.firstname + '-' + this.lastname, { lower: true }) + '.jpg';
-});
-
-// override default toJSON
-StudentUserSchema.set('toJSON', {
-	virtuals: true,
+// add a virtual property for a profile image
+StudentUserSchema.virtual('image').get(function() {
+	return slug(this.firstname + '-' + this.lastname, { lower: true }) + '.jpg';
 });
 
 var User = mongoose.model('User', UserSchema);
