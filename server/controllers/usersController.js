@@ -3,18 +3,19 @@ var mongoose = require('mongoose');
 users  = require('../models/User');
 Resume = require('../models/Resume');
 
-Student     = users.Student;
-Corporation = users.Corporation;
+Student = users.Student;
+Company = users.Company;
 
 User = mongoose.model('User');
 
-//Get all users.
+// fetch all users
 exports.findAll = function(req, res) {
 	User.find({}, function(err, results) {
 		return res.send(results);
 	});
 };
 
+// fetch a user by its id
 exports.findById = function(req, res) {
    var id = req.params.id;
    User.findOne({'_id':id}, function(err, result) {
@@ -22,7 +23,7 @@ exports.findById = function(req, res) {
    });
 };
 
-// Add a user.
+// add a user
 exports.add = function(req, res, next) {
 	var user = new User(req.body);
 
@@ -34,7 +35,7 @@ exports.add = function(req, res, next) {
 	});
 };
 
-// Delete a user.
+// delete a user
 exports.delete = function(req, res, next) {
 	User.remove({ _id: req.body.id }, function(err) {
 		if (err) {
@@ -44,7 +45,7 @@ exports.delete = function(req, res, next) {
 	});
 };
 
-// Add a student user.
+// add a user of type student (discriminator)
 exports.addStudent = function(req, res, next) {
 	var student = new Student(req.body);
 	var resume = new Resume();
@@ -65,19 +66,19 @@ exports.addStudent = function(req, res, next) {
 	});
 };
 
-// Add a corporation user.
-exports.addCorporation = function(req, res, next) {
-	var corporation = new Corporation(req.body);
+// add a user of type company (discriminator)
+exports.addCompany = function(req, res, next) {
+	var company = new Company(req.body);
 
-	corporation.save(function (err) {
+	company.save(function (err) {
 		if (err) {
 			return console.log(err);
 		}
-		return res.json(corporation);
+		return res.json(company);
 	});
 };
 
-// Change the users password
+// change the users password
 exports.changePassword = function(req, res, next) {
 	var newPw = req.body.new;
 	var oldPw = req.body.old;

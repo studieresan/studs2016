@@ -67,7 +67,7 @@ StudentUserSchema.virtual('image').get(function() {
 var User = mongoose.model('User', UserSchema);
 
 var Company = User.discriminator(
-	'Corporation',
+	'Company',
 	CompanyUserSchema, options
 );
 

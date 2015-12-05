@@ -114,7 +114,7 @@ module.exports = function(app, express) {
     */
     app.post('/login', passport.authenticate('local-login'), function(req, res) {
         // This function runs when the authentication is successfull
-        // In order to use angular nicely, a simple message is 
+        // In order to use angular nicely, a simple message is
         // the only thing that is returned in the body
         res.send("success");
     });
@@ -130,7 +130,7 @@ module.exports = function(app, express) {
     api.put('/users/changePassword', ensureAuthenticated, users.changePassword);
     api.post('/users', ensureAdmin, users.add);
     api.delete('/users', ensureAdmin, users.delete);
-    api.post('/corporations', ensureEventGroup, users.addCorporation);
+    api.post('/companies', ensureEventGroup, users.addCompany);
     api.get('/students', users.findStudents);
     api.post('/students', ensureAdmin, users.addStudent);
     api.put('/students', ensureAuthenticated, users.updateStudent);
