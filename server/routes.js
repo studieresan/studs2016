@@ -8,7 +8,7 @@ function isAdmin(user) {
 }
 
 function ensureStudent(req, res, next) {
-    if( req.isAuthenticated() && (isAdmin(req.user) || (req.user && req.user.type === "student"))) {
+    if( req.isAuthenticated() && (isAdmin(req.user) || (req.user && req.user.type.toLowerCase() === "student"))) {
         next();
     } else {
         res.sendStatus(401);
@@ -16,7 +16,7 @@ function ensureStudent(req, res, next) {
 }
 
 function ensureEventGroup(req, res, next) {
-    if( req.isAuthenticated() && (isAdmin(req.user) || (req.user && req.user.group === "event"))) {
+    if( req.isAuthenticated() && (isAdmin(req.user) || (req.user && req.user.group.toLowerCase() === "event"))) {
         next();
     } else {
         res.sendStatus(401);
@@ -143,8 +143,8 @@ module.exports = function(app, express) {
 
     // resumes
     api.get('/resumes', resumes.findAll);
-    api.get('/resumes/mine', resumes.findMine);
-    api.put('/resumes/mine', resumes.update);
+    api.get('/resumes/mine', ensureStudent, resumes.findMine);
+    api.put('/resumes/mine', ensureStudent, resumes.update);
 
     // Assign the api router to the app
     app.use("/api", api);
