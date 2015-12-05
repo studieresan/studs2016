@@ -143,7 +143,8 @@ module.exports = function(app, express) {
     api.delete('/events/:id', events.remove);
 
     // resumes
-    api.get('/resumes', resumes.findAll);
+    api.get('/resumes', ensureAuthenticated, resumes.findAll);
+    api.get('/resumes/:id', ensureAuthenticated, resumes.findByStudentId);
     api.get('/resumes/mine', ensureStudent, resumes.findMine);
     api.put('/resumes/mine', ensureStudent, resumes.update);
 

@@ -10,6 +10,14 @@ exports.findAll = function(req, res) {
 };
 
 // find the authenticated student's resume
+exports.findByStudentId = function(req, res) {
+	Resume.findOne({ student: req.params.id }).populate('student').exec(function(err, resume) {
+		return res.send(resume);
+	});
+};
+
+
+// find the authenticated student's resume
 exports.findMine = function(req, res) {
 	Resume.findOne({ student: req.user._id }).populate('student').exec(function(err, resume) {
 		return res.send(resume);
