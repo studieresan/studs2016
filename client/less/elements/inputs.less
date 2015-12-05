@@ -11,10 +11,16 @@
 @icon-holder-z-index: 10;
 @dropdown-list-z-index: 10000;
 
-.help {
-	position: absolute;
+.meta {
 	color: @gray;
 	font-size: 0.75em;
+}
+.help {
+	.meta;
+	display: block;
+	text-align: inherit;
+	position: absolute;
+	width: 100%;
 }
 
 
@@ -37,7 +43,13 @@
 	}
 
 
-	&.ng-dirty.ng-invalid {
+	&.ng-dirty.ng-invalid, &.ng-touched.ng-invalid {
+		border-color: @red !important;
+	}
+}
+
+form.ng-submitted {
+	.ng-invalid {
 		border-color: @red !important;
 	}
 }

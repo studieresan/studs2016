@@ -10,7 +10,8 @@
 			$http.post('/login', {'email':email, 'password': password}).then(function successCallback(response) {
 				window.location.replace("/");
 			}, function errorCallback(response) {
-				Flash.create('info', "Hm, we don't seem to recognize you. Try again!");
+				Flash.create('danger', "Hm, we don't seem to recognize you. Try again!");
+				user.password = "";
 			});
 		};
 
