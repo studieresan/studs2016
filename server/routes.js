@@ -109,6 +109,15 @@ module.exports = function(app, express) {
         });
     });
 
+    // Profile
+    app.get('/profile*', function(req, res) {
+        res.render('profile/index', {
+            ngApp: "profile",
+            // Layout variables
+            fixedMenu: true
+        });
+    });
+
     /*
     * Auth. functionality
     */

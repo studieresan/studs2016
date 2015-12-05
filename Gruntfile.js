@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 
         concat: {
             options: {
-                separator: ';\n'
+                separator: '\n'
             },
             js_client: {
                 src: [
@@ -18,8 +18,19 @@ module.exports = function(grunt) {
                 './bower_components/angular-simple-logger/dist/angular-simple-logger.min.js',
                 './bower_components/angular-google-maps/dist/angular-google-maps.min.js',
                 './bower_components/angular-flash-alert/dist/angular-flash.js',
+                './bower_components/Chart.js/Chart.min.js',
+                './bower_components/angular-chart.js/dist/angular-chart.min.js',
+                './bower_components/jqcloud2/dist/jqcloud.min.js',
+                './bower_components/angular-jqcloud/angular-jqcloud.js',
                 ],
-                dest: './client/public/js/libs.min.js'
+                dest: './client/public/js/libs.min.js',
+            },
+            css_client: {
+                src: [
+                './bower_components/angular-chart.js/dist/angular-chart.min.css',
+                './bower_components/jqcloud2/dist/jqcloud.min.css'
+                ],
+                dest: './client/public/css/libs.min.css'
             }
         },
 

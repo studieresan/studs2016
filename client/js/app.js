@@ -11,3 +11,6 @@ var trip = angular.module('trip', ['tripControllers', 'uiGmapgoogle-maps']).conf
 }]);
 
 var about = angular.module('about', ['aboutControllers']);
+
+var profile = angular.module('profile', ['profileControllers', 'flash', 'ngAnimate', 'chart.js', 'angular-jqcloud']);
+
