@@ -13,9 +13,11 @@ module.exports = function(grunt) {
                 './bower_components/angular/angular.min.js',
                 './bower_components/angular-route/angular-route.min.js',
                 './bower_components/angular-resource/angular-resource.min.js',
+                './bower_components/angular-animate/angular-animate.min.js',
                 './bower_components/jquery/dist/jquery.min.js',
                 './bower_components/angular-simple-logger/dist/angular-simple-logger.min.js',
                 './bower_components/angular-google-maps/dist/angular-google-maps.min.js',
+                './bower_components/angular-flash-alert/dist/angular-flash.js',
                 ],
                 dest: './client/public/js/libs.min.js'
             }

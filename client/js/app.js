@@ -2,7 +2,7 @@ var events = angular.module('events', ['ngResource', 'ngRoute', 'eventController
 
 var resumes = angular.module('resumes', ['ngResource', 'ngRoute', 'resumeControllers']);
 
-var auth = angular.module('auth', ['ngRoute', 'authControllers']);
+var auth = angular.module('auth', ['ngRoute', 'authControllers', 'flash', 'ngAnimate']);
 
 var trip = angular.module('trip', ['tripControllers', 'uiGmapgoogle-maps']).config(['uiGmapGoogleMapApiProvider', function(uiGmapGoogleMapApiProvider) {
 	uiGmapGoogleMapApiProvider.configure({
