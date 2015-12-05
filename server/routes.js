@@ -112,11 +112,9 @@ module.exports = function(app, express) {
     /*
     * Auth. functionality
     */
-    app.post('/login', passport.authenticate('local-login', {
-        successRedirect: '/',
-        failureRedirect: '/login',
-        failureFlash : true
-    }));
+    app.post('/login', passport.authenticate('local-login'), function(req, res) {
+        res.send("success");
+    });
     app.get('/logout', users.signout);
 
     /*
