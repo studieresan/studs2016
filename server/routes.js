@@ -113,6 +113,9 @@ module.exports = function(app, express) {
     * Auth. functionality
     */
     app.post('/login', passport.authenticate('local-login'), function(req, res) {
+        // This function runs when the authentication is successfull
+        // In order to use angular nicely, a simple message is 
+        // the only thing that is returned in the body
         res.send("success");
     });
     app.get('/logout', users.signout);
