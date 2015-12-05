@@ -5,7 +5,6 @@
 	authControllers.controller("loginCtrl", ['$scope', '$http', '$location', function($scope, $http, $location) {
 		// Do stuff like login user.
 		$scope.login = function(user) {
-			alert('hej');
 			var email = user.email;
 			var password = user.password;
 			$http.post('/login', {'email':email, 'password': password}).then(function successCallback(response) {
