@@ -7,6 +7,14 @@ function isAdmin(user) {
     return user && user.email === "studs-it@d.kth.se";
 }
 
+function ensureStudent(req, res, next) {
+    if( req.isAuthenticated() && (isAdmin(req.user) || (req.user && req.user.type === "student"))) {
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
 function ensureEventGroup(req, res, next) {
     if( req.isAuthenticated() && (isAdmin(req.user) || (req.user && req.user.group === "event"))) {
         next();
