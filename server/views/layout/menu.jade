@@ -10,7 +10,8 @@
 			a(href='/contact', target='_self') Contact
 			span |
 			if authenticated && user
-				a(href='/logout', target='_self') #{user.email}
+				| #{user.email} 
+				a(href='/logout', target='_self') Log out
 			else
 				a(href='/login', target='_self') Log in
 #menu-shadow
