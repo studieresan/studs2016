@@ -20,14 +20,14 @@ section.padding.white-bg
 				.col-12
 					h2 Before the event
 				.col-sm-4
-					h3 Question 1
-					canvas( class="chart chart-doughnut" chart-data="data1" chart-labels="labels")
+					h3 Do you know the company?
+					canvas( class="chart chart-doughnut" chart-data="data[0].before[0]" chart-labels="labels")
 				.col-sm-4
-					h3 Question 1
-					canvas(class="chart chart-doughnut" chart-data="data2" chart-labels="labels")
+					h3 Do you think you could write your thesis there?
+					canvas(class="chart chart-doughnut" chart-data="data[0].before[1]" chart-labels="labels")
 				.col-sm-4
-					h3 Question 1
-					canvas(class="chart chart-doughnut" chart-data="data2" chart-labels="labels")
+					h3 Do you have a positive impression of the company?
+					canvas(class="chart chart-doughnut" chart-data="data[0].before[2]" chart-labels="labels")
 
 section.padding
 	.wrap
@@ -35,14 +35,14 @@ section.padding
 				.col-12
 					h2 After the event
 				.col-sm-4
-					h3 Question 1
-					canvas( class="chart chart-doughnut" chart-data="data1" chart-labels="labels")
+					h3 Have your impression changed?
+					canvas( class="chart chart-doughnut" chart-data="data[1].after[0]" chart-labels="labels")
 				.col-sm-4
-					h3 Question 1
-					canvas(class="chart chart-doughnut" chart-data="data2" chart-labels="labels")
+					h3 Do you think you could write your thesis there?
+					canvas(class="chart chart-doughnut" chart-data="data[1].after[1]" chart-labels="labels")
 				.col-sm-4
-					h3 Question 1
-					canvas(class="chart chart-doughnut" chart-data="data2" chart-labels="labels")
+					h3 Do you like charts?
+					canvas(class="chart chart-doughnut" chart-data="data[1].after[2]" chart-labels="labels")
 
 section.padding.black-bg(ng-controller="tagCloudController")
 	.wrap
