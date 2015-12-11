@@ -56,7 +56,7 @@ form.ng-submitted {
 
 // ===== Description here =====
 .form-group {
-	
+
 	.label {
 		color: @black;
 		font-weight: bold;
@@ -68,7 +68,7 @@ form.ng-submitted {
 	}
 
 	.form-control + .form-control, .form-control + .row, .row + .form-control, & .row + .row {
-		margin-top: @spacing-base;
+		margin-top: @spacing-minimum;
 	}
 }
 
@@ -87,6 +87,11 @@ form.ng-submitted {
 		line-height: 1em;
 		margin-top: @spacing-minimum;
 	}
+}
+
+.form-title {
+	padding-bottom: 0 !important;
+	margin-bottom: 0 !important;
 }
 
 // ===== Description here =====
