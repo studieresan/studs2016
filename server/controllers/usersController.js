@@ -126,7 +126,7 @@ exports.updateStudent = function(req, res, next) {
 			return res.sendStatus(404);
 
 		for(var field in Student.schema.paths) {
-			if(field !== '_id' && field !== '__v' && field !== 'password' && field !== 'passwordsalt' && field !== 'email') {
+			if(field !== '_id' && field !== '__v' && field !== 'password' && field !== 'passwordsalt' && field !== 'email' && field != 'group') {
 				if(req.body[field] !== undefined) {
 					user[field] = req.body[field];
 				}
