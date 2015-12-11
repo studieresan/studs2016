@@ -106,8 +106,8 @@ module.exports = function(app, express) {
     app.get('/profile*', function(req, res) {
 
         // TODO: Set render view according to company or student
-
-        res.render('profile/index', {
+        var view = "student";
+        res.render('profile/' + view, {
             ngApp: "profile",
             // Layout variables
             fixedMenu: true
