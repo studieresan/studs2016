@@ -51,7 +51,7 @@ var StudentUserSchema = new mongoose.Schema({
 	firstname: { type: String },
 	lastname: { type: String },
 	phone: { type: String },
-	adress: { type: String },
+	address: { type: String },
 	postcode: { type: String },
 	city: { type: String },
 	linkedin: { type: String },

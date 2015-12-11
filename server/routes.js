@@ -104,13 +104,12 @@ module.exports = function(app, express) {
 
     // Profile
     app.get('/profile*', function(req, res) {
-
-        // TODO: Set render view according to company or student
-        var view = "student";
-        res.render('profile/' + view, {
-            ngApp: "profile",
+        var type = (res.locals.user.type).toLowerCase();
+        res.render('profile/' + type, {
+            ngApp: type + "Profile",
             // Layout variables
-            fixedMenu: true
+            fixedMenu: true,
+            userData: JSON.stringify(res.locals.user)
         });
     });
 
