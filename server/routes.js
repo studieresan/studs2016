@@ -131,7 +131,7 @@ module.exports = function(app, express) {
 
     // User-api
     api.get('/users', ensureAdmin, users.findAll);
-    api.put('/users/changePassword', ensureAuthenticated, users.changePassword);
+    api.put('/users/change-password', ensureAuthenticated, users.changePassword);
     api.post('/users', ensureAdmin, users.add);
     api.delete('/users', ensureAdmin, users.delete);
     api.post('/companies', ensureEventGroup, users.addCompany);

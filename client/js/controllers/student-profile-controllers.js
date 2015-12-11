@@ -8,7 +8,14 @@
 				Flash.create('info', "Saved!");
 			}, function errorCallback(response) {
 				Flash.create('danger', "Something went bad. Try again!");
-				user.password = "";
+			});
+		};
+
+		$scope.changePassword = function(password) {
+			$http.put('/api/users/change-password', password).then(function successCallback(response) {
+				Flash.create('info', "Your password is changed!");
+			}, function errorCallback(response) {
+				Flash.create('danger', "Something went bad. Try again!");
 			});
 		};
 	}]);

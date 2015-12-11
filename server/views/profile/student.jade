@@ -14,9 +14,9 @@ section.padding#profile-header
 			.col-sm-2
 section.padding(ng-controller="userEditCtrl" ng-init="user = #{userData}")
 	.wrap
-		form(novalidate name='useredit' ng-submit='useredit.$valid && edit(user)')
-			div.row.col-sm-6
-				div.form-group.col-12
+		div.row.gutter-base
+			div.col-sm-6
+				form(novalidate name='useredit' ng-submit='useredit.$valid && edit(user)')
 					h2 Personal data
 					div.form-group.row.gutter-base
 						div.col-sm-6
@@ -35,7 +35,7 @@ section.padding(ng-controller="userEditCtrl" ng-init="user = #{userData}")
 								input.input(type='email' name='email' ng-model='user.email' required)
 					h2 Residential information
 					div.form-group.row.gutter-base
-						div.form-control
+						div.form-control.col-12
 								label.label Adress
 								div.form-element
 									input.input(type='text' name='address' ng-model='user.address' required)
@@ -49,9 +49,30 @@ section.padding(ng-controller="userEditCtrl" ng-init="user = #{userData}")
 								label.label City
 								div.form-element
 									input.input(type='text' name='city' ng-model='user.city' required)
-					div.form-group
-						.form-control
+					div.form-group.row.gutter-base
+						div.form-control
 							input.btn.btn-primary(type='submit' value='Save')
+
+			div.col-sm-6
+				form(novalidate name='changepassword' ng-submit='changepassword.$valid && changePassword(password)')
+					div.form-group.col-12
+						h2 Change Password
+						div.form-group.row.gutter-base
+							div.col-sm-6
+								div.form-control
+									label.label Old password
+									div.form-element
+										input.input(type='password' name='old' ng-model='password.old' required)
+							div.col-sm-6
+								div.form-control
+									label.label New Password
+									div.form-element
+										input.input(type='password' name='old' ng-model='password.new' required)
+						
+						div.form-group.row.gutter-base
+							div.form-control
+								input.btn.btn-secondary(type='submit' value='Change password')
+
 
 include ../layout/footer.jade
 include ../layout/includes.jade
