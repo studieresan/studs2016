@@ -57,9 +57,9 @@ form.ng-submitted {
 // ===== Description here =====
 .form-group {
 
-	&:nth-child(1) {
-		margin-top: @spacing-base;
-	}
+	//&:nth-child(1) {
+	//	margin-top: @spacing-base;
+	//}
 
 	.label {
 		color: @black;
@@ -70,20 +70,17 @@ form.ng-submitted {
 	.label + .form-element {
 		margin-top: @spacing-minimum/2;
 	}
-
-	.form-control + .form-control, .form-control + .row, .row + .form-control, & .row + .row {
-		margin-top: @spacing-base;
-	}
 }
 
 .form-group + .form-group, .row + .form-group, .form-group + .row {
-	margin-top: @spacing-large;
+	margin-top: @spacing-base !important;
 }
 
 // ===== Description here =====
 .form-control {
 	position: relative;
 	width: 100%;
+	clear: both;
 
 	.hint {
 		color: @gray-light;
