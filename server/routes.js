@@ -88,13 +88,6 @@ module.exports = function(app, express) {
         });
     });
 
-    // Contact
-    app.get('/contact', function(req, res) {
-        res.render('contact/index', {
-            fixedMenu: true
-        });
-    });
-
     // Login
     app.get('/login*', function(req, res) {
         res.render('auth/index', {
@@ -111,6 +104,9 @@ module.exports = function(app, express) {
 
     // Profile
     app.get('/profile*', function(req, res) {
+
+        // TODO: Set render view according to company or student
+
         res.render('profile/index', {
             ngApp: "profile",
             // Layout variables
