@@ -4,7 +4,7 @@ var events = require('./controllers/eventsController');
 var passport = require('passport');
 
 function isAdmin(user) {
-    return user && user.email === "studs-it@d.kth.se";
+    return user && user.type.toLowerCase() === "student" && user.group && user.group.toLowerCase() === "communication";
 }
 
 function ensureStudent(req, res, next) {
