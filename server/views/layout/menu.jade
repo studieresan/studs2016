@@ -2,15 +2,20 @@
 	nav
 		.left
 			a#logo(href='/', target='_self')
-				img(src='img/logo.svg', alt='')
+				img(src='/img/logo.svg', alt='')
 		.right
-			a(href='/about', target='_self') About
-			a(href='/events', target='_self') Events
-			a(href='/trip', target='_self') The trip
+			a.brackets(href='/about', target='_self') About
+			a.brackets(href='/events', target='_self') Events
+			a.brackets(href='/trip', target='_self') The trip
 			span |
-			if authenticated && user
-				| #{user.email} 
-				a(href='/logout', target='_self') Log out
-			else
-				a(href='/login', target='_self') Log in
+			div.profile
+				if authenticated && user
+					if user.type == "Student"
+						img(src="/img/profile-pictures/#{user.image}-cropped.jpg")
+						a(href="/profile" target="_self") #{user.firstname} 
+					else
+						a(href="/profile" target="_self") #{user.contact} 
+					a(href='/logout', target='_self') Log out
+				else
+					a(href='/login', target='_self') Log in
 #menu-shadow

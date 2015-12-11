@@ -61,7 +61,7 @@ var StudentUserSchema = new mongoose.Schema({
 
 // add a virtual property for a profile image
 StudentUserSchema.virtual('image').get(function() {
-	return slug(this.firstname + '-' + this.lastname, { lower: true }) + '.jpg';
+	return slug(this.firstname + '-' + this.lastname, { lower: true });
 });
 
 var User = mongoose.model('User', UserSchema);
