@@ -12,5 +12,7 @@ var trip = angular.module('trip', ['tripControllers', 'uiGmapgoogle-maps']).conf
 
 var about = angular.module('about', ['aboutControllers']);
 
-var profile = angular.module('profile', ['ngResource', 'profileControllers', 'flash', 'ngAnimate', 'chart.js', 'angular-jqcloud']);
+var companyProfile = angular.module('companyProfile', ['ngResource', 'companyProfileControllers', 'flash', 'ngAnimate', 'chart.js', 'angular-jqcloud']);
+
+var studentProfile = angular.module('studentProfile', ['ngResource', 'studentProfileControllers', 'flash']);
 

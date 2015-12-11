@@ -1,16 +1,10 @@
 (function() {
 
-	var profileControllers = angular.module('profileControllers', []);
+	var profileControllers = angular.module('companyProfileControllers', []);
 
 	profileControllers.controller("chartsController", ['$scope', '$http', 'Data', function($scope, $http, Data) {
-
 		var numberofmembers = 28;
-
 		$scope.labels = ["Yes", "No"];
-
-		//$scope.data1 = [300, 500];
-		//$scope.data2 = [300, 40];
-
 		Data.getData.get(function(response) {
 			temp = response.feed.entry;
 			var data = [];
@@ -30,24 +24,6 @@
 			}
 			$scope.data = data;
 		});
-
-		/*
-		$http({
-			method: 'GET',
-			url: 'https://spreadsheets.google.com/feeds/list/17qc9EOvGOG5RhPlg2fxkUeBLLSWfAw5TAVPzy5DppJM/od6/public/values?alt=json'
-		}).then(function successCallback(response) {
-			var temp = response.data.feed.entry;
-			var data = [];
-			for (var i = 0; i < temp.length; i++) {
-				data.push({
-					before: [temp[i].gsx$q1before.$t, temp[i].gsx$q2before.$t, temp[i].gsx$q3before.$t],
-					after: [temp[i].gsx$q1after.$t, temp[i].gsx$q2after.$t, temp[i].gsx$q3after.$t]
-				});
-			}
-			$scope.data = data;
-		}, function errorCallback(response) {
-			console.log(response);
-		});*/
 	}]);
 
 	profileControllers.controller("tagCloudController", ['$scope', function($scope) {
@@ -81,7 +57,6 @@
 		{text: "adipiscing", weight: 2},
 		{text: "ut ultrices", weight: 2}
 		];
-
 		$scope.colors = ["#ff0000"];
 	}]);
 

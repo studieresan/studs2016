@@ -12,42 +12,45 @@ section.padding#profile-header
 				span.email #{user.email}
 				a.btn.btn-primary.btn-small(href="#") Call to action
 			.col-sm-2
-
-section.padding
+section.padding(ng-controller="userEditCtrl" ng-init="user = #{userData}")
 	.wrap
-		.row.flex.flex-center
-			.col-sm-6
-				form(novalidate name='useredit' ng-submit='useredit.$valid && login(user)')
-					div.form-group
-						h1 Personal data
-						div.form-group.row.gutter-base
-							div.col-sm-6
-								div.form-control
-									label.label Firstname
-									div.form-element
-										input.input(type='text' name='firstname' ng-model='user.firstname' required)
-							div.col-sm-6
-								div.form-control
-									label.label Lastname
-									div.form-element
-										input.input(type='text' name='lastname' ng-model='user.lastname' required)
+		form(novalidate name='useredit' ng-submit='useredit.$valid && edit(user)')
+			div.row.col-sm-6
+				div.form-group.col-12
+					h2 Personal data
+					div.form-group.row.gutter-base
+						div.col-sm-6
 							div.form-control
-								label.label E-mail
+								label.label Firstname
 								div.form-element
-									input.input(type='email' name='email' ng-model='user.email' required)
-
-						div.form-group.row.gutter-base
-							div.col-sm-6
-								div.form-control
-									label.label Phon
-									div.form-element
-										input.input(type='text' name='firstname' ng-model='user.email' required)
-							div.col-sm-6
-								div.form-control
-									label.label Lastname
-									div.form-element
-										input.input(type='text' name='lastname' ng-model='user.email' required)
+									input.input(type='text' name='firstname' ng-model='user.firstname' required)
+						div.col-sm-6
+							div.form-control
+								label.label Lastname
+								div.form-element
+									input.input(type='text' name='lastname' ng-model='user.lastname' required)
 						div.form-control
+							label.label E-mail
+							div.form-element
+								input.input(type='email' name='email' ng-model='user.email' required)
+					h2 Residential information
+					div.form-group.row.gutter-base
+						div.form-control
+								label.label Adress
+								div.form-element
+									input.input(type='text' name='address' ng-model='user.address' required)
+						div.col-sm-6
+							div.form-control
+								label.label Postcode
+								div.form-element
+									input.input(type='text' name='postcode' ng-model='user.postcode' required)
+						div.col-sm-6
+							div.form-control
+								label.label City
+								div.form-element
+									input.input(type='text' name='city' ng-model='user.city' required)
+					div.form-group
+						.form-control
 							input.btn.btn-primary(type='submit' value='Save')
 
 include ../layout/footer.jade
