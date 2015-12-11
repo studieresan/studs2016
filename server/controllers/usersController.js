@@ -156,7 +156,7 @@ exports.editStudent = function(req, res, next) {
 			res.json(user);
 		});
 	});
-}
+};
 
 exports.signout = function(req, res) {
 	req.logout();
