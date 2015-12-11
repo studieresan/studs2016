@@ -26,6 +26,7 @@ exports.findById = function(req, res) {
 // add a user
 exports.add = function(req, res, next) {
 	var user = new User(req.body);
+	user.beforeSavePassword();
 
 	user.save(function (err) {
 		if (err) {
@@ -50,6 +51,8 @@ exports.addStudent = function(req, res, next) {
 	var student = new Student(req.body);
 	var resume = new Resume();
 
+	student.beforeSavePassword();
+
 	student.save(function(err) {
 		if (err) {
 			return console.log(err);
@@ -69,6 +72,8 @@ exports.addStudent = function(req, res, next) {
 // add a user of type company (discriminator)
 exports.addCompany = function(req, res, next) {
 	var company = new Company(req.body);
+
+	company.beforeSavePassword();
 
 	company.save(function (err) {
 		if (err) {
@@ -93,6 +98,8 @@ exports.changePassword = function(req, res, next) {
 			return res.sendStatus(401);
 
 		user.password = newPw;
+
+		user.beforeSavePassword();
 
 		user.save(function(err) {
 			res.json(user);
@@ -132,7 +139,7 @@ exports.updateStudent = function(req, res, next) {
 				}
 			}
 		}
-		user.update(function(err) {
+		user.save(function(err) {
 			res.json(user);
 		});
 	});
@@ -152,7 +159,7 @@ exports.editStudent = function(req, res, next) {
 				user[field] = req.body[field];
 			}
 		}
-		user.update(function(err) {
+		user.save(function(err) {
 			res.json(user);
 		});
 	});

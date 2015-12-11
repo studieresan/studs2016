@@ -31,14 +31,13 @@ UserSchema.methods.authenticate = function(password) {
 	return this.password === this.hashPassword(password);
 };
 
-UserSchema.pre('save', function(next) {
+UserSchema.methods.beforeSavePassword = function() {
 	if (this.password) {
 		this.passwordsalt = new Buffer(crypto.randomBytes(16)
 		    .toString('base64'), 'base64');
 		this.password = this.hashPassword(this.password);
 	}
-	next();
-});
+};
 
 // company is a special kind of user.
 var CompanyUserSchema = new mongoose.Schema({
