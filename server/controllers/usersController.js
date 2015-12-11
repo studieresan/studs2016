@@ -132,7 +132,7 @@ exports.updateStudent = function(req, res, next) {
 				}
 			}
 		}
-		user.save(function(err) {
+		user.update(function(err) {
 			res.json(user);
 		});
 	});
@@ -152,7 +152,7 @@ exports.editStudent = function(req, res, next) {
 				user[field] = req.body[field];
 			}
 		}
-		user.save(function(err) {
+		user.update(function(err) {
 			res.json(user);
 		});
 	});
