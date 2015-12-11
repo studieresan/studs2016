@@ -139,6 +139,7 @@ module.exports = function(app, express) {
     api.get('/students', users.findStudents);
     api.post('/students', ensureAdmin, users.addStudent);
     api.put('/students', ensureAuthenticated, users.updateStudent);
+    api.put('/editStudent', ensureAdmin, users.editStudent);
 
     // Event-api
     api.get('/events', events.findAll);

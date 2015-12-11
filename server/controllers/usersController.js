@@ -138,6 +138,26 @@ exports.updateStudent = function(req, res, next) {
 	});
 };
 
+/**
+*	Changes the details about another user. This function is indended to be used by
+*	admins only as it allows to change critical fields.
+*/
+exports.editStudent = function(req, res, next) {
+	var id = req.body.id;
+	Student.findById(id, function(err, user) {
+		if(!user)
+			return res.sendStatus(404);
+		for(var field in Student.schema.paths) {
+			if(req.body[field] !== undefined) {
+				user[field] = req.body[field];
+			}
+		}
+		user.save(function(err) {
+			res.json(user);
+		});
+	});
+}
+
 exports.signout = function(req, res) {
 	req.logout();
 	res.redirect('/');
