@@ -70,17 +70,20 @@ form.ng-submitted {
 	.label + .form-element {
 		margin-top: @spacing-minimum/2;
 	}
+
+	.form-control + .form-control, .form-control + .row, .row + .form-control, & .row + .row {
+		margin-top: @spacing-minimum;
+	}
 }
 
 .form-group + .form-group, .row + .form-group, .form-group + .row {
-	margin-top: @spacing-base !important;
+	margin-top: @spacing-large;
 }
 
 // ===== Description here =====
 .form-control {
 	position: relative;
 	width: 100%;
-	clear: both;
 
 	.hint {
 		color: @gray-light;
