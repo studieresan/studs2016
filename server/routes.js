@@ -103,7 +103,7 @@ module.exports = function(app, express) {
     });
 
     // Profile
-    app.get('/profile*', function(req, res) {
+    app.get('/profile*', ensureAuthenticated, function(req, res) {
         var type = (res.locals.user.type).toLowerCase();
         res.render('profile/' + type, {
             ngApp: type + "Profile",
