@@ -73,6 +73,16 @@ section.mega-padding.white-pure-bg
 				| 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				| 				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 				| 				consequat.
+section.red-light-bg.mega-padding
+	.wrap
+		.row.gutter-large(ng-controller="indexInstagram")
+			.col-12.t-center
+				h2 Instagram
+				.col-4(ng-repeat='p in pics | orderBy:orderBy')
+					a(href="{{ p.link }}" target"_blank")
+						img(ng-src="{{ p.images.low_resolution.url }}" title="{{ p.caption.text }}")
+					p {{ p.caption.text }}
+
 section.mega-padding
 	.wrap
 		.row.gutter-large

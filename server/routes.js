@@ -58,7 +58,10 @@ module.exports = function(app, express) {
 
     // Get
     app.get('/', function(req, res) {
-        res.render('index', { title: "Studs!" });
+        res.render('index', {
+            ngApp: "index",
+            title: "Studs!",
+        });
     });
 
     // Need to add wildcard in order to use HTML5
