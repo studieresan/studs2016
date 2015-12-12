@@ -128,7 +128,7 @@ module.exports = function(app, express) {
 	api.get('/users', ensureAdmin, users.findAll);
 	api.put('/users/change-password', ensureAuthenticated, users.changePassword);
 	api.post('/users', ensureAdmin, users.add);
-	api.delete('/users', ensureAdmin, users.delete);
+	api.delete('/users/:id', ensureAdmin, users.delete);
 	api.post('/companies', ensureEventGroup, users.addCompany);
 	api.get('/students', users.findStudents);
 	api.post('/students', ensureAdmin, users.addStudent);
