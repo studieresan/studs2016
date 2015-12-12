@@ -64,6 +64,12 @@ StudentUserSchema.virtual('image').get(function() {
 	return slug(this.firstname + '-' + this.lastname, { lower: true });
 });
 
+// add a virtual property for full name
+StudentUserSchema.virtual('fullname').get(function() {
+	if(this.firstname && this.lastname)
+		return this.firstname + ' ' + this.lastname;
+});
+
 var User = mongoose.model('User', UserSchema);
 
 var Company = User.discriminator(
