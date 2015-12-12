@@ -101,6 +101,8 @@ section.padding(ng-controller="userEditCtrl" ng-init="user = #{userData}")
 						div.form-control
 							input.btn.btn-secondary(type='submit' value='Change password')
 
+if isAdmin
+	include admin-panel.jade
 
 include ../layout/footer.jade
 include ../layout/includes.jade

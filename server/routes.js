@@ -44,6 +44,7 @@ module.exports = function(app, express) {
 	app.use(function(req, res, next) {
 		res.locals.user = req.user ? req.user : '';
 		res.locals.authenticated = req.isAuthenticated();
+		res.locals.isAdmin = isAdmin(req.user);
 		next();
 	});
 

@@ -1,0 +1,34 @@
+section.padding(ng-init="user = #{userData}")
+	.wrap
+		.row.gutter-large.flex.flex-center
+			.col-sm-12
+				h1 Admin Controls
+	.wrap
+		div.row
+			div.col-sm-6
+				form(ng-controller="addStudentCtrl" novalidate name='addstudent' ng-submit='addstudent.$valid && add(newUser)')
+					div.form-group.row.gutter-base
+						h2.form-title Register new user
+						div.col-sm-6
+							div.form-control
+								label.label Firstname
+								div.form-element
+									input.input(type='text' name='firstname' ng-model='newUser.firstname')
+						div.col-sm-6
+							div.form-control
+								label.label Lastname
+								div.form-element
+									input.input(type='text' name='lastname' ng-model='newUser.lastname')
+						div.form-control.col-6
+							label.label E-mail
+							div.form-element
+								input.input(type='email' name='email' ng-model='newUser.email' required)
+						div.col-sm-6
+							div.form-control
+								label.label Password
+								div.form-element
+									input.input(type='password' name='password' ng-model='newUser.password')
+					div.form-group.row.gutter-base
+						div.form-control
+							input.btn.btn-primary(type='submit' value='Register')
+			div.col-sm-6
