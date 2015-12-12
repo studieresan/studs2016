@@ -37,7 +37,7 @@
 		};
 
 		$scope.setActive = function (post) {
-			$parent.activePost = post;
+			$scope.activePost = post;
 		};
 
 		$scope.unsetActive = function () {
