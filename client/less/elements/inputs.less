@@ -1,4 +1,4 @@
-// TODO: 
+// TODO:
 // some rewrites. and use what is the same for dropdown and input etc.
 // change "dropdown" to "select"
 // make it easy to do different themes, light, ect
@@ -142,6 +142,11 @@ form.ng-submitted {
 
 		&:focus {
 			.common-focus-style;
+		}
+
+		&[disabled] {
+			background: darken(@white-dark, 5%);
+			cursor: not-allowed;
 		}
 	}
 
@@ -367,7 +372,7 @@ button.dropdown {
 		position: absolute;
 		width: @dropdown-arrow-size;
 		height: @dropdown-arrow-size;
-		margin-top: -1*@dropdown-arrow-size/2; 
+		margin-top: -1*@dropdown-arrow-size/2;
 		top: 50%;
 		right: @spacing-minimum*1.5;
 		border-style: solid;

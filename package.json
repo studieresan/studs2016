@@ -41,5 +41,8 @@
   "bugs": {
     "url": "https://github.com/studieresan/studs2016/issues"
   },
-  "homepage": "https://github.com/studieresan/studs2016"
+  "homepage": "https://github.com/studieresan/studs2016",
+  "devDependencies": {
+    "grunt-notify": "^0.4.3"
+  }
 }
