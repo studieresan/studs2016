@@ -38,6 +38,11 @@ exports.add = function(req, res, next) {
 
 // delete a user
 exports.delete = function(req, res, next) {
+	Resume.remove({ student: req.body.id }, function(err) {
+		if (err) {
+			return next(err);
+		}
+	});
 	User.remove({ _id: req.body.id }, function(err) {
 		if (err) {
 			return next(err);
