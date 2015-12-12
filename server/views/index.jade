@@ -7,9 +7,9 @@ section#hero
 		.col-lg-3.col-sm-2
 		.col-lg-6.col-sm-8
 			h1.t-center
-				| We dig 
+				| We dig
 				span.text-green challenges
-				|  and 
+				|  and
 				span.text-green adventures
 		.col-lg-3.col-sm-2
 		.clearfix
@@ -81,7 +81,6 @@ section.red-light-bg.mega-padding
 				.col-4(ng-repeat='p in pics | orderBy:orderBy')
 					a(href="{{ p.link }}" target"_blank")
 						img(ng-src="{{ p.images.low_resolution.url }}" title="{{ p.caption.text }}")
-					p {{ p.caption.text }}
 
 section.mega-padding
 	.wrap
