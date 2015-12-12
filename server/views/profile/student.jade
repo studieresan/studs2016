@@ -23,12 +23,12 @@ section.padding(ng-controller="userEditCtrl" ng-init="user = #{userData}")
 							div.form-control
 								label.label Firstname
 								div.form-element
-									input.input(type='text' name='firstname' ng-model='user.firstname' required)
+									input.input(type='text' name='firstname' ng-model='user.firstname' disabled)
 						div.col-sm-6
 							div.form-control
 								label.label Lastname
 								div.form-element
-									input.input(type='text' name='lastname' ng-model='user.lastname' required)
+									input.input(type='text' name='lastname' ng-model='user.lastname' disabled)
 						div.form-control.col-12
 							label.label E-mail
 							div.form-element
@@ -67,7 +67,7 @@ section.padding(ng-controller="userEditCtrl" ng-init="user = #{userData}")
 								label.label New Password
 								div.form-element
 									input.input(type='password' name='old' ng-model='password.new' required)
-					
+
 					div.form-group.row.gutter-base
 						div.form-control
 							input.btn.btn-secondary(type='submit' value='Change password')
