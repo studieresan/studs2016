@@ -1,81 +1,61 @@
-div.row.gutter-large
-	div.wrap
-		///div.col-md-12
-			form(novalidate name='resumeform' ng-submit='resumeform.$valid && update(Resume)' id="resumeForm")
-				div.form-group
-					div.form-control
-						label.label Personal description
-						div.form-element
-							textarea.input(name='description' ng-model='Resume.description' required)
-					a.btn.btn-primary(ng-click="push('Work experience')") Add work exp.
-					div.form-group.row.gutter-small(ng-repeat="resumePost in Resume.posts track by $index | orderBy:'-startdate'")
-						a.btn.btn-primary(ng-click="removePost($index)") Delete {{ $index }}
-						div.col-6
-							div.form-control
-								label.label Title
-								div.form-element
-									input.input(type='text' name='title' ng-model='resumePost.title' required)
-						div.col-6
-							div.form-control.col-6
-								label.label Type
-								div.form-element
-									input.input(type='text' name='type' ng-model='resumePost.type' required)
-						div.col-12
-							div.form-control
-								label.label What did you do?
-								div.form-element
-									textarea.input(name='description' ng-model='resumePost.description' required)
-						div.col-6
-							div.form-control
-								label.label When did you start?
-								div.form-element
-									input.input(type='text' name='title' ng-model='resumePost.startdate' required)
-						div.col-6
-							div.form-control.col-6
-								label.label When did you end?
-								div.form-element
-									input.input(type='text' name='type' ng-model='resumePost.enddate' required)
+div#resume.wrap
+	div#resume-header.col-12.row.gutter-large
+		div.col-sm-4.image
+			img(src="/img/profile-pictures/{{ user.image }}-cv.jpg")
+		div.col-sm-8
+			div.contact-details
+				ul
+					li {{ user.email }}
+					li {{ user.phone }}
+					li {{ user.address }}
+					li {{ user.postcode }} {{ user.city }}
+			h1 {{ user.firstname }} {{ user.lastname }}
+			p(ng-click="setEditDescription(true)" ng-if="!data.editDescription") {{ Resume.description }}
+			div(ng-if="data.editDescription")
+				div.form-control
+					div.form-element
+						textarea.textarea(name="description" ng-model="Resume.description")
+				a.btn.btn-secondary.btn-small(ng-click="setEditDescription(false)") Done
 
-					div.form-control
-						input.btn.btn-primary.left(type='submit' value='Save')
-						a.btn.btn-secondary.right(href="#") Cancel
-		div.col-12
-			h1 Resume preview
-			h2 Description
-			p(ng-click="setEditDescription(true)" ng-if="!editDescription") {{ Resume.description }}
-			div(ng-if="editDescription")
-				p edit!
-				a.btn.btn-secondary(ng-click="setEditDescription(false)") Close
-			div(ng-repeat="resumePost in Resume.posts" ng-click="setActive(resumePost)")
-				div.row.gutter-base(ng-if="activePost == resumePost")
-					div.col-6
-							div.form-control
-								label.label Title
-								div.form-element
-									input.input(type='text' name='title' ng-model='resumePost.title' required)
-						div.col-6
-							div.form-control.col-6
-								label.label Type
-								div.form-element
-									input.input(type='text' name='type' ng-model='resumePost.type' required)
-						div.col-12
-							div.form-control
-								label.label What did you do?
-								div.form-element
-									textarea.input(name='description' ng-model='resumePost.description' required)
-						div.col-6
-							div.form-control
-								label.label When did you start?
-								div.form-element
-									input.input(type='text' name='title' ng-model='resumePost.startdate' required)
-						div.col-6
-							div.form-control.col-6
-								label.label When did you end?
-								div.form-element
-									input.input(type='text' name='type' ng-model='resumePost.enddate' required)
+	div.row.gutter-large.resume-group(ng-repeat=" (key, posts) in Resume.posts | groupBy: 'type'")
+		h1.col-12 {{ key }}
+			a.btn.btn-secondary.btn-small(ng-click="push(key)") Add
+		div.col-12(ng-repeat="resumePost in posts")
+			div.row.gutter-small(ng-if="data.activePost == resumePost")
+				div.col-12
 						div.form-control
-							a.btn.btn-primary.left(ng-click="unsetActive()") Save
-							a.btn.btn-secondary.right(href="#") Cancel
-				div.resume-post(ng-if="activePost != resumePost")
-					h3 {{ resumePost.title }} {{ resumePost.startdate }} - {{ resumePost.enddate }}
+							label.label Title
+							div.form-element
+								input.input(type='text' name='title' ng-model='resumePost.title' required)
+					div.col-12
+						div.form-control
+							label.label What did you do?
+							div.form-element
+								textarea.input(name='description' ng-model='resumePost.description' required)
+					div.col-6
+						div.form-control
+							label.label When did you start?
+							div.form-element
+								input.input(type='text' name='title' ng-model='resumePost.startdate' required)
+					div.col-6
+						div.form-control.col-6
+							label.label When did you end?
+							div.form-element
+								input.input(type='text' name='type' ng-model='resumePost.enddate' required)
+					div.form-control
+						a.btn.btn-secondary.btn-small.left(ng-click="unsetActive()") Done
+						a.btn.btn-danger.btn-small.left(ng-click="removePost(resumePost)") Remove
+			div.resume-post.col-12.row(ng-if="data.activePost != resumePost" ng-click="setActive(resumePost)" ng-class="resumePost.newItem")
+				div.col-sm-4
+					h3 {{ resumePost.startdate | date: 'MMM, yyyy' }} - {{ resumePost.enddate | date: 'MMM, yyyy' }}
+				div.col-sm-8
+					h3 {{ resumePost.title }}
 					p {{ resumePost.description }}
+	div.row.gutter-large
+		div.form-control.col-12
+			div.form-element
+				input.input#resume-add-type-input(type='text' name='type' ng-model='newTypeValue' placeholder="New type..." required)
+				a.btn.btn-secondary(ng-click="newType(newTypeValue)") Add
+
+		div.col-12#resume-save
+			a.btn.btn-primary(ng-click="update(Resume)") Save

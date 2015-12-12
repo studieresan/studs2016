@@ -93,7 +93,8 @@ module.exports = function(app, express) {
 	 // Resumes
 	app.get('/resumes*', function(req, res) {
 		res.render('resumes/index', {
-			ngApp: "resumes"
+			ngApp: "resumes",
+            userData: JSON.stringify(res.locals.user)
 		});
 	});
 

@@ -1,8 +1,58 @@
-.resume-post {
-    transition: all 0.25s ease;
+#resume {
 
-    &:hover {
-        background: @white-darker;
-        cursor: pointer;
-    }
+	#resume-save {
+		text-align: center;
+		border-top: solid 1px @gray-light;
+		margin-top: @spacing-large;
+	}
+
+	#resume-add-type-input {
+		width: auto;
+	}
+
+	#resume-header {
+		.flex;
+		.flex-center;
+
+		h1 {
+			clear: both;
+		}
+	}
+	.contact-details {
+		float: right;
+		color: @gray;
+		margin-bottom: @spacing-base;
+	}
+
+	.resume-group {
+		h1 {
+			padding-bottom: 0;
+			margin-bottom: 0;
+			a {
+				margin-left: @spacing-minimum;
+			}
+		}
+	}
+
+	@-webkit-keyframes fade-out {
+		0% { color: @blue }
+		100% { color: inherit }
+	}
+	.resume-post {
+		&.new {
+			-webkit-animation: fade-out 1s ease-in;
+			-webkit-animation-fill-mode: forwards;
+			-webkit-animation-iteration-count: 1;
+			color: @blue;
+		}
+	}
+}
+
+.resume-post {
+	.transition(all 0.5s ease);
+
+	&:hover {
+		.opacity(0.8);
+		cursor: pointer;
+	}
 }

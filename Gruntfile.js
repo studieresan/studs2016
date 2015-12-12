@@ -22,6 +22,7 @@ grunt.initConfig({
             './bower_components/angular-chart.js/dist/angular-chart.min.js',
             './bower_components/jqcloud2/dist/jqcloud.min.js',
             './bower_components/angular-jqcloud/angular-jqcloud.js',
+            './bower_components/angular-filter/dist/angular-filter.min.js',
             ],
             dest: './client/public/js/libs.min.js',
         },
