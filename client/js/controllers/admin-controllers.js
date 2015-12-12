@@ -2,6 +2,14 @@
 
 	var adminControllers = angular.module('adminControllers', []);
 
+	function generatePassword() {
+		var length = 10, charset = "abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", retVal = "";
+	    for (var i = 0, n = charset.length; i < length; ++i) {
+	        retVal += charset.charAt(Math.floor(Math.random() * n));
+	    }
+	    return retVal;
+	}
+
 	adminControllers.controller("studentCtrl", ['$scope', '$http', 'Flash', function($scope, $http, Flash) {
 
 		$scope.add = function(user) {
@@ -39,11 +47,47 @@
 		};
 
 		$scope.suggestPassword = function() {
-			var length = 10, charset = "abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", retVal = "";
-		    for (var i = 0, n = charset.length; i < length; ++i) {
-		        retVal += charset.charAt(Math.floor(Math.random() * n));
-		    }
-		    return retVal;
+			return generatePassword();
+		};
+		$scope.suggestedPassword = $scope.suggestPassword();
+	}]);
+
+	adminControllers.controller("companyCtrl", ['$scope', '$http', 'Flash', function($scope, $http, Flash) {
+
+		$scope.add = function(user) {
+			if(!user.password)
+				user.password = $scope.suggestedPassword;
+			$http.post('/api/companies', user).then(function successCallback(response) {
+				Flash.create('info', "Registered " + $scope.newCompany.name + "!");
+				$scope.newCompany.email = "";
+				$scope.newCompany.name = "";
+				$scope.newCompany.password = $scope.suggestPassword();
+			}, function errorCallback(response) {
+				Flash.create('danger', "Something went bad. Try again!");
+			});
+			$scope.getCompanies();
+		};
+
+		$scope.getCompanies = function() {
+			$http.get('/api/companies').then(function successCallback(response) {
+				$scope.allcompanies = response.data;
+			}, function errorCallback(response) {
+				
+			});
+		};
+		$scope.getCompanies();
+
+		$scope.remove = function(company) {
+			$http.delete('/api/users/' + company._id).then(function successCallback(response) {
+				Flash.create('info', "Removed " + company.name + "!");
+				$scope.getCompanies();
+			}, function errorCallback(response) {
+				Flash.create('danger', "Something went bad. Try again!");
+			});
+		};
+
+		$scope.suggestPassword = function() {
+			return generatePassword();
 		};
 		$scope.suggestedPassword = $scope.suggestPassword();
 	}]);

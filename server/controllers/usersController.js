@@ -88,6 +88,15 @@ exports.addCompany = function(req, res, next) {
 	});
 };
 
+/*
+*	Find companies.
+*/
+exports.findCompanies = function(req, res, next) {
+	Company.find({}, ' -__v', function(err, results) {
+		return res.send(results);
+	});
+};
+
 // change the users password
 exports.changePassword = function(req, res, next) {
 	var newPw = req.body.new;
