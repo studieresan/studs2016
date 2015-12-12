@@ -41,6 +41,7 @@ UserSchema.methods.beforeSavePassword = function() {
 
 // company is a special kind of user.
 var CompanyUserSchema = new mongoose.Schema({
+	name: { type: String, required: true },
 	contact: { type: String }
 }, options);
 

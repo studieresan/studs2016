@@ -34,7 +34,7 @@ section.padding.white-pure-bg
 				p.t-center As previous years, the members of studs are from several disciplines in computer science.
 			.col-sm-2
 		.row.gutter-large(ng-controller="listStudents")
-			.col-sm-4(ng-repeat='student in studentList')
+			.col-sm-3(ng-repeat='student in studentList')
 				img(src="/img/profile-pictures/{{ student.image }}-cropped.jpg")
 			| {{ student.name }}
 

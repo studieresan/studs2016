@@ -41,15 +41,6 @@ function ensureAuthenticated(req, res, next) {
 
 module.exports = function(app, express) {
 
-	app.get('/posts', function(req, res) {
-		Post.find(function(err, posts) {
-			if (err)
-				res.send(err);
-
-			res.json(posts);
-		});
-	});
-
 	app.use(function(req, res, next) {
 		res.locals.user = req.user ? req.user : '';
 		res.locals.authenticated = req.isAuthenticated();
@@ -58,7 +49,10 @@ module.exports = function(app, express) {
 
 	// Get
 	app.get('/', function(req, res) {
-		res.render('index', { title: "Studs!" });
+		res.render('index', {
+			ngApp: "index",
+			title: "Studs!" 
+		});
 	});
 
 	// Need to add wildcard in order to use HTML5

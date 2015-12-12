@@ -10,6 +10,8 @@ var trip = angular.module('trip', ['tripControllers', 'uiGmapgoogle-maps']).conf
 	});
 }]);
 
+var index = angular.module('index', ['indexControllers']);
+
 var about = angular.module('about', ['aboutControllers']);
 
 var companyProfile = angular.module('companyProfile', ['ngResource', 'companyProfileControllers', 'flash', 'ngAnimate', 'chart.js', 'angular-jqcloud']);
