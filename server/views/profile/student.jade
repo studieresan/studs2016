@@ -18,7 +18,7 @@ section.padding(ng-controller="userEditCtrl" ng-init="user = #{userData}")
 			div.col-sm-6
 				form(novalidate name='useredit' ng-submit='useredit.$valid && edit(user)')
 					div.form-group.row.gutter-base
-						h1.form-title Title
+						h1.form-title Personal data
 						div.col-sm-6
 							div.form-control
 								label.label Firstname
@@ -52,6 +52,30 @@ section.padding(ng-controller="userEditCtrl" ng-init="user = #{userData}")
 					div.form-group.row.gutter-base
 						div.form-control
 							input.btn.btn-primary(type='submit' value='Save')
+
+			div.col-sm-6
+				form(novalidate name='updatesocial' ng-submit='updatesocial.$valid && updateSocial(user)')
+					div.form-group.row.gutter-base
+						h1.form-title Update social
+						div.col-12
+							div.form-control
+								label.label LinkedIn
+								div.form-element
+									input.input(type='text' name='linkedin' ng-model='user.linkedin' required)
+						div.col-12
+							div.form-control
+								label.label Facebook
+								div.form-element
+									input.input(type='text' name='facebook' ng-model='user.facebook' required)
+						div.col-12
+							div.form-control
+								label.label Instagram
+								div.form-element
+									input.input(type='text' name='instagram' ng-model='user.instagram' required)
+					
+					div.form-group.row.gutter-base
+						div.form-control
+							input.btn.btn-secondary(type='submit' value='Update')
 
 			div.col-sm-6
 				form(novalidate name='changepassword' ng-submit='changepassword.$valid && changePassword(password)')

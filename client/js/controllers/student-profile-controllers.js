@@ -18,6 +18,15 @@
 				Flash.create('danger', "Something went bad. Try again!");
 			});
 		};
+
+		$scope.updateSocial = function(social) {
+			console.log(social);
+			$http.put('/api/students', social).then(function successCallback(response) {
+				Flash.create('info', "Social data updated!");
+			}, function errorCallback(response) {
+				Flash.create('danger', "Something went bad. Try again!");
+			});
+		};
 	}]);
 	
 })();
