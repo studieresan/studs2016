@@ -4,9 +4,9 @@ section.padding(ng-init="user = #{userData}")
 			.col-sm-12
 				h1 Superpowers
 	.wrap
-		div.row.gutter-large
+		div.row.gutter-large(ng-controller="studentCtrl")
 			div.col-sm-6
-				form(ng-controller="studentCtrl" novalidate name='addstudent' ng-submit='addstudent.$valid && add(newUser)')
+				form(novalidate name='addstudent' ng-submit='addstudent.$valid && add(newUser)')
 					div.form-group.row.gutter-base
 						h2.form-title Register new student
 						div.form-control.col-6
@@ -22,7 +22,7 @@ section.padding(ng-init="user = #{userData}")
 						div.form-control
 							input.btn.btn-primary(type='submit' value='Register')
 			div.col-sm-6
-				form(ng-controller="studentCtrl" novalidate name='removestudent' ng-submit='removestudent.$valid && removeStudent(selectedStudent)')
+				form(novalidate name='removestudent' ng-submit='removestudent.$valid && removeStudent(selectedStudent)')
 					div.form-group.row.gutter-base
 						h2.form-title Remove student
 						div.form-control.col-12

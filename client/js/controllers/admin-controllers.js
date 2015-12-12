@@ -5,11 +5,16 @@
 	adminControllers.controller("studentCtrl", ['$scope', '$http', 'Flash', function($scope, $http, Flash) {
 
 		$scope.add = function(user) {
+			if(!user.password)
+				user.password = $scope.suggestedPassword;
 			$http.post('/api/students', user).then(function successCallback(response) {
-				Flash.create('info', "Registered!");
+				Flash.create('info', "Registered " + $scope.newUser.email + "!");
+				$scope.newUser.email = "";
+				$scope.newUser.password = $scope.suggestPassword();
 			}, function errorCallback(response) {
 				Flash.create('danger', "Something went bad. Try again!");
 			});
+			$scope.getStudents();
 		};
 
 		$scope.getStudents = function() {
@@ -24,9 +29,10 @@
 		$scope.removeStudent = function(student) {
 			$http.delete('/api/users/' + student._id).then(function successCallback(response) {
 				if(student.firstname)
-					Flash.create('info', "removed " + student.firstname + "!");
+					Flash.create('info', "Removed " + student.firstname + "!");
 				else
-					Flash.create('info', "removed " + student.email + "!");
+					Flash.create('info', "Removed " + student.email + "!");
+				$scope.getStudents();
 			}, function errorCallback(response) {
 				Flash.create('danger', "Something went bad. Try again!");
 			});
