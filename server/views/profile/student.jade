@@ -33,6 +33,11 @@ section.padding(ng-controller="userEditCtrl" ng-init="user = #{userData}")
 							label.label E-mail
 							div.form-element
 								input.input(type='email' name='email' ng-model='user.email' required)
+						div.col-12
+							div.form-control
+								label.label Phone
+								div.form-element
+									input.input(type='text' name='phone' ng-model='user.phone' required)
 					div.form-group.row.gutter-base
 						h1.form-title Residential information
 						div.form-control.col-12
