@@ -23,12 +23,12 @@ section.padding(ng-controller="userEditCtrl" ng-init="user = #{userData}")
 							div.form-control
 								label.label Firstname
 								div.form-element
-									input.input(type='text' name='firstname' ng-model='user.firstname' disabled)
+									input.input(type='text' name='firstname' ng-model='user.firstname' required)
 						div.col-sm-6
 							div.form-control
 								label.label Lastname
 								div.form-element
-									input.input(type='text' name='lastname' ng-model='user.lastname' disabled)
+									input.input(type='text' name='lastname' ng-model='user.lastname' required)
 						div.form-control.col-12
 							label.label E-mail
 							div.form-element
@@ -37,7 +37,7 @@ section.padding(ng-controller="userEditCtrl" ng-init="user = #{userData}")
 							div.form-control
 								label.label Phone
 								div.form-element
-									input.input(type='text' name='phone' ng-model='user.phone' required)
+									input.input(type='text' name='phone' ng-model='user.phone')
 					div.form-group.row.gutter-base
 						h1.form-title Residential information
 						div.form-control.col-12
@@ -66,17 +66,17 @@ section.padding(ng-controller="userEditCtrl" ng-init="user = #{userData}")
 							div.form-control
 								label.label LinkedIn
 								div.form-element
-									input.input(type='text' name='linkedin' ng-model='user.linkedin' required)
+									input.input(type='text' name='linkedin' ng-model='user.linkedin')
 						div.col-12
 							div.form-control
 								label.label Facebook
 								div.form-element
-									input.input(type='text' name='facebook' ng-model='user.facebook' required)
+									input.input(type='text' name='facebook' ng-model='user.facebook')
 						div.col-12
 							div.form-control
 								label.label Instagram
 								div.form-element
-									input.input(type='text' name='instagram' ng-model='user.instagram' required)
+									input.input(type='text' name='instagram' ng-model='user.instagram')
 					
 					div.form-group.row.gutter-base
 						div.form-control

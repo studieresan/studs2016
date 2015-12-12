@@ -38,12 +38,12 @@ exports.add = function(req, res, next) {
 
 // delete a user
 exports.delete = function(req, res, next) {
-	Resume.remove({ student: req.body.id }, function(err) {
+	Resume.remove({ student: req.params.id }, function(err) {
 		if (err) {
 			return next(err);
 		}
 	});
-	User.remove({ _id: req.body.id }, function(err) {
+	User.remove({ _id: req.params.id }, function(err) {
 		if (err) {
 			return next(err);
 		}
@@ -118,7 +118,7 @@ exports.changePassword = function(req, res, next) {
 */
 exports.findStudents = function(req, res, next) {
 	if(req.isAuthenticated()) {
-		Student.find({}, '-_id -__v', function(err, results) {
+		Student.find({}, ' -__v', function(err, results) {
 			return res.send(results);
 		});
 	} else {

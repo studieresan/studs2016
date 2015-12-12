@@ -2,23 +2,13 @@ section.padding(ng-init="user = #{userData}")
 	.wrap
 		.row.gutter-large.flex.flex-center
 			.col-sm-12
-				h1 Admin Controls
+				h1 Superpowers
 	.wrap
-		div.row
+		div.row.gutter-large(ng-controller="studentCtrl")
 			div.col-sm-6
-				form(ng-controller="addStudentCtrl" novalidate name='addstudent' ng-submit='addstudent.$valid && add(newUser)')
+				form(novalidate name='addstudent' ng-submit='addstudent.$valid && add(newUser)')
 					div.form-group.row.gutter-base
-						h2.form-title Register new user
-						div.col-sm-6
-							div.form-control
-								label.label Firstname
-								div.form-element
-									input.input(type='text' name='firstname' ng-model='newUser.firstname')
-						div.col-sm-6
-							div.form-control
-								label.label Lastname
-								div.form-element
-									input.input(type='text' name='lastname' ng-model='newUser.lastname')
+						h2.form-title Register new student
 						div.form-control.col-6
 							label.label E-mail
 							div.form-element
@@ -27,8 +17,18 @@ section.padding(ng-init="user = #{userData}")
 							div.form-control
 								label.label Password
 								div.form-element
-									input.input(type='password' name='password' ng-model='newUser.password')
+									input.input(type='text' name='password' ng-model='newUser.password' ng-value="suggestedPassword")
 					div.form-group.row.gutter-base
 						div.form-control
 							input.btn.btn-primary(type='submit' value='Register')
 			div.col-sm-6
+				form(novalidate name='removestudent' ng-submit='removestudent.$valid && removeStudent(selectedStudent)')
+					div.form-group.row.gutter-base
+						h2.form-title Remove student
+						div.form-control.col-12
+							label.label Student
+							div.form-element
+								select(name="selectStudent" id="selectStudent" ng-options="student.firstname || student.email for student in allstudents" ng-model="selectedStudent")
+					div.form-group.row.gutter-base
+						div.form-control
+							input.btn.btn-primary(type='submit' value='Remove')
