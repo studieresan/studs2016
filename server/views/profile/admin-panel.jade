@@ -28,7 +28,7 @@ section.padding(ng-init="user = #{userData}")
 						div.form-control.col-12
 							label.label Student
 							div.form-element
-								select(name="selectStudent" id="selectStudent" ng-options="student.firstname || student.email for student in allstudents" ng-model="selectedStudent")
+								select(name="selectStudent" id="selectStudent" ng-options="student.fullname || student.email for student in allstudents" ng-model="selectedStudent")
 					div.form-group.row.gutter-base
 						div.form-control
 							input.btn.btn-primary(type='submit' value='Remove')
@@ -62,7 +62,7 @@ section.padding(ng-init="user = #{userData}")
 						div.form-control.col-12
 							label.label Company
 							div.form-element
-								select(name="selectCompany" id="selectCompany" ng-options="company.firstname || company.email for company in allcompanies" ng-model="selectedCompany")
+								select(name="selectCompany" id="selectCompany" ng-options="company.name for company in allcompanies" ng-model="selectedCompany")
 					div.form-group.row.gutter-base
 						div.form-control
 							input.btn.btn-primary(type='submit' value='Remove')
