@@ -26,13 +26,12 @@ exports.findMine = function(req, res) {
 
 // update the authenticated student's resume
 exports.update = function(req, res) {
-	var resume;
 	Resume.findOne({ student: req.user._id }, function(err, result) {
-		resume = result;
-	});
-	resume.description = req.body.description;
-	resume.posts = req.body.posts;
-	resume.save(function(err) {
-		return res.send(resume);
+		var resume = result;
+		resume.description = req.body.description;
+		resume.posts = req.body.posts;
+		resume.save(function(err) {
+			return res.send(resume);
+		});
 	});
 };

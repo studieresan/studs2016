@@ -1,12 +1,12 @@
 div.row.gutter-large
 	div.col-md-6
-		form(novalidate name='resumeForm' ng-submit='loginform.$valid' id="resumeForm")
+		form(novalidate name='resumeform' ng-submit='resumeform.$valid && update(Resume)' id="resumeForm")
 			div.form-group
 				div.form-control
 					label.label Personal description
 					div.form-element
 						textarea.input(name='description' ng-model='Resume.description' required)
-				div.form-group.row.gutter-small(ng-repeat="resumePost in Resume.posts")
+				div.form-group.row.gutter-small(ng-repeat="resumePost in Resume.posts | orderBy:'-startdate'")
 					div.col-6
 						div.form-control
 							label.label Title
