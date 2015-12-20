@@ -5,10 +5,10 @@
 	tripControllers.controller("mapCtrl", ['$scope', '$http', "uiGmapGoogleMapApi", function($scope, $http, uiGmapGoogleMapApi) {
 		$scope.map = {
 			center: {
-				latitude: 59.348379,
-				longitude: 18.072016
+				latitude: 48.348379,
+				longitude: -30.072016
 			},
-			zoom: 4,
+			zoom: 3,
 			options: {
 				disableDefaultUI: true
 			},
@@ -54,10 +54,40 @@
 			}
 		},
 		{
+			title: "Boston",
+			description: "Fraternities prepare.",
+			mapData: {
+				idKey: 3,
+				coords: {
+					latitude: 42.358056,
+					longitude: -71.063611
+				},
+				options: {
+					icon: "/img/map-pin.svg"
+				},
+				click: $scope.onMarkerClick
+			}
+		},
+		{
+			title: "Seattle",
+			description: "Here to play Halo.",
+			mapData: {
+				idKey: 4,
+				coords: {
+					latitude: 47.609722,
+					longitude: -122.333056
+				},
+				options: {
+					icon: "/img/map-pin.svg"
+				},
+				click: $scope.onMarkerClick
+			}
+		},
+		{
 			title: "San Fransisco",
 			description: "Here to learn. Of course.",
 			mapData: {
-				idKey: 3,
+				idKey: 5,
 				coords: {
 					latitude: 37.793549,
 					longitude: -122.483670
