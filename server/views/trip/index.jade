@@ -9,21 +9,26 @@ section
 				ui-gmap-polyline(ng-repeat="p in polylines",path="p.path",stroke="p.stroke",visible="p.visible",geodesic="p.geodesic",fit="false",editable="p.editable",draggable="p.draggable")
 
 
-section.padding.black-bg
+//- section.padding.black-bg
 	.wrap
 		.row.gutter-large.flex.flex-center
 			.col-6
 				h1 The journey starts in Stockholm!
 				| Lorem ipsum Dolor sint magna laborum dolor ut sed nostrud sit dolore nisi irure pariatur sint dolore eiusmod magna ex commodo mollit incididunt commodo id sunt elit aliqua nulla ut labore commodo Ut id est Ut ea sunt consequat reprehenderit in in anim eiusmod voluptate tempor cillum nisi labore laborum do ea in pariatur id anim deserunt ea irure aute dolor qui magna sint fugiat ea mollit irure dolor officia sed sed Ut nisi dolor anim nisi aliquip aliqua dolor amet aliquip pariatur cillum qui velit non non in nulla amet voluptate commodo do aute ut Duis deserunt in nisi consequat nulla reprehenderit pariatur ea est occaecat aute.
 			.col-6
-				img(src="https://placeimg.com/640/480/arch")
+				img(src="https://placeimg.com/640/480/arch") 
+
+
 section.padding.green-bg
 	.wrap
 		.row.gutter-large.flex.flex-center
 			.col-sm-2
 			.col-8
 				h1.t-center Flight-mode on!
-				| Lorem ipsum Dolor sint magna laborum dolor ut sed nostrud sit dolore nisi irure pariatur sint dolore eiusmod magna ex commodo mollit incididunt commodo id sunt elit aliqua nulla ut labore commodo Ut id est Ut ea sunt consequat reprehenderit in in anim eiusmod voluptate tempor cillum nisi labore laborum do ea in pariatur id anim deserunt ea irure aute dolor qui magna sint fugiat ea mollit irure dolor officia sed sed Ut nisi dolor anim nisi aliquip aliqua dolor amet aliquip pariatur cillum qui velit non non in nulla amet voluptate commodo do aute ut Duis deserunt in nisi consequat nulla reprehenderit pariatur ea est occaecat aute.
+				| It takes about eight to nine hours to fly from Stockholm to New York. We plan to depart from Stockholm as soon as the exams has ended, which should be around the 13th of June. The trip will be a bit less than three weeks so we will spend about one week in each city except for New York and Boston that will share their week. The goal with the trip is to visit at least one university, one company and to experience other cultures abroad. The destinations have been chosen by the members of the project from a list created by the travel group. The trip will start in New York and from there we will go by train to Boston. From Boston we will go by flight to Seattle. The trip will come to an end in San Francisco. 
+				br
+				br
+				| As a theme of this years Studs is to go green we have decided to make a carbon offset by planting trees to compensate the green house gases we emit during our flight.
 			.col-sm-2
 section.padding.white-bg
 	.wrap
@@ -32,39 +37,49 @@ section.padding.white-bg
 				img(ng-src="/img/city-pictures/new-york-1.jpg")
 			.col-6
 				h1 New York - The first stop
-				| Lorem ipsum Dolor sint magna laborum dolor ut sed nostrud sit dolore nisi irure pariatur sint dolore eiusmod magna ex commodo mollit incididunt commodo id sunt elit aliqua nulla ut labore commodo Ut id est Ut ea sunt consequat reprehenderit in in anim eiusmod voluptate tempor cillum nisi labore laborum do ea in pariatur.
-				h2 Companies to visit
+				| There are many things to see in New York. The Empire State Building, the Statue of Liberty, Wall Street and Times Square just to name a few. There are many opportunities to experience the rich culture or to watch a game of the social sport of Baseball. The city is the most populated in the United States and it receives around 50 million tourists each year. We are excited to see the city that never sleeps.
+				h2 Burgers to try in New York
 				ul
-					li GoPro
-					li Google
-					li Facebook
+					li Brindle Room
+					li Minetta Tavern
+					li The Spotted Pig
 section.padding
 	.wrap
 		.row.gutter-large.flex.flex-center
 			.col-6
 				h1 What is up, Boston?
-				| Lorem ipsum Dolor sint magna laborum dolor ut sed nostrud sit dolore nisi irure pariatur sint dolore eiusmod magna ex commodo mollit incididunt commodo id sunt elit aliqua nulla ut labore commodo Ut id est Ut ea sunt consequat reprehenderit in in anim eiusmod voluptate tempor cillum nisi labore laborum do ea in pariatur id anim deserunt ea irure aute dolor qui magna sint fugiat ea mollit irure dolor officia sed sed Ut nisi dolor anim nisi aliquip aliqua dolor amet aliquip pariatur cillum qui velit non non in nulla amet voluptate commodo do aute ut Duis deserunt in nisi consequat nulla reprehenderit pariatur ea est occaecat aute.
+				| Boston is located in the north-eastern part of USA, it takes about three to four hours to go by train from New York.  It is one of the oldest cities in the country and has 650 000 inhabitants. The city is most known for it's universities, Harvard and MiT are often recognized as the best universities in the world. The Boston Tea Party museum is an activity we will not miss and if we have the time there is the New England aquarium and Faneuill Hall marketplace to visit.
+				h2 Universities to visit in Boston
+				ul
+					li Harvard
+					li Massachussets Institute of Technology
+					li Cambridge
 			.col-6
-				img(src="https://placeimg.com/640/480/arch")
+				img(ng-src="img/city-pictures/boston-1.jpg")
 section.padding.white-bg
 	.wrap
 		.row.gutter-large.flex.flex-center
 			.col-6
-				img(src="https://placeimg.com/640/480/arch")
+				img(ng-src="img/city-pictures/seattle-1.jpg")
 			.col-6
-				h1 Seattle, what you got?
-				| Lorem ipsum Dolor sint magna laborum dolor ut sed nostrud sit dolore nisi irure pariatur sint dolore eiusmod magna ex commodo mollit incididunt commodo id sunt elit aliqua nulla ut labore commodo Ut id est Ut ea sunt consequat reprehenderit in in anim eiusmod voluptate tempor cillum nisi labore laborum do ea in pariatur.
-				h2 Companies to visit
+				h1 Seattle - The city of flowers
+				| The fastest growing city in the United States currently has around 4 million citizens. Seattle is surrounded by water and has a vast amount of parks. More than half of the population aged 25 or up has an candidate degree or higher, the rest of the United States measures at less than a quarter. Seattle is the perfect city for Computer Science students as it houses well-known companies like Amazon, Microsoft, Bungie, Valve, Arenanet and T-Mobile. We also hope to see the Seafair that is active in the summer time. 
+				h2 Companies located in Seattle
 				ul
-					li GoPro
-					li Google
-					li Facebook
+					li Microsoft
+					li Bungie
+					li Valve
 section.padding
 	.wrap
 		.row.gutter-large.flex.flex-center
 			.col-6
-				h1 San Fransisco, are you ready?
-				| Lorem ipsum Dolor sint magna laborum dolor ut sed nostrud sit dolore nisi irure pariatur sint dolore eiusmod magna ex commodo mollit incididunt commodo id sunt elit aliqua nulla ut labore commodo Ut id est Ut ea sunt consequat reprehenderit in in anim eiusmod voluptate tempor cillum nisi labore laborum do ea in pariatur id anim deserunt ea irure aute dolor qui magna sint fugiat ea mollit irure dolor officia sed sed Ut nisi dolor anim nisi aliquip aliqua dolor amet aliquip pariatur cillum qui velit non non in nulla amet voluptate commodo do aute ut Duis deserunt in nisi consequat nulla reprehenderit pariatur ea est occaecat aute.
+				h1 San Francisco, are you ready?
+				| Close to San Francisco is Silicon Valley, known as the world center for computer technology. 'Frisco' as the locals call it also have some recongizable universities like Stanford and Berkley. The number of companies to visit here is close to endless; Apple, Google, Facebook, eBay and Netflix where either founded or have their headquarters here. Sights like the Golden Gate bridge and Alcatraz should not be missed.
+				h2 Films set in San Francisco
+				ul
+					li Vertigo
+					li Escape from Alcatraz
+					li Big Trouble in Little China
 			.col-6
 				img(ng-src="/img/city-pictures/san-francisco-1.jpg")
 
