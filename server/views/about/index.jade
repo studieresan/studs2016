@@ -8,12 +8,12 @@ section.mega-padding.black-bg
 		.row.gutter-large
 			.col-sm-2
 			.col-sm-8
-				h3.t-center Studs is a abbrevation. We are very kind!
+				h3.t-center Studs is a abbrevation for 'Studieresan' which in English would be 'Study trip' or 'Study tour'.
 			.col-sm-2
 
 section.padding
 	.wrap
-		.row.gutter-large
+		.row.gutter-large(ng-controller="listStudents")
 			.col-sm-2
 			.col-8
 				h1.t-center Studs = Studieresan
@@ -21,7 +21,21 @@ section.padding
 
 				p Ut id adipisicing nulla aliqua amet pariatur enim dolor aliquip irure cillum exercitation sed nostrud culpa tempor cillum in sed velit in aute officia magna minim nisi incididunt nulla quis eiusmod in mollit ea non consequat officia mollit voluptate Excepteur Excepteur dolor nulla officia sint eiusmod labore consequat ad adipisicing non est Duis laboris dolor Duis et Excepteur magna tempor Ut veniam aliqua eiusmod cillum labore laborum elit est pariatur pariatur fugiat deserunt non Ut nulla reprehenderit.
 
-				p Lorem ipsum In exercitation in fugiat Ut enim quis nisi ea sit id dolor eu irure eiusmod nulla velit id magna cillum ut tempor mollit exercitation mollit fugiat quis elit aliquip.
+				p 
+					| If you want to contact us you can send an email to our 
+					a(href="mailto:studs-sales@d.kth.se") sales manager Brian Ye 
+					| or to our 
+					a(href="mailto:studs-ansvarig@d.kth.se") project leaders Axel Samuelsson and Katja Röös.
+				.col-sm-4
+					a(href="mailto:studs-sales@d.kth.se")
+						img(ng-src="/img/profile-pictures/brian-ye-cropped.jpg")
+				.col-sm-4
+					a(href="mailto:studs-ansvarig@d.kth.se")
+						img(ng-src="/img/profile-pictures/axel-samuelsson-cropped.jpg")
+				.col-sm-4
+					a(href="mailto:studs-ansvarig@d.kth.se")
+						img(ng-src="/img/profile-pictures/katja-roos-cropped.jpg")
+
 
 			.col-sm-2
 
@@ -44,25 +58,27 @@ section.padding
 	.wrap
 		.row.gutter-large
 			.col-6
-				img(src="https://placeimg.com/640/480/any")
+				img(src="/img/studs-for-companies.jpg")
 			.col-6
 				h1 Studs for companies
-				p Lorem ipsum Dolor sint magna laborum dolor ut sed nostrud sit dolore nisi irure pariatur sint dolore eiusmod magna ex commodo mollit incididunt commodo id sunt elit aliqua nulla ut labore commodo Ut id est Ut ea sunt consequat reprehenderit in in anim eiusmod voluptate tempor cillum nisi labore laborum do ea in pariatur.
-				p Lorem ipsum Dolor sint magna laborum dolor ut sed nostrud sit dolore nisi irure pariatur sint dolore eiusmod magna ex commodo mollit incididunt commodo id sunt elit aliqua nulla ut labore commodo Ut id est Ut ea sunt consequat reprehenderit in in anim eiusmod voluptate tempor cillum nisi labore laborum do ea in pariatur.
+				p Through Stude you get the opportunity to meet 28 students in your own personal and unique setting. You get the ability to promote yourselves so we better understand how it is to work at your company and why we would want to work at your company. You will also get all our project members resumés and contact information to be able to keep in touch after the project has ended.
+				h2 What happens at an event with Studs?
+				p Whatever YOU want! We have an group just for events that works with you in order to create an amazing experience for your staff and for us students. An example of activities could be to visit you office and have dinner, or have a hackathon, or penthathlon. Maybe you want to mingle in our faculty locale? It is up to you!
 
 section.padding.green-bg
 	.wrap
 		.row.gutter-large
 			.col-6
 				h1 Studs for students
-				| Lorem ipsum Dolor sint magna laborum dolor ut sed nostrud sit dolore nisi irure pariatur sint dolore eiusmod magna ex commodo mollit incididunt commodo id sunt elit aliqua nulla ut labore commodo Ut id est Ut ea sunt consequat reprehenderit in in anim eiusmod voluptate tempor cillum nisi labore laborum do ea in pariatur.
-				h2 Companies to visit
-				ul
-					li We are commited
-					li We are hungry for knowledge
-					li We are ready
+				| Studs is a project within the Computer Science faculty at KTH, where a group of students get the chance to meet relevant companies and go on a study tour. The project is a course called AI2151 and is worth 15hp. The course officially runs during the spring, but requires attendance the whole year. A good goal for you as a student is to establish a network with the companies involved. Also, you want to get the experience of how it is to carry out a larger project.
+				br
+				br
+				| You have to be at the end of your education and have achieved a minimum of 120hp after the autumn. You must also have the possibility to take a 15hp course during the spring. Basic Swedish communication skills are required since most of the companies are located in Stockholm. An academic level of writing in Swedish is not necessary however since the website and report will be written in English.
+				h2 Applying
+				| Applications to Studs opens when the project leaders are elected. This is usually done on the last faculty meeting of the study year. 
+
 			.col-6
-				img(src="https://placeimg.com/640/480/any")
+				img(ng-src="/img/studs-for-students.jpg")
 
 include ../layout/footer.jade
 include ../layout/includes.jade
