@@ -5,7 +5,7 @@ section.mega-padding.black-bg
 	h1.mega
 		| About
 	.wrap
-		.row.gutter-large
+		.row.gutter-base
 			.col-sm-2
 			.col-sm-8
 				h3.t-center Studs is an abbrevation for 'Studieresan' which in English would be 'Study trip' or 'Study tour'.
@@ -15,27 +15,23 @@ section.padding
 	.wrap
 		.row.gutter-large(ng-controller="listStudents")
 			.col-sm-2
-			.col-8
-				h1.t-center Studs = Studieresan
-
-				p Studs is a project with the goal to establish relationships between companies and Computer Science students from KTH at the end of their education. To achieve this goal we meet companies that could be our future employers. We are 28 students and the project is run by us alone, this gives us the experience to work in a big year-long project. The project ends with a trip over the Atlantic so we can visit companies and universities in the United States. This also gives us experiences and ideas from another culture.
-
-				br 
-
-				p Are you offering a masters thesis, job, extra job or summer job? We are interested, we want to meet you! We have students doing their Masters in Computer Science, Machine Learning, Industrial Management and Human-Computer Interaction.
-
-				p 
-					| If you want to contact us you can send an email to our 
-					a(href="mailto:studs-sales@d.kth.se") sales manager Brian Ye 
-					| or to our 
-					a(href="mailto:studs-ansvarig@d.kth.se") project leaders Axel Samuelsson and Katja Röös.
-				.col-sm-4
+			.col-sm-8.row.gutter-large
+				div.col-12
+					h1.t-center Studs
+					p Studs is a project with the goal to establish relationships between companies and Computer Science students from KTH at the end of their education. To achieve this goal we meet companies that could be our future employers. We are 28 students and the project is run by us alone, this gives us the experience to work in a big year-long project. The project ends with a trip over the Atlantic so we can visit companies and universities in the United States. This also gives us experiences and ideas from another culture.
+					p Are you offering a masters thesis, job, extra job or summer job? We are interested, we want to meet you! We have students doing their Masters in Computer Science, Machine Learning, Industrial Management and Human-Computer Interaction.
+					p 
+						| If you want to contact us you can send an email to our 
+						a(href="mailto:studs-sales@d.kth.se") sales manager Brian Ye 
+						| or to our 
+						a(href="mailto:studs-ansvarig@d.kth.se") project leaders Axel Samuelsson and Katja Röös.
+				.col-sm-4.t-center
 					a(href="mailto:studs-sales@d.kth.se")
 						img(ng-src="/img/profile-pictures/brian-ye-cropped.jpg")
-				.col-sm-4
+				.col-sm-4.t-center
 					a(href="mailto:studs-ansvarig@d.kth.se")
 						img(ng-src="/img/profile-pictures/axel-samuelsson-cropped.jpg")
-				.col-sm-4
+				.col-sm-4.t-center
 					a(href="mailto:studs-ansvarig@d.kth.se")
 						img(ng-src="/img/profile-pictures/katja-roos-cropped.jpg")
 
@@ -46,9 +42,9 @@ section.padding.white-pure-bg
 	.wrap
 		.row.gutter-large
 			.col-sm-2
-			.col-8
-				h1.t-center Studs 2016
-				p.t-center As previous years, the members of studs are from several disciplines in computer science.
+			.col-sm-8.t-center
+				h1 Studs 2016
+				p As previous years, the members of studs are from several disciplines in computer science.
 			.col-sm-2
 		//-.row.gutter-large(ng-controller="listStudents")
 			.col-sm-3(ng-repeat='student in studentList')
@@ -60,9 +56,9 @@ section.padding.white-pure-bg
 section.padding
 	.wrap
 		.row.gutter-large
-			.col-6
+			.col-md-6
 				img(src="/img/studs-for-companies.jpg")
-			.col-6
+			.col-md-6
 				h1 Studs for companies
 				p Through Studs you get the opportunity to meet 28 students in your own personal and unique setting. You get the ability to promote yourselves so we better understand how it is to work at your company and why we should want to work at your company. You will also get all our project members resumés and contact information to be able to keep in touch after the project has ended.
 				h2 What happens at an event with Studs?
@@ -71,7 +67,7 @@ section.padding
 section.padding.green-bg
 	.wrap
 		.row.gutter-large
-			.col-6
+			.col-md-6
 				h1 Studs for students
 				| Studs is a project within the Computer Science faculty at KTH, where a group of students get the chance to meet relevant companies and go on a study tour. The project is a course called AI2151 and is worth 15hp. The course officially runs during the spring, but requires attendance the whole year. A good goal for you as a student is to establish a network with the companies involved. Also, you want to get the experience of how it is to carry out a larger project.
 				br
@@ -81,7 +77,7 @@ section.padding.green-bg
 				| Applications to Studs opens after the project leader(s) have been elected. This is usually done on the last faculty meeting of the study year. If you are interested now and want to be contacted as soon as possible, send an email to 
 				a(href="mailto:studs-ansvarig@d.kth.se") project leaders Axel Samuelsson and Katja Röös.
 
-			.col-6
+			.col-md-6
 				img(ng-src="/img/studs-for-students.jpg")
 
 include ../layout/footer.jade

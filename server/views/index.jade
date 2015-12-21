@@ -3,13 +3,13 @@ include layout/header.jade
 include layout/menu.jade
 
 section#hero
-	.row.gutter-large
+	.row.gutter-base
 		.col-lg-3.col-sm-2
 		.col-lg-6.col-sm-8
 			h1.t-center
-				| We dig
+				| We dig 
 				span.text-green challenges
-				|  and
+				|  and 
 				span.text-green adventures
 		.col-lg-3.col-sm-2
 		.clearfix
@@ -27,14 +27,14 @@ section.green-bg.mega-padding
 		.row.gutter-large
 			.col-12.t-center
 				h1 Be part of a great experience!
-			.col-6
+			.col-sm-6
 				| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				| tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				| quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 				| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 				| cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 				| proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			.col-6
+			.col-sm-6
 				| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				| tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				| quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -43,37 +43,39 @@ section.green-bg.mega-padding
 				| proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 section.black-bg.mega-padding
 	.wrap
-		.row.gutter-large
-			.col-12.t-center
+		.row.gutter-large.t-center
+			.col-12
 				h1 Do like our friends at these companies - join studs!
-			.col-3
+			.col-md-3.col-sm-6
 				img(src='img/google.svg', alt='')
-			.col-3
+			.col-md-3.col-sm-6
 				img(src='img/visma.svg', alt='')
-			.col-3
+			.col-md-3.col-sm-6
 				img(src='img/google.svg', alt='')
-			.col-3
+			.col-md-3.col-sm-6
 				img(src='img/visma.svg', alt='')
 section.mega-padding.white-pure-bg
 	.wrap
 		.row.gutter-large
-			.col-4
+			.col-md-4
 				h2 We are interested in you
 				| 				Duis aute irure dolor in reprehenderit in voluptate velit esse
 				| 				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 				| 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			.col-4
+			.col-md-4
 				h2 We are motivated to work
 				| 				Duis aute irure dolor in reprehenderit in voluptate velit esse
 				| 				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 				| 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			.col-4
+			.col-md-4
 				h2 We are assets
 				| 				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				| 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				| 				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 				| 				consequat.
-section.red-light-bg.mega-padding
+
+
+//section.red-light-bg.mega-padding
 	.wrap
 		.row.gutter-large(ng-controller="indexInstagram")
 			.col-12.t-center
@@ -85,10 +87,10 @@ section.red-light-bg.mega-padding
 section.mega-padding
 	.wrap
 		.row.gutter-large
-			.col-3
-			.col-6
-				h3 I like it, how do I get my company involved?
-				p Simple! Provide your company information here and we will contact you as fast as we can. We are sure that you won't be disappointed!
+			.col-sm-3
+			.col-sm-6
+				h3.t-center I like it, how do I get my company involved?
+				p.t-center Simple! Provide your company information here and we will contact you as fast as we can. We are sure that you won't be disappointed!
 				form(novalidate name='signup' ng-submit='signup.$valid')
 					div.form-group
 						div.form-control
@@ -97,8 +99,8 @@ section.mega-padding
 								input.input(type='email' name='email' ng-model='company.email' required)
 						div.form-control
 							div.form-element.t-center
-								input.btn.btn-primary(type='submit' value='Sign up')
-			.col-3
+								a.btn.btn-primary Sign up
+			.col-sm-3
 
 include layout/footer.jade
 include layout/includes.jade
