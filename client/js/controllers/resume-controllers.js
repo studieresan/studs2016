@@ -45,6 +45,9 @@
 					newItem: 'new'
 				});
 			}
+			if($scope.Resume.description === "" || $scope.Resume.description === undefined) {
+				$scope.Resume.description = "Update your personal descripion by clicking on this text.";
+			}
 			$scope.data.loading = false;
 		});
 
