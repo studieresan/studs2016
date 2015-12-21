@@ -1,6 +1,6 @@
 var events = angular.module('events', ['ngResource', 'ngRoute', 'eventControllers']);
 
-var resumes = angular.module('resumes', ['ngResource', 'ngRoute', 'resumeControllers', 'flash','angular.filter']);
+var resumes = angular.module('resumes', ['ngResource', 'ngRoute', 'resumeControllers', 'flash','angular.filter', 'pikaday']);
 
 var auth = angular.module('auth', ['ngRoute', 'authControllers', 'flash', 'ngAnimate']);
 
