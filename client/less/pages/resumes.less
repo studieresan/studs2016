@@ -1,3 +1,37 @@
+@-webkit-keyframes fade-out-loading {
+	0% { .opacity(1); }
+	100% {
+		.opacity(0);
+		pointer-events: none;
+	}
+}
+#resume-loading {
+	z-index: 9999;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	position: fixed;
+	background: @blue;
+	width: 100%;
+	height: 100%;
+
+	h1 {
+		position: absolute;
+		margin-top: -1em;
+		top: 50%;
+		width: 100%;
+		text-align: center;
+		color: @white;
+	}
+
+	&.loaded {
+		-webkit-animation: fade-out-loading 0.5s ease-in;
+		-webkit-animation-fill-mode: forwards;
+		-webkit-animation-iteration-count: 1;
+	}
+}
+
 #resume {
 
 	#resume-save {
@@ -10,8 +44,6 @@
 	}
 
 	#resume-header {
-		.flex;
-		.flex-center;
 
 		h1 {
 			clear: both;
@@ -45,13 +77,13 @@
 			color: @blue;
 		}
 	}
-}
 
-.resume-post {
-	.transition(all 0.5s ease);
+	.editable {
+		.transition(all 0.1s ease);
 
-	&:hover {
-		.opacity(0.8);
-		cursor: pointer;
+		&:hover {
+			color: @blue;
+			cursor: pointer;
+		}
 	}
 }

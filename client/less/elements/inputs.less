@@ -23,6 +23,14 @@
 	width: 100%;
 }
 
+.form-alert {
+	background: @red;
+	padding: @spacing-minimum @spacing-base;
+	color: @white;
+	.border-radius(@border-radius-base);
+	text-align: center;
+}
+
 
 // ===== Common style =====
 .common-focus-style {
@@ -58,7 +66,7 @@ form.ng-submitted {
 .form-group {
 
 	.label {
-		color: @black;
+		color: inherit;
 		font-weight: bold;
 		.ellipsis;
 	}
@@ -66,10 +74,10 @@ form.ng-submitted {
 	.label + .form-element {
 		margin-top: @spacing-minimum/2;
 	}
+}
 
-	.form-control + .form-control, .form-control + .row, .row + .form-control, & .row + .row {
-		margin-top: @spacing-minimum;
-	}
+.form-control + .form-control, .form-control + .row, .row + .form-control, & .row + .row {
+	margin-top: @spacing-minimum;
 }
 
 .form-group + .form-group, .row + .form-group, .form-group + .row {
@@ -137,7 +145,7 @@ form.ng-submitted {
 		}
 	}
 
-	.input, .dropdown, .textarea {
+	.input, .dropdown, .textarea, select {
 		.common-input-style;
 
 		&:focus {

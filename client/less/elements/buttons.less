@@ -46,9 +46,14 @@
 	}
 	&.btn-disabled {
 		background: @gray-light;
-		color: @white-dark;
+		color: @gray;
 		cursor: default;
+		pointer-events: none; 
 	}
+}
+
+.btn + .btn:not(.btn-block) {
+	margin-left: @spacing-minimum;
 }
 
 // Sizes
@@ -73,7 +78,7 @@
 	}
 }
 
-.btn&.block + .btn&.block {
+.btn.block + .btn.block {
 	margin-top: @spacing-small; // TODO: A class for responsive margin top
 }
 
