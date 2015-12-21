@@ -1,7 +1,9 @@
+div#resume-loading(ng-class="{ 'loaded': !data.loading }")
+	h1 Looking for your awesome resumé... Please wait.
 div#resume.wrap
 	div#resume-header.col-12.row.gutter-large
 		div.col-sm-4.image
-			img(src="/img/profile-pictures/{{ user.image }}-cropped.jpg")
+			img(src="/img/profile-pictures/{{ user.image }}.jpg")
 		div.col-sm-8
 			div.contact-details
 				ul
@@ -10,16 +12,18 @@ div#resume.wrap
 					li {{ user.address }}
 					li {{ user.postcode }} {{ user.city }}
 			h1 {{ user.firstname }} {{ user.lastname }}
-			p(ng-click="setEditDescription(true)" ng-if="!data.editDescription") {{ Resume.description }}
+			p.editable(ng-click="setEditDescription(true)" ng-if="!data.editDescription") {{ Resume.description }}
 			div(ng-if="data.editDescription")
 				div.form-control
 					div.form-element
 						textarea.textarea(name="description" ng-model="Resume.description")
-				a.btn.btn-secondary.btn-small(ng-click="setEditDescription(false)") Done
+				div.form-control
+					div.form-element
+						a.btn.btn-secondary.btn-small(ng-click="setEditDescription(false)") Done
 
 	div.row.gutter-large.resume-group(ng-repeat=" (key, posts) in Resume.posts | groupBy: 'type'")
 		h1.col-12 {{ key }}
-			a.btn.btn-secondary.btn-small(ng-click="push(key)") Add
+			a.btn.btn-secondary.btn-small(ng-click="push(key)") Add entry
 		div.col-12(ng-repeat="resumePost in posts")
 			div.row.gutter-small(ng-if="data.activePost == resumePost")
 				div.col-12
@@ -32,30 +36,34 @@ div#resume.wrap
 							label.label What did you do?
 							div.form-element
 								textarea.input(name='description' ng-model='resumePost.description' required)
-					div.col-6
+					div.col-sm-6
 						div.form-control
 							label.label When did you start?
 							div.form-element
-								input.input(type='text' name='title' ng-model='resumePost.startdate' required)
-					div.col-6
-						div.form-control.col-6
+								input.input(pikaday="startdate" format="YYYY-MM-DD" ng-model='resumePost.startdate' required)
+					div.col-sm-6
+						div.form-control
 							label.label When did you end?
 							div.form-element
-								input.input(type='text' name='type' ng-model='resumePost.enddate' required)
+								input.input(pikaday="enddate" format="YYYY-MM-DD" ng-model='resumePost.enddate' required)
 					div.form-control
 						a.btn.btn-secondary.btn-small.left(ng-click="unsetActive()") Done
-						a.btn.btn-danger.btn-small.left(ng-click="removePost(resumePost)") Remove
-			div.resume-post.col-12.row(ng-if="data.activePost != resumePost" ng-click="setActive(resumePost)" ng-class="resumePost.newItem")
+						a.btn.btn-danger.btn-small.right(ng-click="removePost(resumePost)") Remove
+			div.resume-post.col-12.row.editable(ng-if="data.activePost != resumePost" ng-click="setActive(resumePost)" ng-class="resumePost.newItem")
 				div.col-sm-4
 					h3 {{ resumePost.startdate | date: 'MMM, yyyy' }} - {{ resumePost.enddate | date: 'MMM, yyyy' }}
 				div.col-sm-8
 					h3 {{ resumePost.title }}
 					p {{ resumePost.description }}
 	div.row.gutter-large
-		div.form-control.col-12
-			div.form-element
-				input.input#resume-add-type-input(type='text' name='type' ng-model='newTypeValue' placeholder="New type..." required)
-				a.btn.btn-secondary(ng-click="newType(newTypeValue)") Add
+		div.form-group.col-12
+			div.form-control
+				h1 {{ newTypeValue || 'Add new category' }}
+				div.form-element
+					input.input#resume-add-type-input(type='text' name='type' ng-model='newTypeValue' placeholder="Category name")
+			div.form-control
+				div.form-element
+					a.btn.btn-secondary.btn-small(ng-click="newTypeValue != undefined && newType(newTypeValue)") Add
 
 		div.col-12#resume-save
-			a.btn.btn-primary(ng-click="update(Resume)") Save
+			a.btn.btn-primary(ng-click="update(Resume, false)") Save
