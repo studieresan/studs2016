@@ -33,10 +33,12 @@ section.padding.white-pure-bg
 				h1.t-center Studs 2016
 				p.t-center As previous years, the members of studs are from several disciplines in computer science.
 			.col-sm-2
-		.row.gutter-large(ng-controller="listStudents")
+		//-.row.gutter-large(ng-controller="listStudents")
 			.col-sm-3(ng-repeat='student in studentList')
 				img(ng-src="/img/profile-pictures/{{ student.image }}-cropped.jpg")
 			| {{ student.name }}
+		.row.gutter-large
+			img(sizes="(max-width:400px), (min-width:500px), (min-width:800px), (min-width:1200px)" srcset="/img/allStuds2016-270x343.jpg 270w, /img/allStuds2016-500x636.jpg 500w, /img/allStuds2016-900x1103.jpg 900w, /img/allStuds2016-1387x1700.jpg 1387w" src="/img/allStuds2016-900x1103.jpg")
 
 section.padding
 	.wrap
