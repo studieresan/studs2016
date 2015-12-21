@@ -15,6 +15,7 @@ grunt.initConfig({
             './bower_components/angular-resource/angular-resource.min.js',
             './bower_components/angular-animate/angular-animate.min.js',
             './bower_components/jquery/dist/jquery.min.js',
+            './bower_components/moment/min/moment.min.js',
             './bower_components/angular-simple-logger/dist/angular-simple-logger.min.js',
             './bower_components/angular-google-maps/dist/angular-google-maps.min.js',
             './bower_components/angular-flash-alert/dist/angular-flash.js',
@@ -23,13 +24,16 @@ grunt.initConfig({
             './bower_components/jqcloud2/dist/jqcloud.min.js',
             './bower_components/angular-jqcloud/angular-jqcloud.js',
             './bower_components/angular-filter/dist/angular-filter.min.js',
+            './bower_components/pikaday/pikaday.js',
+            './bower_components/pikaday-angular/pikaday-angular.js',
             ],
             dest: './client/public/js/libs.min.js',
         },
         css_client: {
             src: [
             './bower_components/angular-chart.js/dist/angular-chart.min.css',
-            './bower_components/jqcloud2/dist/jqcloud.min.css'
+            './bower_components/jqcloud2/dist/jqcloud.min.css',
+            './bower_components/pikaday/css/pikaday.css'
             ],
             dest: './client/public/css/libs.min.css'
         }
