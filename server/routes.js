@@ -91,15 +91,23 @@ module.exports = function(app, express) {
 	});
 
 	 // Resumes
-	app.get('/resumes*', function(req, res) {
+	app.get('/profile/resume', function(req, res) {
+		console.log("profile");
 		res.render('resumes/index', {
 			ngApp: "resumes",
             userData: JSON.stringify(res.locals.user)
 		});
 	});
 
+	app.get('/resume*', function(req, res) {
+		console.log("profile");
+		res.render('resumes/public', {
+			ngApp: "resumes"
+		});
+	});
+
 	// Profile
-	app.get('/profile*', ensureAuthenticated, function(req, res) {
+	app.get('/profile', ensureAuthenticated, function(req, res) {
 		var type = (res.locals.user.type).toLowerCase();
 		res.render('profile/' + type, {
 			ngApp: type + "Profile",
