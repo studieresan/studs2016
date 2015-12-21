@@ -1,91 +1,81 @@
 include ../layout/header.jade
 include ../layout/menu.jade
+div(ng-controller="userEditCtrl" ng-init="user = #{userData}")
+	section.padding#profile-header
+		.wrap
+			.row.gutter-base.t-center
+				.col-12.image
+					img(src="/img/profile-pictures/#{user.image}-cropped.jpg")
+				.col-12
+					h1 #{user.firstname} #{user.lastname}
+					span.email #{user.email}
+					a.btn.btn-primary.btn-small(href="/profile/resume" ng-class="{ 'btn-disabled': !useredit.$valid }") Edit my Resumé
+					a.btn.btn-secondary.btn-small(href="/resume/#{user._id}" target="_blank" ng-class="{ 'btn-disabled': !useredit.$valid }") Show resumé
 
-section.padding#profile-header
-	.wrap
-		.row.gutter-large.flex.flex-center
-			.col-sm-2
-			.col-4.image.t-right
-				img(src="/img/profile-pictures/#{user.image}-cropped.jpg")
-			.col-4
-				h1 #{user.firstname} #{user.lastname}
-				span.email #{user.email}
-				a.btn.btn-primary.btn-small(href="/resumes") Edit my Resumé
-			.col-sm-2
-section.padding(ng-controller="userEditCtrl" ng-init="user = #{userData}")
-	.wrap
-		div.row.gutter-large
-			div.col-sm-6
-				form(novalidate name='useredit' ng-submit='useredit.$valid && edit(user)')
-					div.form-group.row.gutter-base
-						h1.form-title Personal data
-						div.col-sm-6
-							div.form-control
-								label.label Firstname
+	section.padding.white-bg
+		.wrap
+			form(novalidate name='useredit' ng-submit='useredit.$valid && edit(user)')
+				div.row.gutter-large
+					div.col-12
+						div.form-alert(ng-show="!useredit.$valid")
+							| You have to add your <strong>personal details</strong> in order to create a resumé.
+					div.col-md-6
+						div.form-group.row.gutter-base
+							h1.form-title Personal data
+							div.col-sm-6
+								div.form-control
+									label.label Firstname
+									div.form-element
+										input.input(type='text' name='firstname' ng-model='user.firstname' required)
+							div.col-sm-6
+								div.form-control
+									label.label Lastname
+									div.form-element
+										input.input(type='text' name='lastname' ng-model='user.lastname' required)
+							div.form-control.col-12
+								label.label E-mail
 								div.form-element
-									input.input(type='text' name='firstname' ng-model='user.firstname' required)
-						div.col-sm-6
+									input.input(type='email' name='email' ng-model='user.email' required)
+							div.col-12
+								div.form-control
+									label.label Phone
+									div.form-element
+										input.input(type='text' name='phone' ng-model='user.phone' required)
+							div.col-12
+								div.form-control
+									label.label LinkedIn
+									div.form-element
+										input.input(type='url' name='linkedin' ng-model='user.linkedin')
+					div.col-md-6
+						div.form-group.row.gutter-base
+							h1.form-title Residential information
+							div.form-control.col-12
+									label.label Address
+									div.form-element
+										input.input(type='text' name='address' ng-model='user.address' required)
+							div.col-sm-6
+								div.form-control
+									label.label Postcode
+									div.form-element
+										input.input(type='text' name='postcode' ng-model='user.postcode' required)
+							div.col-sm-6
+								div.form-control
+									label.label City
+									div.form-element
+										input.input(type='text' name='city' ng-model='user.city' required)
+					div.col-sm-12
+						div.form-group.row.gutter-base.t-center
 							div.form-control
-								label.label Lastname
-								div.form-element
-									input.input(type='text' name='lastname' ng-model='user.lastname' required)
-						div.form-control.col-12
-							label.label E-mail
-							div.form-element
-								input.input(type='email' name='email' ng-model='user.email' required)
+								input.btn.btn-primary(type='submit' value='Save')
+	section.padding
+		.wrap
+			form.form-group(novalidate name='changepassword' ng-submit='changepassword.$valid && changePassword(password)')
+				div.form-group.row
+					div.col-md-2
+					div.col-md-8.row.gutter-base
 						div.col-12
-							div.form-control
-								label.label Phone
-								div.form-element
-									input.input(type='text' name='phone' ng-model='user.phone')
-					div.form-group.row.gutter-base
-						h1.form-title Residential information
-						div.form-control.col-12
-								label.label Address
-								div.form-element
-									input.input(type='text' name='address' ng-model='user.address' required)
-						div.col-sm-6
-							div.form-control
-								label.label Postcode
-								div.form-element
-									input.input(type='text' name='postcode' ng-model='user.postcode' required)
-						div.col-sm-6
-							div.form-control
-								label.label City
-								div.form-element
-									input.input(type='text' name='city' ng-model='user.city' required)
-					div.form-group.row.gutter-base
-						div.form-control
-							input.btn.btn-primary(type='submit' value='Save')
-
-			div.col-sm-6
-				form(novalidate name='updatesocial' ng-submit='updatesocial.$valid && updateSocial(user)')
-					div.form-group.row.gutter-base
-						h1.form-title Update social
-						div.col-12
-							div.form-control
-								label.label LinkedIn
-								div.form-element
-									input.input(type='text' name='linkedin' ng-model='user.linkedin')
-						div.col-12
-							div.form-control
-								label.label Facebook
-								div.form-element
-									input.input(type='text' name='facebook' ng-model='user.facebook')
-						div.col-12
-							div.form-control
-								label.label Instagram
-								div.form-element
-									input.input(type='text' name='instagram' ng-model='user.instagram')
-					
-					div.form-group.row.gutter-base
-						div.form-control
-							input.btn.btn-secondary(type='submit' value='Update')
-
-			div.col-sm-6
-				form(novalidate name='changepassword' ng-submit='changepassword.$valid && changePassword(password)')
-					div.form-group.row.gutter-base
-						h1.form-title Change password
+						h1.form-title.t-center Change password
+						div.col-12.row
 						div.col-sm-6
 							div.form-control
 								label.label Old password
@@ -96,10 +86,9 @@ section.padding(ng-controller="userEditCtrl" ng-init="user = #{userData}")
 								label.label New Password
 								div.form-element
 									input.input(type='password' name='old' ng-model='password.new' required)
-
-					div.form-group.row.gutter-base
-						div.form-control
-							input.btn.btn-secondary(type='submit' value='Change password')
+						div.col-12.t-center
+							div.form-control
+								input.btn.btn-secondary(type='submit' value='Change password')
 
 if isAdmin
 	include admin-panel.jade

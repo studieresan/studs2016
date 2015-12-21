@@ -1,15 +1,13 @@
-section.padding(ng-init="user = #{userData}")
-	.wrap
-		.row.gutter-large.flex.flex-center
-			.col-sm-12
-				h1 Superpowers
+section.padding.white-bg(ng-init="user = #{userData}")
+	.wrap.t-center
+		h1 Superpowers
 	.wrap
 		div.row.gutter-large(ng-controller="studentCtrl")
-			div.col-sm-6
+			div.col-md-6
 				form(novalidate name='addstudent' ng-submit='addstudent.$valid && add(newUser)')
 					div.form-group.row.gutter-base
 						h2.form-title Register new student
-						div.form-control.col-6
+						div.form-control.col-sm-6
 							label.label E-mail
 							div.form-element
 								input.input(type='email' name='email' ng-model='newUser.email' required)
@@ -21,7 +19,7 @@ section.padding(ng-init="user = #{userData}")
 					div.form-group.row.gutter-base
 						div.form-control
 							input.btn.btn-primary(type='submit' value='Register')
-			div.col-sm-6
+			div.col-md-6
 				form(novalidate name='removestudent' ng-submit='removestudent.$valid && removeStudent(selectedStudent)')
 					div.form-group.row.gutter-base
 						h2.form-title Remove student
@@ -34,11 +32,11 @@ section.padding(ng-init="user = #{userData}")
 							input.btn.btn-primary(type='submit' value='Remove')
 
 		div.row.gutter-large(ng-controller="companyCtrl")
-			div.col-sm-6
+			div.col-md-6
 				form(novalidate name='addcompany' ng-submit='addcompany.$valid && add(newCompany)')
 					div.form-group.row.gutter-base
 						h2.form-title Register new company
-						div.form-control.col-6
+						div.form-control.col-sm-6
 							label.label E-mail
 							div.form-element
 								input.input(type='email' name='email' ng-model='newCompany.email' required)
@@ -55,7 +53,7 @@ section.padding(ng-init="user = #{userData}")
 					div.form-group.row.gutter-base
 						div.form-control
 							input.btn.btn-primary(type='submit' value='Register')
-			div.col-sm-6
+			div.col-md-6
 				form(novalidate name='removecompany' ng-submit='removecompany.$valid && remove(selectedCompany)')
 					div.form-group.row.gutter-base
 						h2.form-title Remove company
