@@ -153,9 +153,9 @@ module.exports = function(app, express) {
 	// Event-api
 	api.get('/events', events.findAll);
 	api.get('/events/:slug', events.findBySlug);
-	api.post('/events', events.add);
-	api.put('/events/:id', events.update);
-	api.delete('/events/:id', events.remove);
+	api.post('/events', ensureEventGroup, events.add);
+	api.put('/events/:id', ensureEventGroup, events.update);
+	api.delete('/events/:id', ensureEventGroup, events.remove);
 
 	// resumes
 	api.get('/resumes', ensureAuthenticated, resumes.findAll);
