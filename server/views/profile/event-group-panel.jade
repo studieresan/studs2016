@@ -35,3 +35,16 @@ section.padding.white-bg(ng-init="user = #{userData}")
 					div.form-group.row.gutter-base
 						div.form-control
 							input.btn.btn-primary(type='submit' value='Remove')
+
+		div.row.gutter-large(ng-controller="eventCtrl")
+			div.col-md-6
+				form(novalidate name='removeevent' ng-submit='removeevent.$valid && remove(selectedEvent)')
+					div.form-group.row.gutter-base
+						h2.form-title Remove event
+						div.form-control.col-12
+							label.label Event
+							div.form-element
+								select(name="selectEvent" id="selectEvent" ng-options="event.title for event in allEvents" ng-model="selectedEvent")
+					div.form-group.row.gutter-base
+						div.form-control
+							input.btn.btn-primary(type='submit' value='Remove')

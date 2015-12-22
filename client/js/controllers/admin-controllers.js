@@ -91,5 +91,27 @@
 		};
 		$scope.suggestedPassword = $scope.suggestPassword();
 	}]);
+
+	adminControllers.controller("eventCtrl", ['$scope', '$http', 'Flash', function($scope, $http, Flash) {
+
+		$scope.getEvents = function() {
+			$http.get('/api/events').then(function successCallback(response) {
+				$scope.allEvents = response.data;
+			}, function errorCallback(response) {
+
+			});
+		};
+		$scope.getEvents();
+
+		$scope.remove = function(event) {
+			$http.delete('/api/events/' + event._id).then(function successCallback(response) {
+				Flash.create('info', "Removed " + event.title + "!");
+				$scope.getCompanies();
+			}, function errorCallback(response) {
+				Flash.create('danger', "Something went bad. Try again!");
+			});
+		};
+
+	}]);
 	
 })();
