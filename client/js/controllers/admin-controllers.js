@@ -102,6 +102,7 @@
 				$scope.newEvent.date = "";
 				$scope.newEvent.location = "";
 				$scope.newEvent.description = "";
+				$scope.newEvent.instagram = "";
 				$scope.getEvents();
 			}, function errorCallback(response) { 
 				Flash.create('danger', "Something went bad. Try again!");

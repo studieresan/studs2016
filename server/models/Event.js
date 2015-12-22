@@ -9,6 +9,7 @@ var EventSchema = new Schema({
 	date: { type: Date },
 	location: { type: String },
 	description: { type: String },
+	instagram: { type: String },
 	slug: { type: String, unique: true },
 });
 
