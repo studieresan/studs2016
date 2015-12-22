@@ -94,6 +94,20 @@
 
 	adminControllers.controller("eventCtrl", ['$scope', '$http', 'Flash', function($scope, $http, Flash) {
 
+		$scope.add = function(event) {
+			$http.post('/api/events', event).then(function successCallback(response) {
+				Flash.create('info', "Added " + $scope.newEvent.title + "!");
+				$scope.newEvent.title = "";
+				$scope.newEvent.company = "";
+				$scope.newEvent.date = "";
+				$scope.newEvent.location = "";
+				$scope.newEvent.description = "";
+				$scope.getEvents();
+			}, function errorCallback(response) { 
+				Flash.create('danger', "Something went bad. Try again!");
+			});
+		};
+
 		$scope.getEvents = function() {
 			$http.get('/api/events').then(function successCallback(response) {
 				$scope.allEvents = response.data;

@@ -38,6 +38,37 @@ section.padding.white-bg(ng-init="user = #{userData}")
 
 		div.row.gutter-large(ng-controller="eventCtrl")
 			div.col-md-6
+				form(novalidate name='addevent' ng-submit='addevent.$valid && add(newEvent)')
+					div.form-group.row.gutter-base
+						h2.form-title Add new event
+						div.form-control.col-sm-6
+							label.label Title
+							div.form-element
+								input.input(type='text' name='title' ng-model='newEvent.title' required)
+						div.col-sm-6
+							div.form-control
+								label.label Company
+								div.form-element
+									input.input(type='text' name='company' ng-model='newEvent.company' ng-value="suggestedPassword")
+						div.col-sm-6
+							div.form-control
+								label.label Date
+								div.form-element
+									input.input(type='datetime-local' name='date' ng-model='newEvent.date')
+						div.col-sm-6
+							div.form-control
+								label.label Location
+								div.form-element
+									input.input(type='text' name='location' ng-model='newEvent.location')
+						div.col-sm-12
+							div.form-control
+								label.label Description
+								div.form-element
+									input.input(type='text' name='description' ng-model='newEvent.description')
+					div.form-group.row.gutter-base
+						div.form-control
+							input.btn.btn-primary(type='submit' value='Add')
+			div.col-md-6
 				form(novalidate name='removeevent' ng-submit='removeevent.$valid && remove(selectedEvent)')
 					div.form-group.row.gutter-base
 						h2.form-title Remove event
