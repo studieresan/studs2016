@@ -60,5 +60,6 @@ exports.remove = function(req, res) {
 		if (err) {
 			return next(err);
 		}
+		return res.sendStatus(200);
 	});
 };

@@ -106,7 +106,7 @@
 		$scope.remove = function(event) {
 			$http.delete('/api/events/' + event._id).then(function successCallback(response) {
 				Flash.create('info', "Removed " + event.title + "!");
-				$scope.getCompanies();
+				$scope.getEvents();
 			}, function errorCallback(response) {
 				Flash.create('danger', "Something went bad. Try again!");
 			});
