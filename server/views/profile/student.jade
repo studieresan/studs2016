@@ -90,6 +90,8 @@ div(ng-controller="userEditCtrl" ng-init="user = #{userData}")
 							div.form-control
 								input.btn.btn-secondary(type='submit' value='Change password')
 
+if isEventGroup || isAdmin
+	include event-group-panel.jade
 if isAdmin
 	include admin-panel.jade
 

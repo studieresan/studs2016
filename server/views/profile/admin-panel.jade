@@ -1,6 +1,4 @@
 section.padding.white-bg(ng-init="user = #{userData}")
-	.wrap.t-center
-		h1 Superpowers
 	.wrap
 		div.row.gutter-large(ng-controller="studentCtrl")
 			div.col-md-6
@@ -27,40 +25,6 @@ section.padding.white-bg(ng-init="user = #{userData}")
 							label.label Student
 							div.form-element
 								select(name="selectStudent" id="selectStudent" ng-options="student.fullname || student.email for student in allstudents" ng-model="selectedStudent")
-					div.form-group.row.gutter-base
-						div.form-control
-							input.btn.btn-primary(type='submit' value='Remove')
-
-		div.row.gutter-large(ng-controller="companyCtrl")
-			div.col-md-6
-				form(novalidate name='addcompany' ng-submit='addcompany.$valid && add(newCompany)')
-					div.form-group.row.gutter-base
-						h2.form-title Register new company
-						div.form-control.col-sm-6
-							label.label E-mail
-							div.form-element
-								input.input(type='email' name='email' ng-model='newCompany.email' required)
-						div.col-sm-6
-							div.form-control
-								label.label Password
-								div.form-element
-									input.input(type='text' name='password' ng-model='newCompany.password' ng-value="suggestedPassword")
-						div.col-sm-12
-							div.form-control
-								label.label Company name
-								div.form-element
-									input.input(type='text' name='name' ng-model='newCompany.name')
-					div.form-group.row.gutter-base
-						div.form-control
-							input.btn.btn-primary(type='submit' value='Register')
-			div.col-md-6
-				form(novalidate name='removecompany' ng-submit='removecompany.$valid && remove(selectedCompany)')
-					div.form-group.row.gutter-base
-						h2.form-title Remove company
-						div.form-control.col-12
-							label.label Company
-							div.form-element
-								select(name="selectCompany" id="selectCompany" ng-options="company.name for company in allcompanies" ng-model="selectedCompany")
 					div.form-group.row.gutter-base
 						div.form-control
 							input.btn.btn-primary(type='submit' value='Remove')

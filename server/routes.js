@@ -7,6 +7,10 @@ function isAdmin(user) {
 	return user && user.type.toLowerCase() === "student" && user.group && user.group.toLowerCase() === "communication";
 }
 
+function isEventGroup(user) {
+	return user &&  user.group && user.group.toLowerCase() === "event";
+}
+
 function ensureStudent(req, res, next) {
 	if( req.isAuthenticated() && (isAdmin(req.user) || (req.user && req.user.type.toLowerCase() === "student"))) {
 		next();
@@ -16,7 +20,7 @@ function ensureStudent(req, res, next) {
 }
 
 function ensureEventGroup(req, res, next) {
-	if( req.isAuthenticated() && (isAdmin(req.user) || (req.user && req.user.group.toLowerCase() === "event"))) {
+	if( req.isAuthenticated() && (isAdmin(req.user) || isEventGroup(req.user))) {
 		next();
 	} else {
 		res.sendStatus(401);
@@ -45,6 +49,7 @@ module.exports = function(app, express) {
 		res.locals.user = req.user ? req.user : '';
 		res.locals.authenticated = req.isAuthenticated();
 		res.locals.isAdmin = isAdmin(req.user);
+		res.locals.isEventGroup = isEventGroup(req.user);
 		next();
 	});
 
