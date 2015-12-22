@@ -98,19 +98,39 @@
 
 	adminControllers.controller("eventCtrl", ['$scope', '$http', 'Flash', function($scope, $http, Flash) {
 
-		$scope.add = function(event) {
-			$http.post('/api/events', event).then(function successCallback(response) {
-				Flash.create('info', "Added " + $scope.newEvent.title + "!");
-				$scope.newEvent.title = "";
-				$scope.newEvent.company = "";
-				$scope.newEvent.date = "";
-				$scope.newEvent.location = "";
-				$scope.newEvent.description = "";
-				$scope.newEvent.instagram = "";
-				$scope.getEvents();
-			}, function errorCallback(response) { 
-				Flash.create('danger', "Something went bad. Try again!");
-			});
+		$scope.editType = "Add";
+
+		$scope.resetForm = function() {
+			$scope.editType = "Add";
+			$scope._event.title = "";
+			$scope._event.company = "";
+			$scope._event.date = "";
+			$scope._event.location = "";
+			$scope._event.description = "";
+			$scope._event.instagram = "";
+			$scope.selectedEvent = null;
+			$scope.getEvents();
+			$scope.addevent.$setPristine();
+		};
+
+		$scope.addOrEdit = function(event) {
+			if($scope.editType == "Add") {
+				$http.post('/api/events', event).then(function successCallback(response) {
+					Flash.create('info', "Added " + $scope._event.title + "!");
+					$scope.resetForm();
+				}, function errorCallback(response) { 
+					Flash.create('danger', "Something went bad. Try again!");
+				});
+			} else if($scope.editType == "Edit") {
+				$http.put('/api/events/' + event._id, event).then(function successCallback(response) {
+					Flash.create('info', "Updated " + $scope._event.title + "!");
+					$scope.resetForm();
+				}, function errorCallback(response) { 
+					Flash.create('danger', "Something went bad. Try again!");
+				});
+			} else {
+				Flash.create('danger', "Something went bad when adding or editing an event... Try again!");
+			}
 		};
 
 		$scope.getEvents = function() {
@@ -130,6 +150,17 @@
 				}, function errorCallback(response) {
 					Flash.create('danger', "Something went bad. Try again!");
 				});
+			}
+		};
+
+		$scope.editEvent = function(_event) {
+			var form = $scope.addevent;
+			if(form.$pristine || (!form.$pristine && confirm("Are you sure you want to overwrite your current form data?"))) {
+				$scope._event = _event;
+				$scope.editType = "Edit";
+				form.$setPristine(); // Set that the loaded data is "unaltered"
+			} else {
+				$scope.selectedEvent = null;
 			}
 		};
 

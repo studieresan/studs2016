@@ -38,49 +38,50 @@ section.padding.white-bg(ng-init="user = #{userData}")
 
 		div.row.gutter-large(ng-controller="eventCtrl")
 			div.col-md-6
-				form(novalidate name='addevent' ng-submit='addevent.$valid && add(newEvent)')
+				form(novalidate name='addevent' ng-submit='addevent.$valid && addOrEdit(_event)')
 					div.form-group.row.gutter-base
-						h2.form-title Add new event
+						h2.form-title {{ editType }} event
 						div.form-control.col-sm-6
 							label.label Title
 							div.form-element
-								input.input(type='text' name='title' ng-model='newEvent.title' required)
+								input.input(type='text' name='title' ng-model='_event.title' required)
 						div.col-sm-6
 							div.form-control
 								label.label Company
 								div.form-element
-									input.input(type='text' name='company' ng-model='newEvent.company' ng-value="suggestedPassword")
+									input.input(type='text' name='company' ng-model='_event.company' ng-value="suggestedPassword")
 						div.col-sm-6
 							div.form-control
 								label.label Date
 								div.form-element
-									input.input(type='datetime-local' name='date' ng-model='newEvent.date')
+									input.input(pikaday="date" format="YYYY-MM-DD" ng-model='_event.date' required)
 						div.col-sm-6
 							div.form-control
 								label.label Location
 								div.form-element
-									input.input(type='text' name='location' ng-model='newEvent.location')
+									input.input(type='text' name='location' ng-model='_event.location')
 						div.col-sm-12
 							div.form-control
 								label.label Description
 								div.form-element
-									textarea.textarea(name='description' ng-model='newEvent.description')
+									textarea.textarea(name='description' ng-model='_event.description')
 						div.col-sm-12
 							div.form-control
 								label.label Instagram post ID
 								div.form-element
-									input.input(type='text' name='instagram' ng-model='newEvent.instagram')
+									input.input(type='text' name='instagram' ng-model='_event.instagram')
 					div.form-group.row.gutter-base
 						div.form-control
-							input.btn.btn-primary(type='submit' value='Add')
+							input.btn.btn-primary(type='submit' value='{{ editType }}')
+							a.btn.btn-secondary(ng-click='resetForm()') Cancel
 			div.col-md-6
 				form(novalidate name='removeevent' ng-submit='removeevent.$valid && remove(selectedEvent)')
 					div.form-group.row.gutter-base
-						h2.form-title Remove event
+						h2.form-title Events
 						div.form-control.col-12
-							label.label Event
+							label.label Choose an event
 							div.form-element
-								select(name="selectEvent" id="selectEvent" ng-options="event.title for event in allEvents" ng-model="selectedEvent")
+								select(name="selectEvent" id="selectEvent" ng-options="event.title for event in allEvents" ng-model="selectedEvent" ng-change="editEvent(selectedEvent)")
 					div.form-group.row.gutter-base
 						div.form-control
 							input.btn.btn-primary(type='submit' value='Remove')

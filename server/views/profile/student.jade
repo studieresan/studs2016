@@ -17,7 +17,7 @@ div(ng-controller="userEditCtrl" ng-init="user = #{userData}")
 			form(novalidate name='useredit' ng-submit='useredit.$valid && edit(user)')
 				div.row.gutter-large
 					div.col-12
-						div.form-alert(ng-show="!useredit.$valid")
+						div.form-alert(ng-show="!useredit.$valid" ng-cloak)
 							| You have to add your <strong>personal details</strong> in order to create a resumé.
 					div.col-md-6
 						div.form-group.row.gutter-base

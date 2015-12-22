@@ -36,6 +36,7 @@ exports.add = function(req, res) {
 
 // updated an existing event
 exports.update = function(req, res) {
+	var response = res;
 	Event.findById(req.params.id, function(err, res) {
 
 		if (!res) {
@@ -47,9 +48,10 @@ exports.update = function(req, res) {
 		res.date        = req.body.date;
 		res.location    = req.body.location;
 		res.description = req.body.description;
+		res.instagram	= req.body.instagram;
 
 		res.save(function(err) {
-			res.json(res);
+			return response.json(res);
 		});
 	});
 };
