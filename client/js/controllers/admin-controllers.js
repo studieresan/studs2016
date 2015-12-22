@@ -35,15 +35,17 @@
 		$scope.getStudents();
 
 		$scope.removeStudent = function(student) {
-			$http.delete('/api/users/' + student._id).then(function successCallback(response) {
-				if(student.firstname)
-					Flash.create('info', "Removed " + student.firstname + "!");
-				else
-					Flash.create('info', "Removed " + student.email + "!");
-				$scope.getStudents();
-			}, function errorCallback(response) {
-				Flash.create('danger', "Something went bad. Try again!");
-			});
+			if (confirm("Are you sure?")) {    
+				$http.delete('/api/users/' + student._id).then(function successCallback(response) {
+					if(student.firstname)
+						Flash.create('info', "Removed " + student.firstname + "!");
+					else
+						Flash.create('info', "Removed " + student.email + "!");
+					$scope.getStudents();
+				}, function errorCallback(response) {
+					Flash.create('danger', "Something went bad. Try again!");
+				});
+			}
 		};
 
 		$scope.suggestPassword = function() {
@@ -78,12 +80,14 @@
 		$scope.getCompanies();
 
 		$scope.remove = function(company) {
-			$http.delete('/api/users/' + company._id).then(function successCallback(response) {
-				Flash.create('info', "Removed " + company.name + "!");
-				$scope.getCompanies();
-			}, function errorCallback(response) {
-				Flash.create('danger', "Something went bad. Try again!");
-			});
+			if (confirm("Are you sure?")) {    
+				$http.delete('/api/users/' + company._id).then(function successCallback(response) {
+					Flash.create('info', "Removed " + company.name + "!");
+					$scope.getCompanies();
+				}, function errorCallback(response) {
+					Flash.create('danger', "Something went bad. Try again!");
+				});
+			}
 		};
 
 		$scope.suggestPassword = function() {
@@ -119,12 +123,14 @@
 		$scope.getEvents();
 
 		$scope.remove = function(event) {
-			$http.delete('/api/events/' + event._id).then(function successCallback(response) {
-				Flash.create('info', "Removed " + event.title + "!");
-				$scope.getEvents();
-			}, function errorCallback(response) {
-				Flash.create('danger', "Something went bad. Try again!");
-			});
+			if (confirm("Are you sure?")) {  
+				$http.delete('/api/events/' + event._id).then(function successCallback(response) {
+					Flash.create('info', "Removed " + event.title + "!");
+					$scope.getEvents();
+				}, function errorCallback(response) {
+					Flash.create('danger', "Something went bad. Try again!");
+				});
+			}
 		};
 
 	}]);
