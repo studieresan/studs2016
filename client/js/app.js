@@ -16,5 +16,5 @@ var about = angular.module('about', ['aboutControllers']);
 
 var companyProfile = angular.module('companyProfile', ['ngResource', 'companyProfileControllers', 'flash', 'ngAnimate', 'chart.js', 'angular-jqcloud']);
 
-var studentProfile = angular.module('studentProfile', ['ngResource', 'studentProfileControllers', 'adminControllers', 'flash']);
+var studentProfile = angular.module('studentProfile', ['ngResource', 'studentProfileControllers', 'adminControllers', 'flash', 'pikaday']);
 
