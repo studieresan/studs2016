@@ -1,7 +1,9 @@
 div#single-event
 	h1 {{ eventItem.title }}
 
-	p {{ eventItem.description }}
-
+	.instagramPhoto
+		a(href="{{ eventItem.description }}")
+			img(ng-src="{{ instagramMedia.thumbnail_url }}")
+		p {{ instagramMedia.title }}
 	p
 		a(href='/events') Back

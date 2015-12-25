@@ -14,8 +14,12 @@ footer.padding.black-bg
 						a(href="/trip",target="_self") The trip
 					li 
 						a(href="/login",target="_self") Login
-			.col-sm-4
+			.col-sm-4(ng-controller="hashtagInstagram")
 				h3 Instagram
+				.col-lg-4.col-sm-12(ng-repeat='p in pics | orderBy:orderBy | limitTo:3')
+					a(href="{{ p.link }}" target"_blank")
+						img(ng-src="{{ p.images.low_resolution.url }}" title="{{ p.caption.text }}")
+
 			.col-sm-4
 				h3 Contact us
 				p Shoot us an email if you have any questions!

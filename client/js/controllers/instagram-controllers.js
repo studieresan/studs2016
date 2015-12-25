@@ -1,8 +1,9 @@
 (function() {
 
-	var indexControllers = angular.module('indexControllers', []);
+	var instagramControllers = angular.module('instagramControllers', []);
+
 	//instagram that searches for user, can be set in instagram-factory.
-	indexControllers.controller("indexInstagram", ['$scope', 'Instagram', function($scope, Instagram) {
+	instagramControllers.controller("indexInstagram", ['$scope', 'Instagram', function($scope, Instagram) {
 
 		// $scope.pics = [];
 		// $scope.have = [];
@@ -12,7 +13,6 @@
 		// 	$scope.pics = angular.toJson(data);
 		// 	$scope.data = $scope.pics.data;
 		// });
-
 
 		$scope.pics = [];
 		$scope.have = [];
@@ -32,7 +32,7 @@
 
 	}]);
 	//Instagram that searches for hashtag, can be set in instagram-factory.
-	indexControllers.controller("hashtagInstagram", ['$scope', 'InstagramHashtag', function($scope, InstagramHashtag) {
+	instagramControllers.controller("hashtagInstagram", ['$scope', 'InstagramHashtag', function($scope, InstagramHashtag) {
 		$scope.pics = [];
 		$scope.have = [];
 		$scope.orderBy = "-created_time";
