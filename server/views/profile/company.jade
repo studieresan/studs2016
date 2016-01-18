@@ -19,7 +19,7 @@ div(ng-controller="chartsController" ng-init="company = #{userData}")
 				.col-12
 					h1.t-center Event statistics
 				.col-12.t-center
-					h2 Before the event
+					h2 Before the event...
 				.col-12.row.t-center.gutter-large(ng-show="!beforeDataIsSet")
 					h3 No data, yet...
 				.col-12.row.gutter-large(ng-show="beforeDataIsSet")
@@ -36,27 +36,27 @@ div(ng-controller="chartsController" ng-init="company = #{userData}")
 		.wrap
 			.row.gutter-base
 				.col-12.t-center
-					h2 After the event
+					h2 After the event...
 				.col-12.row.t-center.gutter-large(ng-show="!afterDataIsSet")
 					h3 No data, yet...
 				.col-12.row.gutter-large(ng-show="afterDataIsSet")
 					.col-12.row.gutter-large
 						.col-sm-4
-							h3 How well do you know what the company does?
+							h3 ... how well do you know what the company does?
 							canvas( class="chart chart-doughnut" chart-data="afterData.knowledge.data" chart-labels="afterData.knowledge.labels" chart-legend="true")
 						.col-sm-4
-							h3 How likely is it that you would like to write your Master's thesis/work at this company?
+							h3 ... how likely is it that you would like to write your Master's thesis/work at this company?
 							canvas( class="chart chart-doughnut" chart-data="afterData.masters.data" chart-labels="afterData.masters.labels" chart-legend="true")
 						.col-sm-4
-							h3 Do you feel like you are qualified to work at this company?
+							h3 ... do you feel like you are qualified to work at this company?
 							canvas( class="chart chart-doughnut" chart-data="afterData.qualified.data" chart-labels="afterData.qualified.labels" chart-legend="true")
 					.col-12.row.gutter-large
 						.col-sm-2
 						.col-sm-4
-							h3 What's your general impression of the company?
+							h3 ... what's your general impression of the company?
 							canvas( class="chart chart-doughnut" chart-data="afterData.impression.data" chart-labels="afterData.impression.labels" chart-legend="true")
 						.col-sm-4
-							h3 Is it a positive or a negative change?
+							h3 ... is it a positive or a negative change?
 							canvas( class="chart chart-doughnut" chart-data="afterData.change.data" chart-labels="afterData.change.labels" chart-legend="true")
 						.col-sm-2
 
