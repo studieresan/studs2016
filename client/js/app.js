@@ -4,7 +4,7 @@ var events = angular.module('events', ['ngResource', 'ngRoute', 'eventController
 
 var resumes = angular.module('resumes', ['ngResource', 'ngRoute', 'resumeControllers', 'flash','angular.filter', 'pikaday']);
 
-var auth = angular.module('auth', ['ngRoute', 'authControllers', 'flash', 'ngAnimate']);
+var auth = angular.module('auth', ['ngRoute', 'authControllers', 'flash', 'ngAnimate', 'instagram']);
 
 var trip = angular.module('trip', ['tripControllers', 'uiGmapgoogle-maps', 'instagram']).config(['uiGmapGoogleMapApiProvider', function(uiGmapGoogleMapApiProvider) {
 	uiGmapGoogleMapApiProvider.configure({
