@@ -109,7 +109,6 @@
 
 resumeControllers.controller("PublicResumeCtrl", ['$scope','Resume', '$routeParams', function($scope, Resume, $routeParams) {
 	Resume.get({ student: $routeParams.id }, function(data) {
-		console.log(data);
 		$scope.Resume = data;
 	});
 }]);
