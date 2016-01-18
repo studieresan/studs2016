@@ -31,7 +31,6 @@ body {
 	display: none;
 }
 
-@profile-image-size: 30px;
 #menu {
 	.transition(all 1s ease);
 	width: 100%;
@@ -104,14 +103,16 @@ body {
 			.responsive-property(margin-left, 30px, 30px, 25px,10px);
 		}
 
+		@profile-image-size: 40px;
 		.profile {
 			display: inline-block;
 
 			img {
+				object-fit: cover;
 				width: @profile-image-size;
 				height: @profile-image-size;
-				.border-radius(@profile-image-size);
-				margin-right: 5px;
+				.border-radius(@profile-image-size/2);
+				margin-right: 10px;
 			}
 			a + a {
 				margin-left: 10px;
