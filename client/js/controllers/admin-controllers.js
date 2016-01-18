@@ -61,7 +61,7 @@
 		$scope.resetForm = function() {
 			$scope.editType = "Add";
 			$scope._company.email = "";
-			$scope._company.suggestPassword = $scope.suggestPassword();
+			$scope._company.password = $scope.suggestPassword();
 			$scope._company.name = "";
 			$scope._company.contact = "";
 			$scope._company.eventDataBeforeURL = "";
