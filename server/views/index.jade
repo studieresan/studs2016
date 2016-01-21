@@ -98,16 +98,12 @@ section.mega-padding
 			.col-sm-3
 			.col-sm-6
 				h3.t-center I like it, how do I get my company involved?
-				p.t-center Simple! Provide your company information here and we will contact you as fast as we can. We are sure that you won't be disappointed!
-				form(novalidate name='signup' ng-submit='signup.$valid')
-					div.form-group
-						div.form-control
-							label.label E-mail
-							div.form-element
-								input.input(type='email' name='email' ng-model='company.email' required)
-						div.form-control
-							div.form-element.t-center
-								a.btn.btn-primary Sign up
+				p.t-center Simple! Send an email to our 
+						a(href="mailto:studs-sales@d.kth.se") sales manager Brian Ye 
+						| or to our 
+						a(href="mailto:studs-ansvarig@d.kth.se") project leaders Axel Samuelsson and Katja Röös. 
+						| Provide your company information and we will contact you as fast as we can. We are sure that you won't be disappointed!
+				
 			.col-sm-3
 
 include layout/footer.jade
