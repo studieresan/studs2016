@@ -193,6 +193,9 @@ exports.editCompany = function(req, res, next) {
 				company[field] = req.body[field];
 			}
 		}
+		if(req.body.password !== undefined) {
+			company.beforeSavePassword();
+		}
 		company.save(function(err) {
 			res.json(company);
 		});
