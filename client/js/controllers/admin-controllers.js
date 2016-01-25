@@ -56,18 +56,46 @@
 
 	adminControllers.controller("companyCtrl", ['$scope', '$http', 'Flash', function($scope, $http, Flash) {
 
-		$scope.add = function(user) {
-			if(!user.password)
-				user.password = $scope.suggestedPassword;
-			$http.post('/api/companies', user).then(function successCallback(response) {
-				Flash.create('info', "Registered " + $scope.newCompany.name + "!");
-				$scope.newCompany.email = "";
-				$scope.newCompany.name = "";
-				$scope.newCompany.password = $scope.suggestPassword();
-			}, function errorCallback(response) {
-				Flash.create('danger', "Something went bad. Try again!");
-			});
+		$scope.editType = "Add";
+
+		$scope.resetForm = function() {
+			$scope.editType = "Add";
+			$scope._company.email = "";
+			$scope._company.password = $scope.suggestPassword();
+			$scope._company.name = "";
+			$scope._company.contact = "";
+			$scope._company.eventDataBeforeURL = "";
+			$scope._company.eventDataAfterURL = "";
+			$scope.selectedCompany = null;
 			$scope.getCompanies();
+			$scope.addcompany.$setPristine();
+		};
+		$scope.addOrEdit = function(company) {
+			if($scope.editType == "Add") {
+				if(!company.password) {
+					company.password = $scope.suggestedPassword;
+				}
+				$http.post('/api/companies', company).then(function successCallback(response) {
+					Flash.create('info', "Registered " + company.name + "!");
+					$scope.resetForm();
+				}, function errorCallback(response) {
+					Flash.create('danger', "Something went bad. Try again!");
+				});
+				$scope.getCompanies();
+			} else if($scope.editType == "Edit") {
+				if(company.password === "") {
+					delete company.password;
+				}
+				$http.put('/api/companies/' + company._id, company).then(function successCallback(response) {
+					Flash.create('info', "Changed data for " + company.name + "!");
+					$scope.resetForm();
+				}, function errorCallback(response) {
+					console.log(response);
+					Flash.create('danger', "Something went bad. Try again!");
+				});
+			} else {
+				Flash.create('danger', "Something went bad when adding or editing a company... Try again!");
+			}
 		};
 
 		$scope.getCompanies = function() {
@@ -77,7 +105,7 @@
 				
 			});
 		};
-		$scope.getCompanies();
+		$scope.getCompanies(); // Run onload!
 
 		$scope.remove = function(company) {
 			if (confirm("Are you sure?")) {    
@@ -93,7 +121,19 @@
 		$scope.suggestPassword = function() {
 			return generatePassword();
 		};
-		$scope.suggestedPassword = $scope.suggestPassword();
+
+		$scope.setEdit = function(company) {
+			console.log("RUN!");
+			var form = $scope.addcompany;
+			if(form.$pristine || (!form.$pristine && confirm("Are you sure you want to overwrite your current form data?"))) {
+				$scope._company = company;
+				$scope.editType = "Edit";
+				form.$setPristine(); // Set that the loaded data is "unaltered"
+			} else {
+				$scope.selectedCompany = null;
+			}
+		};
+
 	}]);
 
 	adminControllers.controller("eventCtrl", ['$scope', '$http', 'Flash', function($scope, $http, Flash) {

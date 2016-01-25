@@ -1,9 +1,9 @@
 div#event-list
 	#timeline
-	.event-list-item(ng-repeat='event in events')
+	.event-list-item(ng-repeat="event in events | orderBy: 'date'", ng-class="{disabled: today < event.date}")
 		.event-content
-			h2.date 20
-				span sep
+			h2.date {{event.date | date : 'dd'}}
+				span {{event.date | date : 'MMM'}}
 			h1 {{ event.title }}
 			p {{ event.location }}
 			a(href='/events/{{ event.slug }}') Mer information

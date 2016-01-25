@@ -68,6 +68,22 @@
 		h1 {
 			margin-top: 0;
 		}
+
+		&.disabled {
+			color : grey;
+
+			.date {
+				color: grey;
+				border: solid 2px grey;
+			}
+
+			a {
+				color : grey;
+				display: none;
+				pointer-events: none;
+   				cursor: default;
+			}
+		}
 	}
 
 	.event-list-item + .event-list-item {

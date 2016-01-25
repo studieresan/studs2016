@@ -7,7 +7,7 @@
 			a.brackets(href='/', target='_self') Home
 			a.brackets(href='/about', target='_self') About
 			a.brackets(href='/events', target='_self') Events
-			a.brackets(href='/trip', target='_self') The trip
+			a.brackets(href='/trip', target='_self') The Trip
 			span |
 			div.profile
 				if authenticated && user
@@ -15,7 +15,7 @@
 						img(src="/img/profile-pictures/#{user.image}-cropped.jpg")
 						a(href="/profile" target="_self") #{user.firstname}
 					else
-						a(href="/profile" target="_self") #{user.contact}
+						a(href="/profile" target="_self") #{user.name}
 					a(href='/logout', target='_self') Log out
 				else
 					a(href='/login', target='_self') Log in

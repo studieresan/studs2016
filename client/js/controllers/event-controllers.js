@@ -40,6 +40,7 @@
 	eventControllers.controller("listEventCtrl", ['$scope', 'Event', '$routeParams', function($scope, Event, $routeParams) {
 		Event.query(function(data) {
 			$scope.events = data;
+			$scope.today = (new Date()).toISOString();
 		});
 	}]);
 

@@ -179,6 +179,29 @@ exports.editStudent = function(req, res, next) {
 	});
 };
 
+/**
+*	Changes the details about a company. This function is indended to be used by
+*	admins only as it allows to change critical fields.
+*/
+exports.editCompany = function(req, res, next) {
+	var id = req.body.id;
+	Company.findById(id, function(err, company) {
+		if(!company)
+			return res.sendStatus(404);
+		for(var field in Company.schema.paths) {
+			if(req.body[field] !== undefined) {
+				company[field] = req.body[field];
+			}
+		}
+		if(req.body.password !== undefined) {
+			company.beforeSavePassword();
+		}
+		company.save(function(err) {
+			res.json(company);
+		});
+	});
+};
+
 exports.signout = function(req, res) {
 	req.logout();
 	res.redirect('/');
