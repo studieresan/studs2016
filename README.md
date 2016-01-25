@@ -30,8 +30,16 @@ git commit -m 'Commit message'
 git push
 ```
 
-[node.js]: <https://nodejs.org/en/>
-[Bower]:   <http://bower.io/>
-[Grunt]:   <http://gruntjs.com/>
-[mongoDB]: <https://www.mongodb.org/>
-[nodemon]: <https://github.com/remy/nodemon>
+PDF Resumé
+----------
+Using [wkhtmltopdf] to generate resumés.
+```
+wkhtmltopdf {url} {output}
+```
+
+[node.js]:     <https://nodejs.org/en/>
+[Bower]:       <http://bower.io/>
+[Grunt]:       <http://gruntjs.com/>
+[mongoDB]:     <https://www.mongodb.org/>
+[nodemon]:     <https://github.com/remy/nodemon>
+[wkhtmltopdf]: <http://wkhtmltopdf.org/>
