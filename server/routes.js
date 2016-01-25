@@ -57,7 +57,7 @@ module.exports = function(app, express) {
 	app.get('/', function(req, res) {
 		res.render('index', {
 			ngApp: "index",
-			title: "Studs!" 
+			title: "Studs!"
 		});
 	});
 
@@ -161,7 +161,8 @@ module.exports = function(app, express) {
 	api.get('/resumes', ensureAuthenticated, resumes.findAll);
 	api.get('/resumes/mine', ensureStudent, resumes.findMine);
 	api.put('/resumes/mine', ensureStudent, resumes.update);
-	api.get('/resumes/:id', ensureAuthenticated, resumes.findByStudentId);
+	api.get('/resumes/generate/:id', resumes.generate); // no auth (!)
+	api.get('/resumes/:id', resumes.findByStudentId); // no auth (!)
 
 	// Assign the api router to the app
 	app.use("/api", api);

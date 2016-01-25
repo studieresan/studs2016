@@ -16,7 +16,6 @@ exports.findByStudentId = function(req, res) {
 	});
 };
 
-
 // find the authenticated student's resume
 exports.findMine = function(req, res) {
 	Resume.findOne({ student: req.user._id }).populate('student').exec(function(err, resume) {
@@ -34,4 +33,13 @@ exports.update = function(req, res) {
 			return res.send(resume);
 		});
 	});
+};
+
+// generate a resumé in PDF format
+exports.generate = function(req, res) {
+
+    // execute 'wkhtmltopdf /resumes/:id'
+
+    // pipe to client
+
 };
