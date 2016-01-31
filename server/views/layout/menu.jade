@@ -12,8 +12,8 @@
 			div.profile
 				if authenticated && user
 					if user.type == "Student"
-						a(href="/profile" target="_self") 
-							img(src="/img/profile-pictures/#{user.image}-cropped.jpg")
+						a(href="/profile" target="_self")
+							img(src="/img/profile-pictures/#{user.image}-square.jpg")
 							| #{user.firstname}
 					else
 						a(href="/profile" target="_self") #{user.name}
