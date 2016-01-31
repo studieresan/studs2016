@@ -12,8 +12,9 @@
 			div.profile
 				if authenticated && user
 					if user.type == "Student"
-						img(src="/img/profile-pictures/#{user.image}-cropped.jpg")
-						a(href="/profile" target="_self") #{user.firstname}
+						a(href="/profile" target="_self") 
+							img(src="/img/profile-pictures/#{user.image}-cropped.jpg")
+							| #{user.firstname}
 					else
 						a(href="/profile" target="_self") #{user.name}
 					a(href='/logout', target='_self') Log out
