@@ -7,8 +7,11 @@ section.padding#profile-header
 			.col-sm-4
 			.col-4.t-center
 				h1 #{user.name}
+				h3 #{user.contact}
 				span.email #{user.email}
-				a.btn.btn-primary.btn-small(href="#") Call to action
+				h3 Resumés
+				a.btn.btn-primary.btn-small(href="#") Browse
+				a.btn.btn-primary.btn-small(href="#") Download all
 			.col-sm-4
 div(ng-controller="chartsController" ng-init="company = #{userData}")
 	section.padding.white-bg

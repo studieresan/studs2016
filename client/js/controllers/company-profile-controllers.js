@@ -12,8 +12,10 @@
 			var re = /d\/(.+)\//; 
 			var str = $scope.company.eventDataBeforeURL;
 			var result = re.exec(str);
-			var spreadsheetId = result[0].substring(2); // OBS! Has trailing "/"
-
+			var spreadsheetId = null;
+			if(result !== null) {
+				spreadsheetId = result[0].substring(2); // OBS! Has trailing "/"
+			}
 
 			if(spreadsheetId !== null) {
 				$http.get("https://spreadsheets.google.com/feeds/list/" + spreadsheetId + "default/public/values?alt=json").then(function(response) {
@@ -81,13 +83,15 @@ $scope.$watch('company.eventDataAfterURL', function () {
 			var re = /d\/(.+)\//; 
 			var str = $scope.company.eventDataAfterURL;
 			var result = re.exec(str);
-			var spreadsheetId = result[0].substring(2); // OBS! Has trailing "/"
-
+			var spreadsheetId = null;
+			if(result !== null) {
+				spreadsheetId = result[0].substring(2); // OBS! Has trailing "/"
+			}
 
 			if(spreadsheetId !== null) {
 				$http.get("https://spreadsheets.google.com/feeds/list/" + spreadsheetId + "default/public/values?alt=json").then(function(response) {
-				console.log(response);
-				temp = response.data.feed.entry;
+					console.log(response);
+					temp = response.data.feed.entry;
 				//console.log(temp);
 				var data = {};
 				data.masters = {data: [], labels: []};
