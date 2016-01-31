@@ -162,6 +162,7 @@ module.exports = function(app, express) {
 	api.get('/resumes', ensureAuthenticated, resumes.findAll);
 	api.get('/resumes/mine', ensureStudent, resumes.findMine);
 	api.put('/resumes/mine', ensureStudent, resumes.update);
+	api.get('/resumes/all', ensureAuthenticated, resumes.downloadAll);
 	api.get('/resumes/generate/:id', resumes.generate); // no auth (!)
 	api.get('/resumes/:id', resumes.findByStudentId); // no auth (!)
 

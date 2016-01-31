@@ -4,6 +4,9 @@ var util     = require('util');					// TODO:
 var exec     = require('child_process').exec;   // Extract to
 var child;										// external service
 
+var zip = require('express-zip');
+var fs = require('fs');
+
 var Resume = require('../models/Resume');
 
 // find all resumes
@@ -68,5 +71,19 @@ exports.generate = function(req, res) {
 
 	child.on('exit', function () {
 		res.sendfile(output);
+	});
+};
+
+exports.downloadAll = function(req, res) {
+
+	var zip = [];
+
+	fs.readdir('./resumes/', function(err, filenames) {
+		filenames.forEach(function(filename) {
+			if (filename !== '.gitkeep')
+				zip.push({'path': 'resumes/'+filename, 'name': 'resumes/'+filename});
+		});
+
+		res.zip(zip, 'resumes.zip');
 	});
 };
