@@ -11,6 +11,10 @@
 			empty: true
 		};
 
+		$scope.$watch('data.loading', function() {
+			console.log("Loading: " + $scope.data.loading);
+		});
+
 		Resume.get({ student: 'mine' }, function(data) {
 			// This will run only when data is loaded.
 			window.onbeforeunload = function (event) {
@@ -51,26 +55,26 @@
 			$scope.data.loading = false;
 		});
 
-		$scope.setEditDescription = function (bool) {
-			$scope.data.editDescription = bool;
-		};
+$scope.setEditDescription = function (bool) {
+	$scope.data.editDescription = bool;
+};
 
-		$scope.update = function (data, isAutoSave) {
-			console.log(data);
-			Resume.update({ student: 'mine' }, data, function successCallback(response) {
-				if(isAutoSave) {
-					Flash.create('info', "Auto-saving resume...");
-				} else {
-					Flash.create('info', "Resumé saved!");
-				}
-			}, function errorCallback(response) {
-				if(isAutoSave) {
-					Flash.create('danger', "Auto-save failed...");
-				} else {
-					Flash.create('danger', "Something went bad. Try again!");
-				}
-			});
-		};
+$scope.update = function (data, isAutoSave) {
+	console.log(data);
+	Resume.update({ student: 'mine' }, data, function successCallback(response) {
+		if(isAutoSave) {
+			Flash.create('info', "Auto-saving resume...");
+		} else {
+			Flash.create('info', "Resumé saved!");
+		}
+	}, function errorCallback(response) {
+		if(isAutoSave) {
+			Flash.create('danger', "Auto-save failed...");
+		} else {
+			Flash.create('danger', "Something went bad. Try again!");
+		}
+	});
+};
 		// Auto-save every 30 second
 		$interval(function() {
 			$scope.update($scope.Resume, true);
