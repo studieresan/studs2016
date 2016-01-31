@@ -54,5 +54,7 @@ exports.generate = function(req, res) {
 		}
 	});
 
-	res.sendfile(output);
+	child.on('exit', function () {
+		res.sendfile(output);
+	});
 };
