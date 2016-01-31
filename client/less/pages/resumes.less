@@ -1,4 +1,4 @@
-@-webkit-keyframes fade-out-loading {
+@keyframes fade-out-loading {
 	0% { .opacity(1); }
 	100% {
 		.opacity(0);
@@ -26,9 +26,10 @@
 	}
 
 	&.loaded {
-		-webkit-animation: fade-out-loading 0.5s ease-in;
-		-webkit-animation-fill-mode: forwards;
-		-webkit-animation-iteration-count: 1;
+		.animation(fade-out-loading 0.25s ease-in);
+		.animation-fill-mode(forwards);
+		.animation-iteration-count(1);
+		pointer-events: none;
 	}
 }
 
