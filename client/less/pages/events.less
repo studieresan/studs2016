@@ -1,6 +1,10 @@
 @dot-size: 20px;
 @line-width: 2px;
 
+#event-header {
+	padding: @spacing-large/2;
+}
+
 #event-list {
 	position: relative;
 
@@ -24,10 +28,10 @@
 			.border-radius(@dot-size);
 			background: @green;
 			margin: auto;
-			margin-bottom: @spacing-large/2;
+			margin-bottom: @spacing-large/4;
 		}
 
-		&:after {
+		/*&:after {
 			content: "";
 			display: block;
 			width: @dot-size;
@@ -35,12 +39,13 @@
 			.border-radius(@dot-size);
 			background: @green;
 			margin: auto;
-		}
+		}*/
 
 		.t-center;
 
 		.event-content {
-			padding-bottom: @spacing-large/2;
+			padding-bottom: @spacing-large/4;
+			margin-bottom: @spacing-large/4;
 			background: @white-dark;
 		}
 

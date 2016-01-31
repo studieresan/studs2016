@@ -1,9 +1,10 @@
-div#single-event
-	h1 {{ eventItem.title }}
-
-	.instagramPhoto
-		a(href="{{ eventItem.description }}")
-			img(ng-src="{{ instagramMedia.thumbnail_url }}")
-		p {{ instagramMedia.title }}
+div#single-event.row.gutter-large
+	div.col-sm-4
+		.instagramPhoto
+			a(href="{{ eventItem.description }}")
+				img(ng-src="{{ instagramMedia.thumbnail_url }}")
+	div.col-sm-8
+		h1 {{ eventItem.title }}
+		| {{ instagramMedia.title }}
 	p
 		a(href='/events') Back
