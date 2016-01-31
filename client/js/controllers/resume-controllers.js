@@ -75,10 +75,10 @@ $scope.update = function (data, isAutoSave) {
 		}
 	});
 };
-		// Auto-save every 30 second
+		// Auto-save every 60 second
 		$interval(function() {
 			$scope.update($scope.Resume, true);
-		}, 30000);
+		}, 60000);
 
 		$scope.push = function (type) {
 			if(type !== undefined) {
