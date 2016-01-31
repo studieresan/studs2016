@@ -59,8 +59,9 @@ exports.update = function(req, res) {
 exports.generate = function(req, res) {
 	var host = req.protocol + '://' + req.get('host');
 	var input = host + '/resume/'+req.params.id;
-	var output = 'resumes/'+req.params.id+'.pdf';
+	var output = __dirname + '/resumes/'+req.params.id+'.pdf';
 	var params = '--margin-top 20mm --margin-bottom 20mm --margin-left 20mm --margin-right 20mm';
+	console.log("before child process");
 	child = exec('wkhtmltopdf '+params+' '+input+' '+output,
  	function (error, stdout, stderr) {
     	console.log('stdout: ' + stdout);
@@ -71,6 +72,7 @@ exports.generate = function(req, res) {
 	});
 
 	child.on('exit', function () {
+		console.log("sending file");
 		res.sendfile(output);
 	});
 };
