@@ -13,7 +13,11 @@ footer.padding.black-bg
 					li
 						a(href="/trip",target="_self") The Trip
 					li
-						a(href="/login",target="_self") Login
+						if authenticated && user
+							a(href="/logout") Log out
+						else
+							a(href="/login") Log in
+
 			.col-sm-4(ng-controller="hashtagInstagram")
 				h3 Instagram
 				.col-lg-4.col-sm-12(ng-repeat='p in pics | orderBy:orderBy | limitTo:3')
