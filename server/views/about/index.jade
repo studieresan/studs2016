@@ -20,20 +20,20 @@ section.padding
 					h1.t-center Studs
 					p Studs is a project with the goal to establish relationships between companies and Computer Science students from KTH at the end of their education. To achieve this goal we meet companies that could be our future employers. We are 28 students and the project is run by us alone, this gives us the experience to work in a big year-long project. The project ends with a trip over the Atlantic so we can visit companies and universities in the United States. This also gives us experiences and ideas from another culture.
 					p Are you offering a masters thesis, job, extra job or summer job? We are interested, we want to meet you! We have students doing their Masters in Computer Science, Machine Learning, Industrial Management and Human-Computer Interaction.
-					p 
-						| If you want to contact us you can send an email to our 
-						a(href="mailto:studs-sales@d.kth.se") sales manager Brian Ye 
-						| or to our 
+					p
+						| If you want to contact us you can send an email to our
+						a(href="mailto:studs-sales@d.kth.se") sales manager Brian Ye
+						| or to our
 						a(href="mailto:studs-ansvarig@d.kth.se") project leaders Axel Samuelsson and Katja Röös.
 				.col-sm-4.t-center
 					a(href="mailto:studs-sales@d.kth.se")
-						img(ng-src="/img/profile-pictures/brian-ye-cropped.jpg")
+						img(ng-src="/img/profile-pictures/brian-ye-square.jpg")
 				.col-sm-4.t-center
 					a(href="mailto:studs-ansvarig@d.kth.se")
-						img(ng-src="/img/profile-pictures/axel-samuelsson-cropped.jpg")
+						img(ng-src="/img/profile-pictures/axel-samuelsson-square.jpg")
 				.col-sm-4.t-center
 					a(href="mailto:studs-ansvarig@d.kth.se")
-						img(ng-src="/img/profile-pictures/katja-roos-cropped.jpg")
+						img(ng-src="/img/profile-pictures/katja-roos-square.jpg")
 
 
 			.col-sm-2
@@ -46,12 +46,12 @@ section.padding.white-pure-bg
 				h1 Studs 2016
 				p As previous years, the members of studs are from several disciplines in computer science.
 			.col-sm-2
-		if authenticated 
+		if authenticated
 			.row.gutter-large(ng-controller="listStudents")
 				.col-sm-3(ng-repeat='student in studentList')
-					img(ng-src="/img/profile-pictures/{{ student.image }}-cropped.jpg")
+					img(ng-src="/img/profile-pictures/{{ student.image }}-square.jpg")
 					a(href="/resume/{{ student._id }}" target="_blank") {{ student.firstname + " " + student.lastname }}
-		else 
+		else
 			.row.gutter-large
 				img(sizes="(max-width:400px), (min-width:500px), (min-width:800px), (min-width:1200px)" srcset="/img/allStuds2016-270x343.jpg 270w, /img/allStuds2016-500x636.jpg 500w, /img/allStuds2016-900x1103.jpg 900w, /img/allStuds2016-1387x1700.jpg 1387w" src="/img/allStuds2016-900x1103.jpg")
 
@@ -62,7 +62,7 @@ section.padding
 				img(src="/img/studs-for-companies.jpg")
 			.col-md-6
 				h1 Studs for companies
-				| A collaboration with Studs will give You the opportunity to meet 28 motivated and ambitious Computer Science Students at KTH Royal Institute of Technology. Whether You are looking for hungry developers, designers and/or managers Studs supplies a broad spectrum of knowledge within computer science. 
+				| A collaboration with Studs will give You the opportunity to meet 28 motivated and ambitious Computer Science Students at KTH Royal Institute of Technology. Whether You are looking for hungry developers, designers and/or managers Studs supplies a broad spectrum of knowledge within computer science.
 				br
 				br
 				| Initiating a collaboration will give you exposure on our digital platforms (social medias, website, etc.) as well as in the project's annual report book which is distributed to companies involved and Computer Science students at KTH.
@@ -80,7 +80,7 @@ section.padding.green-bg
 				br
 				| You have to be at the end of your education and have achieved a minimum of 120hp after the autumn. Basic Swedish communication skills are required since most of the companies are located in Stockholm. An academic level of writing in Swedish is not necessary however since the website and report will be written in English.
 				h2 Applying
-				| Applications to Studs opens after the project leader(s) have been elected. This is usually done on the last faculty meeting of the study year. If you are interested now and want to be contacted as soon as possible, send an email to 
+				| Applications to Studs opens after the project leader(s) have been elected. This is usually done on the last faculty meeting of the study year. If you are interested now and want to be contacted as soon as possible, send an email to
 				a(href="mailto:studs-ansvarig@d.kth.se") project leaders Axel Samuelsson and Katja Röös.
 
 			.col-md-6
