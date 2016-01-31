@@ -1,7 +1,7 @@
-div#single-event.row.gutter-large
+div#single-event.row.gutter-base
 	div.col-sm-4
 		.instagramPhoto
-			a(href="{{ eventItem.description }}")
+			a(href="{{ eventItem.description }}" target="_blank")
 				img(ng-src="{{ instagramMedia.thumbnail_url }}")
 	div.col-sm-8
 		h1 {{ eventItem.title }}
