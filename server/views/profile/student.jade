@@ -10,7 +10,8 @@ div(ng-controller="userEditCtrl" ng-init="user = #{userData}")
 					h1 #{user.firstname} #{user.lastname}
 					span.email #{user.email}
 					a.btn.btn-primary.btn-small(href="/profile/resume" ng-class="{ 'btn-disabled': !useredit.$valid }") Edit my Resumé
-					a.btn.btn-secondary.btn-small(href="/resume/#{user._id}" target="_blank" ng-class="{ 'btn-disabled': !useredit.$valid }") Show resumé
+					//a.btn.btn-secondary.btn-small(href="/resume/#{user._id}" target="_blank" ng-class="{ 'btn-disabled': !useredit.$valid }") Show resumé
+					a.btn.btn-secondary.btn-small(href="/api/resumes/generate/#{user._id}" target="_blank" ng-class="{ 'btn-disabled': !useredit.$valid }") Show resumé
 
 	section.padding.white-bg
 		.wrap

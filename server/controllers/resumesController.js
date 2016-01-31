@@ -1,5 +1,9 @@
 var mongoose = require('mongoose');
 
+var util     = require('util');					// TODO:
+var exec     = require('child_process').exec;   // Extract to
+var child;										// external service
+
 var Resume = require('../models/Resume');
 
 // find all resumes
@@ -36,10 +40,21 @@ exports.update = function(req, res) {
 };
 
 // generate a resumé in PDF format
+// TODO: Extract to external service
 exports.generate = function(req, res) {
+	var host = req.protocol + '://' + req.get('host');
+	var input = host + '/resume/'+req.params.id;
+	var output = 'resumes/'+req.params.id+'.pdf';
+	child = exec('wkhtmltopdf '+input+' '+output,
+ 	function (error, stdout, stderr) {
+    	console.log('stdout: ' + stdout);
+    	console.log('stderr: ' + stderr);
+		if (error !== null) {
+			console.log('exec error: ' + error);
+		}
+	});
 
-    // execute 'wkhtmltopdf /resumes/:id'
-
-    // pipe to client
-
+	child.on('exit', function () {
+		res.sendfile(output);
+	});
 };
