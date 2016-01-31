@@ -121,6 +121,8 @@
 		$scope.suggestPassword = function() {
 			return generatePassword();
 		};
+		
+		$scope.suggestedPassword = $scope.suggestPassword();
 
 		$scope.setEdit = function(company) {
 			console.log("RUN!");
