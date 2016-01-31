@@ -1,0 +1,106 @@
+
+@page {
+	size: A4;
+	margin: 2cm;
+}
+
+@media print {
+
+	body {
+		background: white;
+		line-height: 12pt !important;
+		font-size: 8pt !important;
+	}
+
+	.padding {
+		padding: 0 !important;
+	}
+
+	.row, .col-12, section, .wrap {
+		padding: 0;
+		display: block;
+		width: 100% !important;
+		margin: 0 !important;
+	}
+
+	#resume {
+		vertical-align: top;
+		width: 100% !important;
+
+		img {
+			width: 85%;
+		}
+
+		.row > * {
+			padding: 0 !important;
+		}
+
+		.col-sm-4 {
+			vertical-align: top;
+			display: inline-block;
+			width: 33.333333334%;
+		}
+
+		.col-sm-3 {
+			vertical-align: top;
+			display: inline-block;
+			width: 25%;
+			text-align: right;
+		}
+
+		.col-sm-5 {
+			vertical-align: top;
+			display: inline-block;
+			width: 41.66666667%;
+		}
+
+		.col-sm-8 {
+			vertical-align: top;
+			display: inline-block;
+			width: 66.6666666666667%;
+		}
+
+		.resume-group {
+			padding: 2% 0;
+		}
+
+		#resume-header {
+			border-bottom: solid 1pt @green;
+			padding-bottom: 2% !important;
+		}
+
+		.resume-group + .resume-group {
+			border-top: solid 1pt @green;
+			page-break-inside: avoid;
+		}
+
+		.resume-post + .resume-post {
+			margin-top: 1.5% !important;
+			padding-top: 1.5% !important;
+			border-top: solid 1pt @gray-light;
+		}
+
+		.contact-details {
+			vertical-align: middle;
+			ul {
+				li {
+
+				}
+			}
+		}
+
+		h1 {
+			font-size: 15pt !important;
+			margin-bottom: 10pt !important;
+		}
+
+		h3 {
+			font-size: 10pt !important;
+			margin-bottom: 0pt !important;
+		}
+
+		p {
+			margin: 0 !important;
+		}
+	}
+}

@@ -2,20 +2,22 @@ div#resume.wrap
 	div#resume-header.row.gutter-large
 		div.col-sm-4.image
 			img(src="/img/profile-pictures/{{ Resume.student.image }}.jpg")
-		div.col-sm-8
+		div.col-sm-5
+			div
+				h1 {{ Resume.student.firstname }} {{ Resume.student.lastname }}
+				p {{ Resume.description }}
+		div.col-sm-3
 			div.contact-details
 				ul
 					li {{ Resume.student.email }}
 					li {{ Resume.student.phone }}
 					li {{ Resume.student.address }}
 					li {{ Resume.student.postcode }} {{ Resume.student.city }}
-			h1 {{ Resume.student.firstname }} {{ Resume.student.lastname }}
-			p {{ Resume.description }}
 
 	div.row.gutter-large.resume-group(ng-repeat=" (key, posts) in Resume.posts | groupBy: 'type'")
 		h1.col-12 {{ key }}
-		div.col-12(ng-repeat="resumePost in posts | orderBy: 'enddate':true")
-			div.resume-post.col-12.row
+		div.col-12.resume-post(ng-repeat="resumePost in posts | orderBy: 'enddate':true")
+			div.col-12.row
 				div.col-sm-4
 					h3 {{ resumePost.startdate | date: 'MMM, yyyy' }} - {{ resumePost.enddate | date: 'MMM, yyyy' }}
 				div.col-sm-8
