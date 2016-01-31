@@ -49,8 +49,9 @@ section.padding.white-pure-bg
 		if authenticated 
 			.row.gutter-large(ng-controller="listStudents")
 				.col-sm-3(ng-repeat='student in studentList')
-					img(ng-src="/img/profile-pictures/{{ student.image }}-cropped.jpg")
-					a(href="/resume/{{ student._id }}" target="_blank") {{ student.firstname + " " + student.lastname }}
+					a(href="/resume/{{ student._id }}" target="_blank") 
+						img(ng-src="/img/profile-pictures/{{ student.image }}-cropped.jpg")
+						p(align="center") {{ student.firstname }}
 		else 
 			.row.gutter-large
 				img(sizes="(max-width:400px), (min-width:500px), (min-width:800px), (min-width:1200px)" srcset="/img/allStuds2016-270x343.jpg 270w, /img/allStuds2016-500x636.jpg 500w, /img/allStuds2016-900x1103.jpg 900w, /img/allStuds2016-1387x1700.jpg 1387w" src="/img/allStuds2016-900x1103.jpg")
