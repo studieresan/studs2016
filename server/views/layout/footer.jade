@@ -17,7 +17,7 @@ footer.padding.black-bg
 			.col-sm-4(ng-controller="hashtagInstagram")
 				h3 Instagram
 				.col-lg-4.col-sm-12(ng-repeat='p in pics | orderBy:orderBy | limitTo:3')
-					a(href="{{ p.link }}" target"_blank")
+					a(href="{{ p.link }}" target="_blank")
 						img(ng-src="{{ p.images.low_resolution.url }}" title="{{ p.caption.text }}")
 
 			.col-sm-4
