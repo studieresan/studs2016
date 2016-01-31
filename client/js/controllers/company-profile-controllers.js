@@ -2,14 +2,21 @@
 
 	var profileControllers = angular.module('companyProfileControllers', []);
 
-	profileControllers.controller("chartsController", ['$scope', '$http', function($scope, $http) {
+	profileControllers.controller("chartsController", ['$scope', '$http', 'Flash', function($scope, $http, Flash) {
 		$scope.beforeDataIsSet = false;
 		$scope.afterDataIsSet = false;
 
 		$scope.$watch('company.eventDataBeforeURL', function () {
 			//console.log($scope.company.eventDataBeforeURL);
 
-			$http.get($scope.company.eventDataBeforeURL).then(function(response) {
+			var re = /d\/(.+)\//; 
+			var str = $scope.company.eventDataBeforeURL;
+			var result = re.exec(str);
+			var spreadsheetId = result[0].substring(2); // OBS! Has trailing "/"
+
+
+			if(spreadsheetId !== null) {
+				$http.get("https://spreadsheets.google.com/feeds/list/" + spreadsheetId + "default/public/values?alt=json").then(function(response) {
 				//console.log(response);
 				temp = response.data.feed.entry;
 				//console.log(temp);
@@ -64,14 +71,22 @@
 				$scope.beforeDataIsSet = true;
 			}, function errorCallback(response) {
 				console.log(response);
-  			});
-		});
+			});
+}
+});
 
-		$scope.$watch('company.eventDataAfterURL', function () {
+$scope.$watch('company.eventDataAfterURL', function () {
 			//console.log($scope.company.eventDataAfterURL);
 
-			$http.get($scope.company.eventDataAfterURL).then(function(response) {
-				//console.log(response);
+			var re = /d\/(.+)\//; 
+			var str = $scope.company.eventDataAfterURL;
+			var result = re.exec(str);
+			var spreadsheetId = result[0].substring(2); // OBS! Has trailing "/"
+
+
+			if(spreadsheetId !== null) {
+				$http.get("https://spreadsheets.google.com/feeds/list/" + spreadsheetId + "default/public/values?alt=json").then(function(response) {
+				console.log(response);
 				temp = response.data.feed.entry;
 				//console.log(temp);
 				var data = {};
@@ -182,7 +197,8 @@
 				$scope.afterDataIsSet = true;
 			}, function errorCallback(response) {
 				console.log(response);
-  			});
-		});
-	}]);
+			});
+}
+});
+}]);
 })();

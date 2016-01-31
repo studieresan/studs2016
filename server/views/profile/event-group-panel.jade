@@ -26,14 +26,17 @@ section.padding.white-bg(ng-init="user = #{userData}")
 								label.label Contact person
 								div.form-element
 									input.input(type='text' name='contact' ng-model='_company.contact')
+						div.col-sm-12
+							h3 Event data
+							p Use the public links from Google Spreadsheet.
 						div.col-sm-6
 							div.form-control
-								label.label Event data (before)
+								label.label Spreadsheet public link (before)
 								div.form-element
 									input.input(type='text' name='eventDataBeforeURL' ng-model='_company.eventDataBeforeURL')
 						div.col-sm-6
 							div.form-control
-								label.label Event data (after)
+								label.label Spreadsheet public link (after)
 								div.form-element
 									input.input(type='text' name='eventDataAfterURL' ng-model='_company.eventDataAfterURL')
 					div.form-group.row.gutter-base
