@@ -42,7 +42,10 @@ exports.update = function(req, res) {
 // generate a resumé in PDF format
 // TODO: Extract to external service
 exports.generate = function(req, res) {
-	child = exec('wkhtmltopdf http://localhost:3000/resume/566b025133f5d84b3f329e21 out.pdf',
+	console.log(req.params.id);
+	var input = 'http://localhost:3000/resume/'+req.params.id;
+	var output = 'resumes/'+req.params.id+'.pdf';
+	child = exec('wkhtmltopdf '+input+' '+output,
  	function (error, stdout, stderr) {
     	console.log('stdout: ' + stdout);
     	console.log('stderr: ' + stderr);
@@ -51,5 +54,5 @@ exports.generate = function(req, res) {
 		}
 	});
 
-	res.sendfile('out.pdf');
+	res.sendfile(output);
 };
