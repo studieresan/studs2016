@@ -42,8 +42,8 @@ exports.update = function(req, res) {
 // generate a resumé in PDF format
 // TODO: Extract to external service
 exports.generate = function(req, res) {
-	console.log(req.params.id);
-	var input = 'http://localhost:3000/resume/'+req.params.id;
+	var host = req.protocol + '://' + req.get('host');
+	var input = host + '/resume/'+req.params.id;
 	var output = 'resumes/'+req.params.id+'.pdf';
 	child = exec('wkhtmltopdf '+input+' '+output,
  	function (error, stdout, stderr) {
