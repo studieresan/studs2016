@@ -29,9 +29,21 @@ exports.findMine = function(req, res) {
 
 // update the authenticated student's resume
 exports.update = function(req, res) {
+	console.log(req.body);
 	Resume.findOne({ student: req.user._id }, function(err, result) {
 		var resume = result;
 		resume.description = req.body.description;
+
+		for (var i in req.body.posts) {
+			console.log(req.body.posts[i]);
+			if(req.body.posts[i].startdate === undefined || req.body.posts[i].startdate === null) {
+				req.body.posts[i].startdate = "";
+			}
+			if(req.body.posts[i].enddate === undefined || req.body.posts[i].enddate === null) {
+				req.body.posts[i].enddate = "";
+			}
+		}
+
 		resume.posts = req.body.posts;
 		resume.save(function(err) {
 			return res.send(resume);

@@ -60,7 +60,7 @@ $scope.setEditDescription = function (bool) {
 };
 
 $scope.update = function (data, isAutoSave) {
-	console.log(data);
+	console.log("data", data);
 	Resume.update({ student: 'mine' }, data, function successCallback(response) {
 		if(isAutoSave) {
 			Flash.create('info', "Auto-saving resume...");
