@@ -59,8 +59,8 @@ exports.update = function(req, res) {
 exports.generate = function(req, res) {
 	var host = req.protocol + '://' + req.get('host');
 	var input = host + '/resume/'+req.params.id;
-	var output = 'resumes/'+req.params.id+'.pdf';
-	var params = '--margin-top 20mm --margin-bottom 20mm --margin-left 20mm --margin-right 20mm';
+	var output = './resumes/'+req.params.id+'.pdf';
+	var params = '--zoom 0.6 --print-media-type --margin-top 20mm --margin-bottom 20mm --margin-left 20mm --margin-right 20mm';
 	console.log("before child process");
 	child = exec('wkhtmltopdf '+params+' '+input+' '+output,
  	function (error, stdout, stderr) {
