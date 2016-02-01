@@ -134,7 +134,40 @@ body {
 /* == Footer == */
 
 footer {
+
+
+	h3 {
+		color: lighten(@gray, 20%);
+	}
+
 	p + p {
 		margin-top: 0;
+	}
+
+	ul {
+		font-weight: 700;
+	}
+
+	a {
+		color: @blue-light;
+
+		&:hover {
+			color: @blue;
+		}
+	}
+
+	.insta {
+
+		text-align: center;
+
+		a {
+			border-radius: 9999px;
+			overflow: hidden;
+		}
+
+		img {
+			padding: 10px;
+			border-radius: 9999px;
+		}
 	}
 }

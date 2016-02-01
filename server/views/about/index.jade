@@ -20,11 +20,7 @@ section.padding
 					h1.t-center Studs
 					p Studs is a project with the goal to establish relationships between companies and Computer Science students from KTH at the end of their education. To achieve this goal we meet companies that could be our future employers. We are 28 students and the project is run by us alone, this gives us the experience to work in a big year-long project. The project ends with a trip over the Atlantic so we can visit companies and universities in the United States. This also gives us experiences and ideas from another culture.
 					p Are you offering a masters thesis, job, extra job or summer job? We are interested, we want to meet you! We have students doing their Masters in Computer Science, Machine Learning, Industrial Management and Human-Computer Interaction.
-					p
-						| If you want to contact us you can send an email to our
-						a(href="mailto:studs-sales@d.kth.se") sales manager Brian Ye
-						| or to our
-						a(href="mailto:studs-ansvarig@d.kth.se") project leaders Axel Samuelsson and Katja Röös.
+					p If you want to contact us you can send an email to our #[a(href="mailto:studs-sales@d.kth.se") sales manager Brian Ye] or to our #[a(href="mailto:studs-ansvarig@d.kth.se") project leaders Axel Samuelsson and Katja Röös].
 				.col-sm-4.t-center
 					a(href="mailto:studs-sales@d.kth.se")
 						img(ng-src="/img/profile-pictures/brian-ye-square.jpg")
@@ -48,8 +44,8 @@ section.padding.white-pure-bg#about
 			.col-sm-2
 		if authenticated
 			.row.about-image.gutter-large(ng-controller="listStudents")
-				.col-sm-3(ng-repeat='student in studentList')
-					a(href="/resume/{{ student._id }}" target="_blank") 
+				.col-xs-6.col-sm-3(ng-repeat='student in studentList')
+					a(href="/resume/{{ student._id }}" target="_blank")
 						img(ng-src="/img/profile-pictures/{{ student.image }}-square.jpg")
 						p.name {{ student.firstname }}
 		else
