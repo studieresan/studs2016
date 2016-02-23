@@ -28,7 +28,12 @@
 				data.knowledge = {data: [], labels: []};
 				for (var i = 0; i < temp.length; i++) {
 					// Masters thesis question
-					var mastersIndex = temp[i].gsx$howlikelyisitthatyouwouldliketowriteyourmastersthesisworkatthiscompany.$t;
+					var mastersIndex = "";
+					if(temp[i].gsx$howlikelyisitthatyouwouldliketowriteyourmastersthesisworkatthiscompany) {
+						mastersIndex = temp[i].gsx$howlikelyisitthatyouwouldliketowriteyourmastersthesisworkatthiscompany.$t;	
+					} else if (temp[i].gsx$howlikelyisitthatyouwouldwanttowriteyourmastersthesisworkatthiscompany) {
+						mastersIndex = temp[i].gsx$howlikelyisitthatyouwouldwanttowriteyourmastersthesisworkatthiscompany.$t;
+					}
 					var mastersDataIndex = data.masters.labels.indexOf(mastersIndex);
 					if(mastersDataIndex < 0) {
 						data.masters.labels.push(mastersIndex);
@@ -90,7 +95,7 @@ $scope.$watch('company.eventDataAfterURL', function () {
 
 			if(spreadsheetId !== null) {
 				$http.get("https://spreadsheets.google.com/feeds/list/" + spreadsheetId + "default/public/values?alt=json").then(function(response) {
-					console.log(response);
+					//console.log(response);
 					temp = response.data.feed.entry;
 				//console.log(temp);
 				var data = {};
@@ -103,7 +108,12 @@ $scope.$watch('company.eventDataAfterURL', function () {
 				var words = [];
 				for (var i = 0; i < temp.length; i++) {
 					// Masters thesis question
-					var mastersIndex = temp[i].gsx$howlikelyisitthatyouwouldliketowriteyourmastersthesisworkatthiscompany.$t;
+					var mastersIndex = "";
+					if(temp[i].gsx$howlikelyisitthatyouwouldliketowriteyourmastersthesisworkatthiscompany) {
+						mastersIndex = temp[i].gsx$howlikelyisitthatyouwouldliketowriteyourmastersthesisworkatthiscompany.$t;
+					} else if (temp[i].gsx$howlikelyisitthatyouwouldwanttowriteyourmastersthesisworkatthiscompany) {
+						mastersIndex = temp[i].gsx$howlikelyisitthatyouwouldwanttowriteyourmastersthesisworkatthiscompany.$t;
+					}
 					var mastersDataIndex = data.masters.labels.indexOf(mastersIndex);
 					if(mastersDataIndex < 0) {
 						data.masters.labels.push(mastersIndex);
@@ -173,24 +183,27 @@ $scope.$watch('company.eventDataAfterURL', function () {
 						data.impression.data[impressionDataIndex]++;
 					}
 
-					// Words
-					var wordArray = (temp[i].gsx$wordsyouthinkdescribesthecompany.$t).split(",");
-					var tempIndex;
-					for (var j = 0; j < wordArray.length; j++) {
-						wordArray[j] = wordArray[j].trim(); // trim first!
-						tempIndex = data.words.word.indexOf(wordArray[j]);
-						if(tempIndex < 0) {
-							data.words.word.push(wordArray[j]);
-							data.words.total++;
-						}
-						tempIndex = data.words.word.indexOf(wordArray[j]);
-						if(data.words.count[tempIndex] === undefined) {
-							//data.words.word[tempIndex] = wordArray[j];
-							data.words.count[tempIndex] = 1;
-						} else {
-							data.words.count[tempIndex]++;
+					if(temp[i].gsx$wordsyouthinkdescribesthecompany) {
+						// Words
+						var wordArray = (temp[i].gsx$wordsyouthinkdescribesthecompany.$t).split(",");
+						var tempIndex;
+						for (var j = 0; j < wordArray.length; j++) {
+							wordArray[j] = wordArray[j].trim(); // trim first!
+							tempIndex = data.words.word.indexOf(wordArray[j]);
+							if(tempIndex < 0) {
+								data.words.word.push(wordArray[j]);
+								data.words.total++;
+							}
+							tempIndex = data.words.word.indexOf(wordArray[j]);
+							if(data.words.count[tempIndex] === undefined) {
+								//data.words.word[tempIndex] = wordArray[j];
+								data.words.count[tempIndex] = 1;
+							} else {
+								data.words.count[tempIndex]++;
+							}
 						}
 					}
+					
 				}
 				// Loop to calculate size of each word
 				for (var k = 0; k < data.words.total; k++) {
