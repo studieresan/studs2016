@@ -10,7 +10,7 @@
 
 			$scope.loadInstagram = function() {			
 				//var ACCESSTOKEN = "2277850875.ab103e5.433849098b394f7baa8471c5464b61a8";
-				var mediaUrl = $scope.eventItem.description;
+				var mediaUrl = $scope.eventItem.instagram;
 				
 				var endPoint = "https://api.instagram.com/oembed?url=" + mediaUrl + "&callback=JSON_CALLBACK";
 
