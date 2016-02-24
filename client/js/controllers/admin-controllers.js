@@ -126,6 +126,7 @@
 
 		$scope.setEdit = function(company) {
 			console.log("RUN!");
+			$scope.suggestedPassword = "";
 			var form = $scope.addcompany;
 			if(form.$pristine || (!form.$pristine && confirm("Are you sure you want to overwrite your current form data?"))) {
 				$scope._company = company;
