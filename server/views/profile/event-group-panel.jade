@@ -15,7 +15,7 @@ section.padding.white-bg(ng-init="user = #{userData}")
 							div.form-control
 								label.label Password
 								div.form-element
-									input.input(type='text' name='password' ng-model='_company.password' ng-value="suggestedPassword")
+									input.input(type='text' name='password' ng-model='_company.password' ng-value="suggestedPassword" ng-disabled="selectedCompany")
 						div.col-sm-12
 							div.form-control
 								label.label Company name
