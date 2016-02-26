@@ -74,6 +74,11 @@ a {
 	&:hover {
 		color: @link-hover-color;
 	}
+
+	&.disabled {
+		color: @gray-light;
+		pointer-events: none;
+	}
 }
 
 // Text helpers
