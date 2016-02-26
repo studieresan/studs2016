@@ -50,7 +50,7 @@
 				});
 			}
 			if($scope.Resume.description === "" || $scope.Resume.description === undefined) {
-				$scope.Resume.description = "Update your personal descripion by clicking on this text.";
+				$scope.Resume.description = "Update your personal description by clicking on this text.";
 			}
 			$scope.data.loading = false;
 		});

@@ -86,10 +86,6 @@ body {
 			}
 		}
 
-		.right a {
-			.responsive-property(margin-top, 7px, 5px, 5px, 5px);
-		}
-
 		@logo-ratio: 40/200;
 		#logo {
 			.responsive-property(width, 200px, 170px, 150px,100px);
@@ -117,10 +113,51 @@ body {
 			a + a {
 				margin-left: 10px;
 			}
+
+			@media (max-width: 600px) {
+				img {
+					//display: none;
+				}
+			}
 		}
 
 		span {
-			margin: 0 20px;
+			.responsive-property(margin, 0 20px, 0 15px, 0 10px, 0 10px);
+
+			@media (max-width: 600px) {
+				display: none;
+			}
+		}
+
+		.right {
+			a {
+				.responsive-property(margin-top, 7px, 5px, 5px, 5px);
+			}
+
+			@media (max-width: 600px) {
+				&, .profile {
+					width: 100%;
+					float: none;
+					clear: both;
+					text-align: center;
+				}
+
+
+				a {
+					display: inline-block;
+					max-width: 100px;
+					.ellipsis;
+				}
+			}
+		}
+
+		.left {
+			@media (max-width: 600px) {
+				width: 100%;
+				float: none;
+				clear: both;
+				text-align: center;
+			}
 		}
 	}
 }
