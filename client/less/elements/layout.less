@@ -114,15 +114,19 @@ body {
 				margin-left: 10px;
 			}
 
-			@media (max-width: 500px) {
+			@media (max-width: 600px) {
 				img {
-					display: none;
+					//display: none;
 				}
 			}
 		}
 
 		span {
 			.responsive-property(margin, 0 20px, 0 15px, 0 10px, 0 10px);
+
+			@media (max-width: 600px) {
+				display: none;
+			}
 		}
 
 		.right {
@@ -130,15 +134,26 @@ body {
 				.responsive-property(margin-top, 7px, 5px, 5px, 5px);
 			}
 
-			@media (max-width: 500px) {
-				float: none;
-				clear: both;
-				text-align: center;
+			@media (max-width: 600px) {
+				&, .profile {
+					width: 100%;
+					float: none;
+					clear: both;
+					text-align: center;
+				}
+
+
+				a {
+					display: inline-block;
+					max-width: 100px;
+					.ellipsis;
+				}
 			}
 		}
 
 		.left {
-			@media (max-width: 500px) {
+			@media (max-width: 600px) {
+				width: 100%;
 				float: none;
 				clear: both;
 				text-align: center;
