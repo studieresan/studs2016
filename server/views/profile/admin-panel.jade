@@ -2,29 +2,69 @@ section.padding.white-bg(ng-init="user = #{userData}")
 	.wrap
 		div.row.gutter-large(ng-controller="studentCtrl")
 			div.col-md-6
-				form(novalidate name='addstudent' ng-submit='addstudent.$valid && add(newUser)')
+				form(novalidate name='addstudent' ng-submit='addstudent.$valid && addOrEdit(_student)')
 					div.form-group.row.gutter-base
-						h2.form-title Register new student
+						h2.form-title {{ editType }} student
 						div.form-control.col-sm-6
 							label.label E-mail
 							div.form-element
-								input.input(type='email' name='email' ng-model='newUser.email' required)
+								input.input(type='email' name='email' ng-model='_student.email' required)
 						div.col-sm-6
 							div.form-control
 								label.label Password
 								div.form-element
-									input.input(type='text' name='password' ng-model='newUser.password' ng-value="suggestedPassword")
+									input.input(type='text' name='password' ng-model='_student.password' ng-value="suggestedPassword")
+						div.col-sm-6(ng-if="editType == 'Edit'")
+							div.form-control
+								label.label Firstname
+								div.form-element
+									input.input(type='text' name='firstname' ng-model='_student.firstname')
+						div.col-sm-6(ng-if="editType == 'Edit'")
+							div.form-control
+								label.label Lastname
+								div.form-element
+									input.input(type='text' name='lastname' ng-model='_student.lastname')
+						div.col-sm-6(ng-if="editType == 'Edit'")
+							div.form-control
+								label.label Address
+								div.form-element
+									input.input(type='text' name='address' ng-model='_student.address')
+						div.col-sm-6(ng-if="editType == 'Edit'")
+							div.form-control
+								label.label City
+								div.form-element
+									input.input(type='text' name='city' ng-model='_student.city')
+						div.col-sm-6(ng-if="editType == 'Edit'")
+							div.form-control
+								label.label Postcode
+								div.form-element
+									input.input(type='text' name='postcode' ng-model='_student.postcode')
+						div.col-sm-6(ng-if="editType == 'Edit'")
+							div.form-control
+								label.label Linkedin
+								div.form-element
+									input.input(type='text' name='linkedin' ng-model='_student.linkedin')
+						div.col-sm-6(ng-if="editType == 'Edit'")
+							div.form-control
+								label.label Phone
+								div.form-element
+									input.input(type='text' name='phone' ng-model='_student.phone')
+						div.col-sm-6(ng-if="editType == 'Edit'")
+							div.form-control
+								label.label Group
+								div.form-element
+									input.input(type='text' name='phone' ng-model='_student.group')
 					div.form-group.row.gutter-base
 						div.form-control
-							input.btn.btn-primary(type='submit' value='Register')
+							input.btn.btn-primary(type='submit' value='{{ editType }}')
 			div.col-md-6
 				form(novalidate name='removestudent' ng-submit='removestudent.$valid && removeStudent(selectedStudent)')
 					div.form-group.row.gutter-base
-						h2.form-title Remove student
+						h2.form-title Edit student
 						div.form-control.col-12
 							label.label Student
 							div.form-element
-								select(name="selectStudent" id="selectStudent" ng-options="student.fullname || student.email for student in allstudents" ng-model="selectedStudent")
+								select(name="selectStudent" id="selectStudent" ng-options="student.fullname || student.email for student in allstudents" ng-model="selectedStudent" ng-change="setEdit(selectedStudent)")
 					div.form-group.row.gutter-base
 						div.form-control
 							input.btn.btn-primary(type='submit' value='Remove')

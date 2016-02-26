@@ -12,17 +12,51 @@
 
 	adminControllers.controller("studentCtrl", ['$scope', '$http', 'Flash', function($scope, $http, Flash) {
 
-		$scope.add = function(user) {
-			if(!user.password)
-				user.password = $scope.suggestedPassword;
-			$http.post('/api/students', user).then(function successCallback(response) {
-				Flash.create('info', "Registered " + $scope.newUser.email + "!");
-				$scope.newUser.email = "";
-				$scope.newUser.password = $scope.suggestPassword();
-			}, function errorCallback(response) {
-				Flash.create('danger', "Something went bad. Try again!");
-			});
+		$scope.editType = "Add";
+
+		$scope.resetForm = function() {
+			$scope.editType = "Add";
+			$scope._student.email = "";
+			$scope._student.password = $scope.suggestPassword();
+			$scope._student.firstname = "";
+			$scope._student.lastname = "";
+			$scope._student.address = "";
+			$scope._student.city = "";
+			$scope._student.postcode = "";
+			$scope._student.linkedin = "";
+			$scope._student.phone = "";
+			$scope._student.group = "";
+			$scope.selectedStudent = null;
 			$scope.getStudents();
+			$scope.addstudent.$setPristine();
+		};
+
+		$scope.addOrEdit = function(user) {
+			if($scope.editType == "Add") {
+				if(!user.password) {
+					user.password = $scope.suggestedPassword;
+				}
+				$http.post('/api/students', user).then(function successCallback(response) {
+					Flash.create('info', "Registered " + user.email + "!");
+					$scope.resetForm();
+				}, function errorCallback(response) {
+					Flash.create('danger', "Something went bad. Try again!");
+				});
+				$scope.getStudents();
+			} else if($scope.editType == "Edit") {
+				if(user.password === "") {
+					delete user.password;
+				}
+				$http.put('/api/editStudent', user).then(function successCallback(response) {
+					Flash.create('info', "Changed data for " + user.firstname + "!");
+					$scope.resetForm();
+				}, function errorCallback(response) {
+					console.log(response);
+					Flash.create('danger', "Something went bad. Try again!");
+				});
+			} else {
+				Flash.create('danger', "Something went bad when adding or editing a student... Try again!");
+			}
 		};
 
 		$scope.getStudents = function() {
@@ -45,6 +79,19 @@
 				}, function errorCallback(response) {
 					Flash.create('danger', "Something went bad. Try again!");
 				});
+			}
+		};
+
+		$scope.setEdit = function(student) {
+			console.log("RUN!");
+			$scope.suggestedPassword = "";
+			var form = $scope.addstudent;
+			if(form.$pristine || (!form.$pristine && confirm("Are you sure you want to overwrite your current form data?"))) {
+				$scope._student = student;
+				$scope.editType = "Edit";
+				form.$setPristine(); // Set that the loaded data is "unaltered"
+			} else {
+				$scope.selectedStudent = null;
 			}
 		};
 

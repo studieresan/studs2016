@@ -179,6 +179,9 @@ exports.editStudent = function(req, res, next) {
 				user[field] = req.body[field];
 			}
 		}
+
+		user.beforeSavePassword();
+
 		user.save(function(err) {
 			res.json(user);
 		});
