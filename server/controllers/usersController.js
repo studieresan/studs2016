@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+var crypto   = require('crypto');
+var slug     = require('slug');
 
 users  = require('../models/User');
 Resume = require('../models/Resume');
@@ -7,6 +9,10 @@ Student = users.Student;
 Company = users.Company;
 
 User = mongoose.model('User');
+
+var sha1sum = function(input) {
+    return crypto.createHash('sha1').update(input).digest('hex');
+};
 
 // fetch all users
 exports.findAll = function(req, res) {
@@ -205,4 +211,17 @@ exports.editCompany = function(req, res, next) {
 exports.signout = function(req, res) {
 	req.logout();
 	res.redirect('/');
+};
+
+exports.hashedProfileImages = function(req, res) {
+	var hashedProfileImages = [];
+	Student.find({}, 'firstname lastname -_id', function(err, results) {
+		var hashes = [];
+		results.forEach(function(student) {
+			var filename = student.firstname+"-"+student.lastname+"-square";
+			filename = slug(filename, { lower: true });
+			hashes.push(sha1sum(filename)+".jpg");
+		});
+		return res.send(hashes);
+	});
 };

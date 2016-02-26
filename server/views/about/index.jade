@@ -23,13 +23,13 @@ section.padding
 					p If you want to contact us you can send an email to our #[a(href="mailto:studs-sales@d.kth.se") sales manager Brian Ye] or to our #[a(href="mailto:studs-ansvarig@d.kth.se") project leaders Axel Samuelsson and Katja Röös].
 				.col-sm-4.t-center
 					a(href="mailto:studs-sales@d.kth.se")
-						img(ng-src="/img/profile-pictures/brian-ye-square.jpg")
+						img(ng-src="/img/profile-pictures/square/brian-ye-square.jpg")
 				.col-sm-4.t-center
 					a(href="mailto:studs-ansvarig@d.kth.se")
-						img(ng-src="/img/profile-pictures/axel-samuelsson-square.jpg")
+						img(ng-src="/img/profile-pictures/square/axel-samuelsson-square.jpg")
 				.col-sm-4.t-center
 					a(href="mailto:studs-ansvarig@d.kth.se")
-						img(ng-src="/img/profile-pictures/katja-roos-square.jpg")
+						img(ng-src="/img/profile-pictures/square/katja-roos-square.jpg")
 
 
 			.col-sm-2
@@ -46,10 +46,13 @@ section.padding.white-pure-bg#about
 			.row.about-image.gutter-large(ng-controller="listStudents")
 				.col-xs-6.col-sm-3(ng-repeat='student in studentList')
 					a(href="/resume/{{ student._id }}" target="_blank")
-						img(ng-src="/img/profile-pictures/{{ student.image }}-square.jpg")
+						img(ng-src="/img/profile-pictures/square/{{ student.image }}-square.jpg")
 						p.name {{ student.firstname }}
 		else
-			.row.gutter-large
+			.row.about-image.gutter-large(ng-controller="listStudents")
+				.col-xs-6.col-sm-3(ng-repeat='item in hashedProfileImages')
+					img(ng-src="/img/profile-pictures/hashed/{{ item }}")
+			//-.row.gutter-large
 				img(sizes="(max-width:400px), (min-width:500px), (min-width:800px), (min-width:1200px)" srcset="/img/allStuds2016-270x343.jpg 270w, /img/allStuds2016-500x636.jpg 500w, /img/allStuds2016-900x1103.jpg 900w, /img/allStuds2016-1387x1700.jpg 1387w" src="/img/allStuds2016-900x1103.jpg")
 
 section.padding

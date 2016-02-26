@@ -150,6 +150,7 @@ module.exports = function(app, express) {
 	api.post('/students', ensureAdmin, users.addStudent);
 	api.put('/students', ensureAuthenticated, users.updateStudent);
 	api.put('/editStudent', ensureAdmin, users.editStudent);
+	api.get('/hashedProfileImages', users.hashedProfileImages);
 
 	// Event-api
 	api.get('/events', events.findAll);

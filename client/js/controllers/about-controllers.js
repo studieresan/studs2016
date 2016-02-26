@@ -10,6 +10,12 @@
 			});
 			$scope.studentList = data;
 		});
+
+		$scope.hashedProfileImages = [];
+		$http.get('/api/hashedProfileImages').success(function(data) {
+			console.log(data);
+			$scope.hashedProfileImages = data;
+		});
 	}]);
 
 })();
