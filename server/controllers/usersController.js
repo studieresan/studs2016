@@ -425,7 +425,8 @@ exports.editStudent = function(req, res, next) {
 			}
 		}
 
-		user.beforeSavePassword();
+		if(req.body.password !== undefined)
+			user.beforeSavePassword();
 
 		user.save(function(err) {
 			res.json(user);
