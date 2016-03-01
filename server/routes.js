@@ -136,6 +136,8 @@ module.exports = function(app, express) {
 	api.post('/users', ensureAdmin, users.add);
 	api.delete('/users/:id', ensureAdmin, users.delete);
 	api.post('/companies', ensureEventGroup, users.addCompany);
+	api.get('/companyEventBeforeStats', ensureAuthenticated, users.companyEventBeforeStats);
+	api.get('/companyEventAfterStats', ensureAuthenticated, users.companyEventAfterStats);
 	api.get('/companies', ensureEventGroup, users.findCompanies);
 	api.put('/companies/:id', ensureEventGroup, users.editCompany);
 	api.get('/students', users.findStudents);

@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var crypto   = require('crypto');
 var slug     = require('slug');
+var http     = require('http');
 
 users  = require('../models/User');
 Resume = require('../models/Resume');
@@ -117,6 +118,220 @@ exports.addCompany = function(req, res, next) {
 		}
 		return res.json(company);
 	});
+};
+
+exports.companyEventAfterStats = function(req, res, next) {
+    var re = /d\/(.+)\//;
+    var str = req.user.eventDataAfterURL;
+    var result = re.exec(str);
+    var spreadsheetId = null;
+    if(result !== null) {
+      spreadsheetId = result[0].substring(2); // OBS! Has trailing "/"
+    }
+
+    if(spreadsheetId !== null) {
+      http.request({
+        host: 'spreadsheets.google.com',
+        path: "/feeds/list/" + spreadsheetId + "default/public/values?alt=json"},
+        function(response) {
+          var str = "";
+          response.on('data', function (chunk) {
+            str += chunk;
+          });
+
+          response.on('end', function () {
+            temp = JSON.parse(str).feed.entry;
+            var data = {};
+    				data.masters = {data: [], labels: []};
+    				data.qualified = {data: [], labels: []};
+    				data.change = {data: [], labels: []};
+    				data.knowledge = {data: [], labels: []};
+    				data.impression = {data: [], labels: []};
+    				data.words = { word: [], count: [], total: 0 };
+    				for (var i = 0; i < temp.length; i++) {
+    					// Masters thesis question
+    					var mastersIndex = "";
+    					if(temp[i].gsx$howlikelyisitthatyouwouldliketowriteyourmastersthesisworkatthiscompany) {
+    						mastersIndex = temp[i].gsx$howlikelyisitthatyouwouldliketowriteyourmastersthesisworkatthiscompany.$t;
+    					} else if (temp[i].gsx$howlikelyisitthatyouwouldwanttowriteyourmastersthesisworkatthiscompany) {
+    						mastersIndex = temp[i].gsx$howlikelyisitthatyouwouldwanttowriteyourmastersthesisworkatthiscompany.$t;
+    					}
+    					var mastersDataIndex = data.masters.labels.indexOf(mastersIndex);
+    					if(mastersDataIndex < 0) {
+    						data.masters.labels.push(mastersIndex);
+    					}
+    					// New index made
+    					mastersDataIndex = data.masters.labels.indexOf(mastersIndex);
+    					if(data.masters.data[mastersDataIndex] === undefined) {
+    						data.masters.data[mastersDataIndex] = 1;
+    					} else {
+    						data.masters.data[mastersDataIndex]++;
+    					}
+
+    					// Qualified question
+    					var qualifiedIndex = temp[i].gsx$doyoufeellikeyouarequalifiedtoworkatthiscompany.$t;
+    					var qualifiedDataIndex = data.qualified.labels.indexOf(qualifiedIndex);
+    					if(qualifiedDataIndex < 0) {
+    						data.qualified.labels.push(qualifiedIndex);
+    					}
+
+    					// New index made
+    					qualifiedDataIndex = data.qualified.labels.indexOf(qualifiedIndex);
+    					if(data.qualified.data[qualifiedDataIndex] === undefined) {
+    						data.qualified.data[qualifiedDataIndex] = 1;
+    					} else {
+    						data.qualified.data[qualifiedDataIndex]++;
+    					}
+
+    					// Change question
+    					var changeIndex = temp[i].gsx$isitapositiveoranegativechange.$t;
+    					var changeDataIndex = data.change.labels.indexOf(changeIndex);
+    					if(changeDataIndex < 0) {
+    						data.change.labels.push(changeIndex);
+    					}
+    					// New index made
+    					changeDataIndex = data.change.labels.indexOf(changeIndex);
+    					if(data.change.data[changeDataIndex] === undefined) {
+    						data.change.data[changeDataIndex] = 1;
+    					} else {
+    						data.change.data[changeDataIndex]++;
+    					}
+
+    					// Knowledge question
+    					var knowledgeIndex = temp[i].gsx$howwelldoyouknowwhatthecompanydoes.$t;
+    					var knowledgeDataIndex = data.knowledge.labels.indexOf(knowledgeIndex);
+    					if(knowledgeDataIndex < 0) {
+    						data.knowledge.labels.push(knowledgeIndex);
+    					}
+    					// New index made
+    					knowledgeDataIndex = data.knowledge.labels.indexOf(knowledgeIndex);
+    					if(data.knowledge.data[knowledgeDataIndex] === undefined) {
+    						data.knowledge.data[knowledgeDataIndex] = 1;
+    					} else {
+    						data.knowledge.data[knowledgeDataIndex]++;
+    					}
+
+    					// Impression question
+    					var impressionIndex = temp[i].gsx$whatsyourgeneralimpressionofthecompany.$t;
+    					var impressionDataIndex = data.impression.labels.indexOf(impressionIndex);
+    					if(impressionDataIndex < 0) {
+    						data.impression.labels.push(impressionIndex);
+    					}
+    					// New index made
+    					impressionDataIndex = data.impression.labels.indexOf(impressionIndex);
+    					if(data.impression.data[impressionDataIndex] === undefined) {
+    						data.impression.data[impressionDataIndex] = 1;
+    					} else {
+    						data.impression.data[impressionDataIndex]++;
+    					}
+
+    					if(temp[i].gsx$wordsyouthinkdescribesthecompany) {
+    						// Words
+    						var wordArray = (temp[i].gsx$wordsyouthinkdescribesthecompany.$t).split(",");
+    						var tempIndex;
+    						for (var j = 0; j < wordArray.length; j++) {
+    							wordArray[j] = wordArray[j].trim(); // trim first!
+    							tempIndex = data.words.word.indexOf(wordArray[j]);
+    							if(tempIndex < 0) {
+    								data.words.word.push(wordArray[j]);
+    								data.words.total++;
+    							}
+    							tempIndex = data.words.word.indexOf(wordArray[j]);
+    							if(data.words.count[tempIndex] === undefined) {
+    								//data.words.word[tempIndex] = wordArray[j];
+    								data.words.count[tempIndex] = 1;
+    							} else {
+    								data.words.count[tempIndex]++;
+    							}
+    						}
+    					}
+
+    				}
+            return res.json(data);
+          });
+
+      }).end();
+    }
+};
+
+exports.companyEventBeforeStats = function(req, res, next) {
+    var re = /d\/(.+)\//;
+    var str = req.user.eventDataBeforeURL;
+    var result = re.exec(str);
+    var spreadsheetId = null;
+    if(result !== null) {
+      spreadsheetId = result[0].substring(2); // OBS! Has trailing "/"
+    }
+
+    if(spreadsheetId !== null) {
+      http.request({
+        host: 'spreadsheets.google.com',
+        path: "/feeds/list/" + spreadsheetId + "default/public/values?alt=json"},
+        function(response) {
+          var str = "";
+          response.on('data', function (chunk) {
+            str += chunk;
+          });
+
+          response.on('end', function () {
+            temp = JSON.parse(str).feed.entry;
+    				//console.log(temp);
+    				var data = {};
+            data.masters = {data: [], labels: []};
+    				data.impression = {data: [], labels: []};
+    				data.knowledge = {data: [], labels: []};
+    				for (var i = 0; i < temp.length; i++) {
+    					// Masters thesis question
+    					var mastersIndex = "";
+    					if(temp[i].gsx$howlikelyisitthatyouwouldliketowriteyourmastersthesisworkatthiscompany) {
+    						mastersIndex = temp[i].gsx$howlikelyisitthatyouwouldliketowriteyourmastersthesisworkatthiscompany.$t;
+    					} else if (temp[i].gsx$howlikelyisitthatyouwouldwanttowriteyourmastersthesisworkatthiscompany) {
+    						mastersIndex = temp[i].gsx$howlikelyisitthatyouwouldwanttowriteyourmastersthesisworkatthiscompany.$t;
+    					}
+    					var mastersDataIndex = data.masters.labels.indexOf(mastersIndex);
+    					if(mastersDataIndex < 0) {
+    						data.masters.labels.push(mastersIndex);
+    					}
+    					// New index made
+    					mastersDataIndex = data.masters.labels.indexOf(mastersIndex);
+    					if(data.masters.data[mastersDataIndex] === undefined) {
+    						data.masters.data[mastersDataIndex] = 1;
+    					} else {
+    						data.masters.data[mastersDataIndex]++;
+    					}
+
+    					// Impression question
+    					var impressionIndex = temp[i].gsx$whatsyourgeneralimpressionofthecompany.$t;
+    					var impressionDataIndex = data.impression.labels.indexOf(impressionIndex);
+    					if(impressionDataIndex < 0) {
+    						data.impression.labels.push(impressionIndex);
+    					}
+    					// New index made
+    					impressionDataIndex = data.impression.labels.indexOf(impressionIndex);
+    					if(data.impression.data[impressionDataIndex] === undefined) {
+    						data.impression.data[impressionDataIndex] = 1;
+    					} else {
+    						data.impression.data[impressionDataIndex]++;
+    					}
+
+    					// Knowledge
+    					var knowledgeIndex = temp[i].gsx$howwelldoyouknowwhatthecompanydoes.$t;
+    					var knowledgeDataIndex = data.knowledge.labels.indexOf(knowledgeIndex);
+    					if(knowledgeDataIndex < 0) {
+    						data.knowledge.labels.push(knowledgeIndex);
+    					}
+    					// New index made
+    					knowledgeDataIndex = data.knowledge.labels.indexOf(knowledgeIndex);
+    					if(data.knowledge.data[knowledgeDataIndex] === undefined) {
+    						data.knowledge.data[knowledgeDataIndex] = 1;
+    					} else {
+    						data.knowledge.data[knowledgeDataIndex]++;
+    					}
+    				}
+            return res.json(data);
+          });
+      }).end();
+    }
 };
 
 /*

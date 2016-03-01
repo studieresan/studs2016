@@ -18,6 +18,8 @@ UserSchema.set('toJSON', {
 	transform: function(doc, ret) {
 		delete ret.password;     // exclude password
 		delete ret.passwordsalt; // exclude password salt
+		delete ret.eventDataAfterURL;
+		delete ret.eventDataBeforeURL;
 		return ret;
 	}
 });
@@ -43,8 +45,8 @@ UserSchema.methods.beforeSavePassword = function() {
 var CompanyUserSchema = new mongoose.Schema({
 	name: { type: String, required: true },
 	contact: { type: String },
-	eventDataBeforeURL: { type: String },
-	eventDataAfterURL: { type: String }
+	eventDataBeforeURL: { type: String},
+	eventDataAfterURL: { type: String}
 }, options);
 
 // student is a special kind of user.
