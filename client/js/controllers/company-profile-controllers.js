@@ -8,7 +8,7 @@
 
 		$scope.$watch('company.eventDataBeforeURL', function () {
 			//console.log($scope.company.eventDataBeforeURL);
-				$http.get("/api/companyEventBeforeStats").then(function(response) {
+			$http.get("/api/companyEventBeforeStats").then(function(response) {
 				var data = response.data;
 				$scope.beforeData = data;
 				$scope.beforeDataIsSet = true;
@@ -20,7 +20,7 @@
 
 		$scope.$watch('company.eventDataAfterURL', function () {
 			//console.log($scope.company.eventDataAfterURL);
-				$http.get("/api/companyEventAfterStats").then(function(response) {
+			$http.get("/api/companyEventAfterStats").then(function(response) {
 				var data = response.data;
 				var words = [];
 
@@ -35,5 +35,5 @@
 				console.log(response);
 			});
 		});
-}]);
+	}]);
 })();
