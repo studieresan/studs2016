@@ -13,7 +13,7 @@
 				if authenticated && user
 					if user.type == "Student"
 						a(href="/profile" target="_self")
-							img(src="/img/profile-pictures/square/#{user.image}-square.jpg")
+							img(src="/img/profile-pictures/#{user.hash}.jpg")
 							| #{user.firstname}
 					else
 						a(href="/profile" target="_self") #{user.name}

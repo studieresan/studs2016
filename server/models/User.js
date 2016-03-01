@@ -43,8 +43,8 @@ UserSchema.methods.beforeSavePassword = function() {
 var CompanyUserSchema = new mongoose.Schema({
 	name: { type: String, required: true },
 	contact: { type: String },
-	eventDataBeforeURL: { type: String}, 
-	eventDataAfterURL: { type: String} 
+	eventDataBeforeURL: { type: String },
+	eventDataAfterURL: { type: String }
 }, options);
 
 // student is a special kind of user.
@@ -61,15 +61,16 @@ var StudentUserSchema = new mongoose.Schema({
 	facebook: { type: String }
 }, options);
 
-// add a virtual property for a profile image
-StudentUserSchema.virtual('image').get(function() {
-	return slug(this.firstname + '-' + this.lastname, { lower: true });
+// add a virtual property for a hash: sha1(firsname-lastname)
+StudentUserSchema.virtual('hash').get(function() {
+	return crypto.createHash('sha1').update(
+		slug(this.firstname + '-' + this.lastname, { lower: true })
+	).digest('hex');
 });
 
 // add a virtual property for full name
 StudentUserSchema.virtual('fullname').get(function() {
-	if(this.firstname && this.lastname)
-		return this.firstname + ' ' + this.lastname;
+	return this.firstname + ' ' + this.lastname;
 });
 
 var User = mongoose.model('User', UserSchema);

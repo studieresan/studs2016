@@ -1,5 +1,5 @@
 #!/bin/bash
-for file in client/public/img/profile-pictures/square/*
+for file in client/img/profile-pictures/square/*.jpg
 do
     if [ -f "$file" ]
     then
