@@ -3,32 +3,8 @@ var users    = require('./controllers/usersController');
 var resumes  = require('./controllers/resumesController');
 var events   = require('./controllers/eventsController');
 
-// check if a user belongs to any of the given groups
-function belongsToGroup(user, groups) {
-	if (! user || ! user.group || user.type.toLowerCase() !== "student") {
-		return false;
-	}
-	var inGroup = false;
-	groups.forEach(function(group) {
-		if (user.group.toLowerCase() === group) {
-			inGroup = true;
-		}
-	});
-	return inGroup;
-}
-
-// determine whether a user is an admin or not
-function isAdmin(user) {
-	return belongsToGroup(user, ['communication', 'projectleader']);
-}
-
-// determine wheter a user belongs to the event group or not
-function isEventGroup(user) {
-	return belongsToGroup(user, ['event']);
-}
-
 function ensureStudent(req, res, next) {
-	if( req.isAuthenticated() && (isAdmin(req.user) || (req.user && req.user.type.toLowerCase() === "student"))) {
+	if( req.isAuthenticated() && (users.isAdmin(req.user) || (req.user && req.user.type.toLowerCase() === "student"))) {
 		next();
 	} else {
 		res.sendStatus(401);
@@ -36,7 +12,7 @@ function ensureStudent(req, res, next) {
 }
 
 function ensureEventGroup(req, res, next) {
-	if( req.isAuthenticated() && (isAdmin(req.user) || isEventGroup(req.user))) {
+	if( req.isAuthenticated() && (users.isAdmin(req.user) || users.isEventGroup(req.user))) {
 		next();
 	} else {
 		res.sendStatus(401);
@@ -44,7 +20,7 @@ function ensureEventGroup(req, res, next) {
 }
 
 function ensureAdmin(req, res, next) {
-	if(isAdmin(req.user) && req.isAuthenticated()) {
+	if(users.isAdmin(req.user) && req.isAuthenticated()) {
 		next();
 	} else {
 		res.sendStatus(401);
@@ -64,8 +40,8 @@ module.exports = function(app, express) {
 	app.use(function(req, res, next) {
 		res.locals.user = req.user ? req.user : '';
 		res.locals.authenticated = req.isAuthenticated();
-		res.locals.isAdmin = isAdmin(req.user);
-		res.locals.isEventGroup = isEventGroup(req.user);
+		res.locals.isAdmin = users.isAdmin(req.user);
+		res.locals.isEventGroup = users.isEventGroup(req.user);
 		next();
 	});
 

@@ -10,6 +10,31 @@ Company = users.Company;
 
 User = mongoose.model('User');
 
+// check if a user belongs to any of the given groups
+exports.belongsToGroup = function(user, groups) {
+	if (! user || ! user.group || user.type.toLowerCase() !== "student") {
+		return false;
+	}
+	var inGroup = false;
+	groups.forEach(function(group) {
+		if (user.group.toLowerCase() === group) {
+			inGroup = true;
+		}
+	});
+	return inGroup;
+};
+
+// determine whether a user is an admin or not
+exports.isAdmin = function(user) {
+	return this.belongsToGroup(user, ['communication', 'projectleader']);
+};
+
+// determine wheter a user belongs to the event group or not
+exports.isEventGroup = function(user) {
+	return this.belongsToGroup(user, ['event']);
+};
+
+
 var sha1sum = function(input) {
     return crypto.createHash('sha1').update(input).digest('hex');
 };
