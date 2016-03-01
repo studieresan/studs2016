@@ -24,6 +24,11 @@ exports.belongsToGroup = function(user, groups) {
 	return inGroup;
 };
 
+// check if a user is of a certain type
+exports.isOfType = function(user, type) {
+    return user && user.type.toLowerCase() === type;
+};
+
 // determine whether a user is an admin or not
 exports.isAdmin = function(user) {
 	return this.belongsToGroup(user, ['communication', 'projectleader']);

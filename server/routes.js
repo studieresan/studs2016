@@ -1,39 +1,8 @@
-var passport = require('passport');
-var users    = require('./controllers/usersController');
-var resumes  = require('./controllers/resumesController');
-var events   = require('./controllers/eventsController');
-
-function ensureStudent(req, res, next) {
-	if( req.isAuthenticated() && (users.isAdmin(req.user) || (req.user && req.user.type.toLowerCase() === "student"))) {
-		next();
-	} else {
-		res.sendStatus(401);
-	}
-}
-
-function ensureEventGroup(req, res, next) {
-	if( req.isAuthenticated() && (users.isAdmin(req.user) || users.isEventGroup(req.user))) {
-		next();
-	} else {
-		res.sendStatus(401);
-	}
-}
-
-function ensureAdmin(req, res, next) {
-	if(users.isAdmin(req.user) && req.isAuthenticated()) {
-		next();
-	} else {
-		res.sendStatus(401);
-	}
-}
-
-function ensureAuthenticated(req, res, next) {
-	if(req.isAuthenticated()) {
-		next();
-	} else {
-		res.sendStatus(401);
-	}
-}
+var passport    = require('passport');
+var users       = require('./controllers/usersController');
+var resumes     = require('./controllers/resumesController');
+var events      = require('./controllers/eventsController');
+var middlewares = require('./middlewares');
 
 module.exports = function(app, express) {
 
@@ -104,7 +73,7 @@ module.exports = function(app, express) {
 	});
 
 	// Profile
-	app.get('/profile', ensureAuthenticated, function(req, res) {
+	app.get('/profile', middlewares.ensureAuthenticated, function(req, res) {
 		var type = (res.locals.user.type).toLowerCase();
 		res.render('profile/' + type, {
 			ngApp: type + "Profile",
@@ -130,35 +99,35 @@ module.exports = function(app, express) {
 	*/
 	var api = express.Router();
 
-	// User-api
-	api.get('/users', ensureAdmin, users.findAll);
-	api.put('/users/change-password', ensureAuthenticated, users.changePassword);
-	api.post('/users', ensureAdmin, users.add);
-	api.delete('/users/:id', ensureAdmin, users.delete);
-	api.post('/companies', ensureEventGroup, users.addCompany);
-	api.get('/companies', ensureEventGroup, users.findCompanies);
-	api.put('/companies/:id', ensureEventGroup, users.editCompany);
+	// user-api
+	api.get('/users', middlewares.ensureAdmin, users.findAll);
+	api.put('/users/change-password', middlewares.ensureAuthenticated, users.changePassword);
+	api.post('/users', middlewares.ensureAdmin, users.add);
+	api.delete('/users/:id', middlewares.ensureAdmin, users.delete);
+	api.post('/companies', middlewares.ensureEventGroup, users.addCompany);
+	api.get('/companies', middlewares.ensureEventGroup, users.findCompanies);
+	api.put('/companies/:id', middlewares.ensureEventGroup, users.editCompany);
 	api.get('/students', users.findStudents);
-	api.post('/students', ensureAdmin, users.addStudent);
-	api.put('/students', ensureAuthenticated, users.updateStudent);
-	api.put('/editStudent', ensureAdmin, users.editStudent);
+	api.post('/students', middlewares.ensureAdmin, users.addStudent);
+	api.put('/students', middlewares.ensureAuthenticated, users.updateStudent);
+	api.put('/editStudent', middlewares.ensureAdmin, users.editStudent);
 	api.get('/hashedProfileImages', users.hashedProfileImages);
 
-	// Event-api
+	// event-api
 	api.get('/events', events.findAll);
 	api.get('/events/:slug', events.findBySlug);
-	api.post('/events', ensureEventGroup, events.add);
-	api.put('/events/:id', ensureEventGroup, events.update);
-	api.delete('/events/:id', ensureEventGroup, events.remove);
+	api.post('/events', middlewares.ensureEventGroup, events.add);
+	api.put('/events/:id', middlewares.ensureEventGroup, events.update);
+	api.delete('/events/:id', middlewares.ensureEventGroup, events.remove);
 
 	// resumes
-	api.get('/resumes', ensureAuthenticated, resumes.findAll);
-	api.get('/resumes/mine', ensureStudent, resumes.findMine);
-	api.put('/resumes/mine', ensureStudent, resumes.update);
-	api.get('/resumes/all', ensureAuthenticated, resumes.downloadAll);
+	api.get('/resumes', middlewares.ensureAuthenticated, resumes.findAll);
+	api.get('/resumes/mine', middlewares.ensureStudent, resumes.findMine);
+	api.put('/resumes/mine', middlewares.ensureStudent, resumes.update);
+	api.get('/resumes/all', middlewares.ensureAuthenticated, resumes.downloadAll);
 	api.get('/resumes/generate/:id', resumes.generate); // no auth (!)
 	api.get('/resumes/:id', resumes.findByStudentId); // no auth (!)
 
-	// Assign the api router to the app
+	// assign the api router to the app
 	app.use("/api", api);
 };
