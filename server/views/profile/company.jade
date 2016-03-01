@@ -13,7 +13,7 @@ section.padding#profile-header
 				a.btn.btn-primary.btn-small(href="/about#about") Browse
 				a.btn.btn-primary.btn-small(href="/api/resumes/all") Download all
 			.col-sm-4
-div(ng-controller="chartsController" ng-init="company = #{userData}")
+div(ng-controller="chartsController")
 	section.padding.white-bg
 		.wrap
 			.row.gutter-base
@@ -71,7 +71,7 @@ div(ng-controller="chartsController" ng-init="company = #{userData}")
 				.col-12.row.t-center.gutter-large(ng-show="!afterDataIsSet")
 					div
 						h1 A cloud of nice words about you will be shown here!
-						p We are waiting for the data from the members, bare with us!
+						p We are waiting for the data from the members, bear with us!
 				.col-12(ng-show="afterDataIsSet")
 					h1.t-center This is what we thought about you!
 					<jqcloud id="cloud-dynamic" words="words" steps="7" auto-resize="true" colors="colors"></jqcloud>

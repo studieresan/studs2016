@@ -28,12 +28,27 @@
 				return message;
 			};
 
-			console.log(data);
+			//console.log(data);
 			$scope.Resume = data;
+			/*
+			* Sorting manually may be better?
+			$scope.Resume.posts.sort(function(a,b) {
+				console.log(a,b);
+				var temp_a = a.enddate;
+				var temp_b = b.enddate;
+				if(a.enddate === null || a.enddate === undefined) {
+					temp_a = "0";
+				}
+				if(b.enddate === null || b.enddate === undefined) {
+					temp_b = "0";
+				}
+				console.log(temp_a, temp_b);
+				return temp_a.localeCompare(temp_b);
+			});*/
 			if($scope.Resume.posts.length < 1) {
 				// Push Work experience and education
 				$scope.Resume.posts.push({
-					type: "Work experience",
+					type: "Employment History",
 					title: "Edit this!",
 					description: "Add description here.",
 					startdate: "2015-12-01",
@@ -55,61 +70,61 @@
 			$scope.data.loading = false;
 		});
 
-$scope.setEditDescription = function (bool) {
-	$scope.data.editDescription = bool;
-};
+		$scope.setEditDescription = function (bool) {
+			$scope.data.editDescription = bool;
+		};
 
-$scope.update = function (data, isAutoSave) {
-	console.log("data", data);
-	Resume.update({ student: 'mine' }, data, function successCallback(response) {
-		if(isAutoSave) {
-			Flash.create('info', "Auto-saving resume...");
-		} else {
-			Flash.create('info', "Resumé saved!");
-		}
-	}, function errorCallback(response) {
-		if(isAutoSave) {
-			Flash.create('danger', "Auto-save failed...");
-		} else {
-			Flash.create('danger', "Something went bad. Try again!");
-		}
-	});
-};
+		$scope.update = function (data, isAutoSave) {
+			console.log("data", data);
+			Resume.update({ student: 'mine' }, data, function successCallback(response) {
+				if(isAutoSave) {
+					Flash.create('info', "Auto-saving resume...");
+				} else {
+					Flash.create('info', "Resumé saved!");
+				}
+			}, function errorCallback(response) {
+				if(isAutoSave) {
+					Flash.create('danger', "Auto-save failed...");
+				} else {
+					Flash.create('danger', "Something went bad. Try again!");
+				}
+			});
+		};
 		// Auto-save every 60 second
-		$interval(function() {
-			$scope.update($scope.Resume, true);
-		}, 60000);
+		/*$interval(function() {
+		$scope.update($scope.Resume, true);
+	}, 60000);*/
 
-		$scope.push = function (type) {
-			if(type !== undefined) {
-				$scope.Resume.posts.push({
-					type: type,
-					title: "Edit this!",
-					description: "Add description here.",
-					newItem: 'new'
-				});
-			}
-		};
+	$scope.push = function (type) {
+		if(type !== undefined) {
+			$scope.Resume.posts.push({
+				type: type,
+				title: "Edit this!",
+				description: "Add description here.",
+				newItem: 'new'
+			});
+		}
+	};
 
-		$scope.removePost = function (post) {
-			var index = $scope.Resume.posts.indexOf(post);
-			$scope.Resume.posts.splice(index, 1);
-		};
+	$scope.removePost = function (post) {
+		var index = $scope.Resume.posts.indexOf(post);
+		$scope.Resume.posts.splice(index, 1);
+	};
 
-		$scope.setActive = function (post) {
-			$scope.data.activePost = post;
-		};
+	$scope.setActive = function (post) {
+		$scope.data.activePost = post;
+	};
 
-		$scope.unsetActive = function () {
-			console.log($scope.data.activePost);
-			$scope.data.activePost = null;
-		};
+	$scope.unsetActive = function () {
+		console.log($scope.data.activePost);
+		$scope.data.activePost = null;
+	};
 
-		$scope.newType = function (type) {
-			$scope.push(type);
-			$scope.newTypeValue = "";
-		};
-	}]);
+	$scope.newType = function (type) {
+		$scope.push(type);
+		$scope.newTypeValue = "";
+	};
+}]);
 
 resumeControllers.controller("PublicResumeCtrl", ['$scope','Resume', '$routeParams', function($scope, Resume, $routeParams) {
 	Resume.get({ student: $routeParams.id }, function(data) {

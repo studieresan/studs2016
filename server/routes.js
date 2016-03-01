@@ -104,6 +104,8 @@ module.exports = function(app, express) {
 	api.put('/users/change-password', middlewares.ensureAuthenticated, users.changePassword);
 	api.post('/users', middlewares.ensureAdmin, users.add);
 	api.delete('/users/:id', middlewares.ensureAdmin, users.delete);
+	api.get('/companyEventBeforeStats', middlewares.ensureAuthenticated, users.companyEventBeforeStats);
+	api.get('/companyEventAfterStats', middlewares.ensureAuthenticated, users.companyEventAfterStats);
 	api.post('/companies', middlewares.ensureEventGroup, users.addCompany);
 	api.get('/companies', middlewares.ensureEventGroup, users.findCompanies);
 	api.put('/companies/:id', middlewares.ensureEventGroup, users.editCompany);
