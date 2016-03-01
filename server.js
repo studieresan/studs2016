@@ -4,16 +4,14 @@
 |------------------------------------------------------------------------------
 */
 
-var bodyParser  = require('body-parser');
-var dotenv      = require('dotenv');
-var mongoose    = require('mongoose');
-var express     = require('express');
-var flash       = require('connect-flash');
-var passport    = require('passport');
-var session     = require('express-session');
-var MongoStore  = require('connect-mongo') (session);
-
-
+var bodyParser = require('body-parser');
+var dotenv     = require('dotenv');
+var mongoose   = require('mongoose');
+var express    = require('express');
+var flash      = require('connect-flash');
+var passport   = require('passport');
+var session    = require('express-session');
+var MongoStore = require('connect-mongo') (session);
 
 /*
 |------------------------------------------------------------------------------
@@ -21,16 +19,16 @@ var MongoStore  = require('connect-mongo') (session);
 |------------------------------------------------------------------------------
 */
 
-// dotenv
+// load .env configuration file
 dotenv.load();
 
-// passport
+// load passport configuration file
 require('./server/config/passport') (passport);
 
-// databse
+// load database configuration file
 var db = require('./server/config/db');
 
-// server port number
+// set server port number
 var port = process.env.PORT || 3000;
 
 // connect to mongoDB
@@ -62,7 +60,7 @@ app.use(session({
 	saveUninitialized: true,
 	secret: process.env.SESSION_SECRET,
 	store: new MongoStore({ mongooseConnection: mongoose.connection }),
-	ttl: 2*24*60*60, // 2 day before expiration
+	ttl: (2 * 24 * 60 * 60), // 2 days expiration
 }));
 
 // passport setup
