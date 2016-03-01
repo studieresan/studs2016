@@ -1,14 +1,30 @@
-var users = require('./controllers/usersController');
-var resumes = require('./controllers/resumesController');
-var events = require('./controllers/eventsController');
 var passport = require('passport');
+var users    = require('./controllers/usersController');
+var resumes  = require('./controllers/resumesController');
+var events   = require('./controllers/eventsController');
 
-function isAdmin(user) {
-	return user && user.type.toLowerCase() === "student" && user.group && (user.group.toLowerCase() === "communication" || user.group.toLowerCase() === "projectleader");
+// check if a user belongs to any of the given groups
+function belongsToGroup(user, groups) {
+	if (! user || ! user.group || user.type.toLowerCase() !== "student") {
+		return false;
+	}
+	var inGroup = false;
+	groups.forEach(function(group) {
+		if (user.group.toLowerCase() === group) {
+			inGroup = true;
+		}
+	});
+	return inGroup;
 }
 
+// determine whether a user is an admin or not
+function isAdmin(user) {
+	return belongsToGroup(user, ['communication', 'projectleader']);
+}
+
+// determine wheter a user belongs to the event group or not
 function isEventGroup(user) {
-	return user &&  user.group && user.group.toLowerCase() === "event";
+	return belongsToGroup(user, ['event']);
 }
 
 function ensureStudent(req, res, next) {
