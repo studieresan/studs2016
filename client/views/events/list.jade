@@ -6,5 +6,5 @@ div#event-list
 				span {{event.date | date : 'MMM'}}
 			h1 {{ event.title }}
 			p {{ event.location }}
-			span.text-gray(ng-if="today > event.date && (event.instagram === undefined || event.instagram.length < 10)") Information kommer!
-			a(ng-if="(event.instagram !== undefined && event.instagram.length > 0)", href='/events/{{ event.slug }}') Läs mer
+			span.text-gray(ng-if="today > event.date && (event.instagram === undefined || event.instagram.length < 10)") Coming soon!
+			a(ng-if="(event.instagram !== undefined && event.instagram.length > 0)", href='/events/{{ event.slug }}') Read More
