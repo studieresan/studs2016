@@ -83,6 +83,11 @@ module.exports = function(app, express) {
 		});
 	});
 
+	// Email signature (http://studieresan.se/uploads/studs2016-email-logo.png)
+	app.get('/uploads/studs2016-email-logo.png', function(req, res) {
+		res.download('./client/public/img/studs2016-email-logo.png');
+	});
+
 	/*
 	* Auth. functionality
 	*/
