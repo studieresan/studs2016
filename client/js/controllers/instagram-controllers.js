@@ -38,6 +38,8 @@
 		$scope.orderBy = "-created_time";
 		$scope.getMore = function() {
 			InstagramHashtag.fetchRecent(function(data) {
+				console.log(data);
+				
 				for (var i = 0; i < data.length; i++) {
 					if(typeof $scope.have[data[i].id]==="undefined") {
 						$scope.pics.push(data[i]);
